@@ -1,13 +1,10 @@
-﻿using Abp.Domain.Entities;
+﻿using System;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Entities.Auditing;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace YMApp.Categorys
+namespace YMApp.Categorys.Dtos
 {
-    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited, IMustHaveTenant
+    public class CategoryListDto : EntityDto<long>, IHasCreationTime
     {
         /// <summary>
         /// 分类名称
@@ -30,13 +27,6 @@ namespace YMApp.Categorys
         /// <value>The sort.</value>
         public int Sort { get; set; }
 
-        public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }
-        public long? CreatorUserId { get; set; }
-        public long? LastModifierUserId { get; set; }
-        public DateTime? LastModificationTime { get; set; }
-        public long? DeleterUserId { get; set; }
-        public DateTime? DeletionTime { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }

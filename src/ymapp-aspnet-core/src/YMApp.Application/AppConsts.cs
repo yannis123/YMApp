@@ -1,4 +1,4 @@
-namespace YMApp
+namespace YMApp.Core
 {
     public class AppConsts
     {
