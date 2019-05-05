@@ -4,7 +4,7 @@ using Abp.Application.Services.Dto;
 using YMApp;
 using YMApp.Core;
 
-namespace Cloud.BookList.Dtos
+namespace YMApp.Application.Dtos
 {
     public class PagedAndSortedInputDto : PagedInputDto, ISortedResultRequest
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using YMApp.Core;
 
-namespace Cloud.BookList.Dtos
+namespace YMApp.Application.Dtos
 {
     public class PagedInputDto : IPagedResultRequest
     {

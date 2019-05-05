@@ -1,38 +1,36 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using YMApp.Categorys;
+using YMApp.ECommerce.Pictures;
 
-namespace YMApp.Categorys
+namespace YMApp.ECommerce.Products
 {
-    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited, IMustHaveTenant
+    public class Product : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited, IMustHaveTenant
     {
         /// <summary>
-        /// 分类名称
+        /// 商品编码
         /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; set; }
+        public string ProductCode { get; set; }
         /// <summary>
-        /// 上级分类Id
+        /// 商品名称
         /// </summary>
-        /// <value>The parent identifier.</value>
-        public long ParentId { get; set; }
+        public string ProductName { get; set; }
         /// <summary>
-        /// 分类级别
+        /// 分类Id
         /// </summary>
-        /// <value>The grade.</value>
-        public int Grade { get; set; }
+        public long CategoryId { get; set; }
         /// <summary>
-        /// 分类类型
+        /// 所属分类导航属性
         /// </summary>
-        public int Type { get; set; }
+        public Category Category { get; set; }
         /// <summary>
-        /// 排序
+        /// 商品图片列表
         /// </summary>
-        /// <value>The sort.</value>
-        public int Sort { get; set; }
+        public List<Picture> Pictures { get; set; }
+
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }
