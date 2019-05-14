@@ -36,13 +36,6 @@ namespace YMApp.ECommerce.Products.Dtos
 
 
         /// <summary>
-        /// TenantId
-        /// </summary>
-        public int TenantId { get; set; }
-
-
-
-        /// <summary>
         /// ProductCode
         /// </summary>
         public string ProductCode { get; set; }

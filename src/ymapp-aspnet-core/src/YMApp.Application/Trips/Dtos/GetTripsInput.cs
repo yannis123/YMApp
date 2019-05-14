@@ -1,6 +1,6 @@
 ﻿using System;
 using Abp.Runtime.Validation;
-using Cloud.BookList.Dtos;
+using YMApp.Application.Dtos;
 
 namespace YMApp.Trips.Dtos
 {

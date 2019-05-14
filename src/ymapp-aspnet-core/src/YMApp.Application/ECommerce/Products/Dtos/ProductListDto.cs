@@ -36,14 +36,6 @@ namespace YMApp.ECommerce.Products.Dtos
 		public List<Picture> Pictures { get; set; }
 
 
-
-		/// <summary>
-		/// TenantId
-		/// </summary>
-		public int TenantId { get; set; }
-
-
-
 		/// <summary>
 		/// CreationTime
 		/// </summary>

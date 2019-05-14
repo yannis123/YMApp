@@ -21,6 +21,7 @@ using YMApp.ECommerce.Products;
 using Abp.Domain.Entities;
 using YMApp.Categorys;
 using YMApp.ECommerce.Pictures;
+using Abp.AutoMapper;
 
 namespace YMApp.ECommerce.Products.DomainService
 {
@@ -64,9 +65,9 @@ namespace YMApp.ECommerce.Products.DomainService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<Product> GetByIdAsync(Entity<long> input)
+        public async Task<Product> GetByIdAsync(long id)
         {
-            var model = await _repository.GetAsync(input.Id);
+            var model = await _repository.GetAsync(id);
             if (model.CategoryId > 0)
             {
                 model.Category = await _categoryRepository.GetAsync(model.CategoryId);
@@ -75,6 +76,25 @@ namespace YMApp.ECommerce.Products.DomainService
             return model;
         }
 
+        public async Task UpdateAsync(Product input)
+        {
+            var entity = await _repository.GetAsync(input.Id);
+            input.MapTo(entity);
+            await _repository.UpdateAsync(entity);
 
+            //删除旧图片 添加新图片 
+            if (input.Pictures != null && input.Pictures.Count > 0)
+            {
+                var pictureIds = entity.Pictures.Select(m => m.Id);
+                await _pictureRepository.DeleteAsync(m => pictureIds.Contains(m.Id));
+
+                input.Pictures.ForEach(async (m) =>
+               {
+                   var picture = m.MapTo<Picture>();
+                   await _pictureRepository.InsertAsync(picture);
+               });
+            }
+
+        }
     }
 }

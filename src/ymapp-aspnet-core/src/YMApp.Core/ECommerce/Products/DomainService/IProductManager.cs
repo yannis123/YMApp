@@ -18,7 +18,8 @@ namespace YMApp.ECommerce.Products.DomainService
         ///</summary>
         void InitProduct();
 
-        Task<Product> GetByIdAsync(Entity<long> input);
+        Task<Product> GetByIdAsync(long id);
 
+        Task UpdateAsync(Product input);
     }
 }

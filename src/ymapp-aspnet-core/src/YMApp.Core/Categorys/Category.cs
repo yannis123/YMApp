@@ -8,7 +8,7 @@ using YMApp.Trips;
 
 namespace YMApp.Categorys
 {
-    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited//, IMustHaveTenant
+    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited, IMustHaveTenant
     {
         /// <summary>
         /// 分类名称
@@ -49,5 +49,6 @@ namespace YMApp.Categorys
         public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
         public bool IsDeleted { get; set; }
+        public int TenantId { get; set; }
     }
 }

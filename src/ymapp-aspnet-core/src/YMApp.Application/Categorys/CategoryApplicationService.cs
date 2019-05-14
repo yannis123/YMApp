@@ -10,7 +10,7 @@ using Abp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using YMApp.Categorys.Dtos;
 using Abp.Linq.Extensions;
-
+using Abp.Extensions;
 
 namespace YMApp.Categorys
 {

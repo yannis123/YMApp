@@ -1,28 +1,17 @@
-
-using System;
-using System.Data;
-using System.Linq;
-using System.Linq.Dynamic;
-using System.Linq.Dynamic.Core;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Abp.UI;
-using Abp.AutoMapper;
-using Abp.Extensions;
-using Abp.Authorization;
-using Abp.Domain.Repositories;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using Abp.AutoMapper;
+using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-
-
-using YMApp.ECommerce.Products;
-using YMApp.ECommerce.Products.Dtos;
-using YMApp.ECommerce.Products.DomainService;
-using YMApp.ECommerce.Products.Authorization;
+using Microsoft.EntityFrameworkCore;
 using YMApp.Categorys;
-using Abp.Domain.Entities;
+using YMApp.ECommerce.Products.Authorization;
+using YMApp.ECommerce.Products.DomainService;
+using YMApp.ECommerce.Products.Dtos;
 
 namespace YMApp.ECommerce.Products
 {
@@ -66,9 +55,11 @@ namespace YMApp.ECommerce.Products
             var count = await query.CountAsync();
 
             var entityList = await query
-                    .OrderBy(input.Sorting).AsNoTracking()
-                    .PageBy(input)
-                    .ToListAsync();
+                .Include(m => m.Pictures)
+                .Include(m => m.Category)
+                .OrderBy(input.Sorting).AsNoTracking()
+                .PageBy(input)
+                .ToListAsync();
 
             // var entityListDtos = ObjectMapper.Map<List<ProductListDto>>(entityList);
             var entityListDtos = entityList.MapTo<List<ProductListDto>>();
@@ -83,7 +74,7 @@ namespace YMApp.ECommerce.Products
         [AbpAuthorize(ProductPermissions.Query)]
         public async Task<ProductListDto> GetById(EntityDto<long> input)
         {
-            var entity = await _entityManager.GetByIdAsync(input.MapTo<Entity<long>>());
+            var entity = await _entityManager.GetByIdAsync(input.Id);
             return entity.MapTo<ProductListDto>();
         }
 
@@ -100,8 +91,8 @@ namespace YMApp.ECommerce.Products
 
             if (input.Id.HasValue)
             {
-                var entity = await _entityRepository.GetAsync(input.Id.Value);
-
+                //var entity = await _entityRepository.GetAsync(input.Id.Value);
+                var entity = await _entityManager.GetByIdAsync(input.Id.Value);
                 editDto = entity.MapTo<ProductEditDto>();
 
                 //productEditDto = ObjectMapper.Map<List<productEditDto>>(entity);
@@ -146,7 +137,7 @@ namespace YMApp.ECommerce.Products
 
             // var entity = ObjectMapper.Map <Product>(input);
             var entity = input.MapTo<Product>();
-
+            entity.TenantId = 1;
 
             entity = await _entityRepository.InsertAsync(entity);
             return entity.MapTo<ProductEditDto>();

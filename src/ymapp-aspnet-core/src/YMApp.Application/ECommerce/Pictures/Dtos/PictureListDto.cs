@@ -54,6 +54,9 @@ namespace YMApp.ECommerce.Pictures.Dtos
 		/// Sort
 		/// </summary>
 		public int Sort { get; set; }
-        
+
+        public long Productid { get; set; }
+
+
     }
 }
