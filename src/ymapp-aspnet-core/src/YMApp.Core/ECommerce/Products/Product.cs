@@ -30,7 +30,10 @@ namespace YMApp.ECommerce.Products
         /// 商品图片列表
         /// </summary>
         public List<Picture> Pictures { get; set; }
-
+        /// <summary>
+        /// 商品描述
+        /// </summary>
+        public string Describe { get; set; }
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }

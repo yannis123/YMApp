@@ -1,7 +1,7 @@
 ﻿using System;
 using Abp.Configuration;
 using Abp.Runtime.Validation;
-using Cloud.BookList.Dtos;
+using YMApp.Application.Dtos;
 
 namespace YMApp.Categorys.Dtos
 {

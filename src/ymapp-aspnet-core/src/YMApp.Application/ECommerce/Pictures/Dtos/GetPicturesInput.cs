@@ -1,7 +1,6 @@
 
 using Abp.Runtime.Validation;
-using YMApp.Dtos;
-using YMApp.ECommerce.Pictures;
+using YMApp.Application.Dtos;
 
 namespace YMApp.ECommerce.Pictures.Dtos
 {

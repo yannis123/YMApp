@@ -8,7 +8,7 @@ using YMApp.ECommerce.Pictures;
 
 namespace YMApp.ECommerce.Pictures.Dtos
 {
-    public class PictureListDto : EntityDto<long>,IHasCreationTime,IDeletionAudited,ICreationAudited,IModificationAudited 
+    public class PictureListDto : EntityDto<long>,IHasCreationTime
     {
 
         
@@ -54,9 +54,6 @@ namespace YMApp.ECommerce.Pictures.Dtos
 		/// Sort
 		/// </summary>
 		public int Sort { get; set; }
-
-
-
-
+        
     }
 }
