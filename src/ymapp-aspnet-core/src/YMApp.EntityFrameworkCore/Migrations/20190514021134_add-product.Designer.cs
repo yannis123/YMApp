@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YMApp.EntityFrameworkCore;
 
 namespace YMApp.Migrations
 {
     [DbContext(typeof(YMAppDbContext))]
-    partial class YMAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190514021134_add-product")]
+    partial class addproduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1063,7 +1065,7 @@ namespace YMApp.Migrations
 
                     b.Property<long>("ParentId")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(0L);
+                        .HasDefaultValue(null);
 
                     b.Property<int>("Sort")
                         .ValueGeneratedOnAdd()
@@ -1204,52 +1206,6 @@ namespace YMApp.Migrations
                     b.HasIndex("TenancyName");
 
                     b.ToTable("AbpTenants");
-                });
-
-            modelBuilder.Entity("YMApp.Trips.Trip", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("CategoryId");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("ntext");
-
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime?>("DeletionTime");
-
-                    b.Property<string>("Describe")
-                        .HasMaxLength(500);
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.Property<string>("PictureUrl")
-                        .HasMaxLength(200);
-
-                    b.Property<int>("State")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValue(0);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Trips");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1434,14 +1390,6 @@ namespace YMApp.Migrations
                     b.HasOne("YMApp.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
-                });
-
-            modelBuilder.Entity("YMApp.Trips.Trip", b =>
-                {
-                    b.HasOne("YMApp.Categorys.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

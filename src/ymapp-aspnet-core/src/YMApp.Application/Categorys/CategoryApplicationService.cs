@@ -7,8 +7,6 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
-using Abp.Extensions;
-using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 using YMApp.Categorys.Dtos;
 using Abp.Linq.Extensions;

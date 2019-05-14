@@ -5,6 +5,8 @@ using YMApp.Authorization.Users;
 using YMApp.MultiTenancy;
 using YMApp.Categorys;
 using YMApp.Trips;
+using YMApp.ECommerce.Pictures;
+using YMApp.ECommerce.Products;
 
 namespace YMApp.EntityFrameworkCore
 {
@@ -13,7 +15,8 @@ namespace YMApp.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Trip> Trips { get; set; }
-
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public YMAppDbContext(DbContextOptions<YMAppDbContext> options)
             : base(options)
@@ -23,7 +26,7 @@ namespace YMApp.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
 
-            //×Ô¶¯¼ÓÔØ¼ÓÔØ²¢Ö´ÐÐ¼Ì³ÐÁËEntityMappingConfigurationµÄÀà´ïµ½Í³Ò»¶ÔÊµÌåÀàÐÍ½øÐÐÅäÖÃµÄÄ¿µÄ
+            //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Ø²ï¿½Ö´ï¿½Ð¼Ì³ï¿½ï¿½ï¿½EntityMappingConfigurationï¿½ï¿½ï¿½ï¿½ïµ½Í³Ò»ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ä¿ï¿½ï¿½
             modelBuilder.AddEntityConfigurationsFromAssembly(GetType().Assembly);
         }
 

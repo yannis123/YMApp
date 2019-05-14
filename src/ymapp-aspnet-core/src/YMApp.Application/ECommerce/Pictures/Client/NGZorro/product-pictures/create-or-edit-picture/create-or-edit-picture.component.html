@@ -1,0 +1,152 @@
+
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="anticon anticon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="url">{{l('Url')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="url" #url="ngModel"
+                                   [(ngModel)]="entity.url"
+                                   [placeholder]="l('Url')"  maxlength='200' >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="url.control.dirty&&url.control.errors">
+<ng-container *ngIf="url.control.hasError('maxlength')">{{l('超过最大长度')+200}}</ng-container>                                                                
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="linkUrl">{{l('LinkUrl')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="linkUrl" #linkUrl="ngModel"
+                                   [(ngModel)]="entity.linkUrl"
+                                   [placeholder]="l('LinkUrl')"  maxlength='200' >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="linkUrl.control.dirty&&linkUrl.control.errors">
+<ng-container *ngIf="linkUrl.control.hasError('maxlength')">{{l('超过最大长度')+200}}</ng-container>                                                                
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="type">{{l('Type')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="type" #type="ngModel"
+                                   [(ngModel)]="entity.type"
+                                   [placeholder]="l('Type')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">{{l('Name')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="name" #name="ngModel"
+                                   [(ngModel)]="entity.name"
+                                   [placeholder]="l('Name')"  maxlength='50' >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+<ng-container *ngIf="name.control.hasError('maxlength')">{{l('超过最大长度')+50}}</ng-container>                                                                
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creationTime">{{l('CreationTime')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <nz-time-picker name="creationTime" #creationTime="ngModel"
+                                            [(ngModel)]="entity.creationTime" ></nz-time-picker>
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creatorUserId">{{l('CreatorUserId')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="creatorUserId" #creatorUserId="ngModel"
+                                   [(ngModel)]="entity.creatorUserId"
+                                   [placeholder]="l('CreatorUserId')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lastModifierUserId">{{l('LastModifierUserId')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="lastModifierUserId" #lastModifierUserId="ngModel"
+                                   [(ngModel)]="entity.lastModifierUserId"
+                                   [placeholder]="l('LastModifierUserId')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lastModificationTime">{{l('LastModificationTime')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="lastModificationTime" #lastModificationTime="ngModel"
+                                   [(ngModel)]="entity.lastModificationTime"
+                                   [placeholder]="l('LastModificationTime')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deleterUserId">{{l('DeleterUserId')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="deleterUserId" #deleterUserId="ngModel"
+                                   [(ngModel)]="entity.deleterUserId"
+                                   [placeholder]="l('DeleterUserId')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deletionTime">{{l('DeletionTime')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="deletionTime" #deletionTime="ngModel"
+                                   [(ngModel)]="entity.deletionTime"
+                                   [placeholder]="l('DeletionTime')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="isDeleted">{{l('IsDeleted')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <label nz-checkbox name="isDeleted" #isDeleted="ngModel"
+                                   [(ngModel)]="entity.isDeleted" >{{l('IsDeleted')}}</label>
+
+
+                </nz-form-control>
+            </nz-form-item>
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="anticon anticon-close-circle-o"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="anticon anticon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>
+
+
+
+
+

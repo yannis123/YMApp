@@ -1,47 +1,38 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using YMApp.Trips;
 
-namespace YMApp.Categorys
+namespace YMApp.ECommerce.Pictures
 {
-    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited//, IMustHaveTenant
+    public class Picture : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited
     {
         /// <summary>
-        /// 分类名称
+        /// 图片地址
         /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; set; }
+        public string Url { get; set; }
         /// <summary>
-        /// 上级分类Id
+        /// 图片链接地址
         /// </summary>
-        /// <value>The parent identifier.</value>
-        public long ParentId { get; set; }
+        public string LinkUrl { get; set; }
         /// <summary>
-        /// 分类级别
-        /// </summary>
-        /// <value>The grade.</value>
-        public int Grade { get; set; }
-        /// <summary>
-        /// 分类类型
+        /// 图片类型
         /// </summary>
         public int Type { get; set; }
         /// <summary>
+        /// 图片名称
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
         /// 排序
         /// </summary>
-        /// <value>The sort.</value>
         public int Sort { get; set; }
-
         /// <summary>
-        /// 行程集合
+        /// 商品Id
         /// </summary>
-        /// <value>The trips.</value>
-        public List<Trip> Trips { get; set; }
+        public long ProductId { get; set; }
 
-        //public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public long? LastModifierUserId { get; set; }

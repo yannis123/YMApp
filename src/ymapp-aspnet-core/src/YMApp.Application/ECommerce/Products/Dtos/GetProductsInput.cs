@@ -1,12 +1,11 @@
-﻿using System;
-using Abp.Configuration;
+
 using Abp.Runtime.Validation;
 using YMApp.Application.Dtos;
+using YMApp.ECommerce.Products;
 
-namespace YMApp.Categorys.Dtos
+namespace YMApp.ECommerce.Products.Dtos
 {
-
-    public class GetCategorysInput : PagedSortedAndFilteredInputDto, IShouldNormalize
+    public class GetProductsInput : PagedSortedAndFilteredInputDto, IShouldNormalize
     {
 
         /// <summary>
@@ -21,5 +20,4 @@ namespace YMApp.Categorys.Dtos
         }
 
     }
-
 }

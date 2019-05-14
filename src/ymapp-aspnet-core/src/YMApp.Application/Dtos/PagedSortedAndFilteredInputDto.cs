@@ -1,6 +1,6 @@
 
 
-namespace Cloud.BookList.Dtos
+namespace YMApp.Application.Dtos
 {
     public class PagedSortedAndFilteredInputDto : PagedAndSortedInputDto
     {
