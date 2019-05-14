@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YMApp.EntityFrameworkCore;
 
 namespace YMApp.Migrations
 {
     [DbContext(typeof(YMAppDbContext))]
-    partial class YMAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190503080001_add-trip")]
+    partial class addtrip
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1130,7 +1132,7 @@ namespace YMApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("CategoryId");
+                    b.Property<long?>("CategoryId");
 
                     b.Property<string>("Content")
                         .HasColumnType("ntext");
@@ -1154,7 +1156,7 @@ namespace YMApp.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200);
+                        .HasMaxLength(50);
 
                     b.Property<string>("PictureUrl")
                         .HasMaxLength(200);
@@ -1343,8 +1345,7 @@ namespace YMApp.Migrations
                 {
                     b.HasOne("YMApp.Categorys.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

@@ -2,6 +2,8 @@ using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using YMApp.Authorization;
+using YMApp.Categorys.Mapper;
+using YMApp.Trips.Mapper;
 
 namespace YMApp
 {
@@ -18,8 +20,8 @@ namespace YMApp
             Configuration.Modules.AbpAutoMapper().Configurators.Add(configuration =>
             {
                 // XXXMapper.CreateMappers(configuration);
-
-
+                CategoryMapper.CreateMappings(configuration);
+                TripMapper.CreateMappings(configuration);
             });
         }
 

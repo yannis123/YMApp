@@ -17,6 +17,7 @@ using YMApp.Authorization;
 using YMApp.Authorization.Users;
 using YMApp.Models.TokenAuth;
 using YMApp.MultiTenancy;
+using YMApp.Core;
 
 namespace YMApp.Controllers
 {

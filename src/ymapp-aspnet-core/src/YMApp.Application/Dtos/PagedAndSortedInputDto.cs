@@ -2,6 +2,7 @@
 
 using Abp.Application.Services.Dto;
 using YMApp;
+using YMApp.Core;
 
 namespace Cloud.BookList.Dtos
 {

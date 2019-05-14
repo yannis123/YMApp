@@ -4,6 +4,7 @@ using YMApp.Authorization.Roles;
 using YMApp.Authorization.Users;
 using YMApp.MultiTenancy;
 using YMApp.Categorys;
+using YMApp.Trips;
 
 namespace YMApp.EntityFrameworkCore
 {
@@ -11,6 +12,7 @@ namespace YMApp.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Category> Categorys { get; set; }
+        public DbSet<Trip> Trips { get; set; }
 
 
         public YMAppDbContext(DbContextOptions<YMAppDbContext> options)

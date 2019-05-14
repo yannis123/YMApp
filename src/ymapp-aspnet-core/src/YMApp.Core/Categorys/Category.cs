@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using YMApp.Trips;
 
 namespace YMApp.Categorys
 {
-    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited, IMustHaveTenant
+    public class Category : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited//, IMustHaveTenant
     {
         /// <summary>
         /// 分类名称
@@ -30,7 +31,13 @@ namespace YMApp.Categorys
         /// <value>The sort.</value>
         public int Sort { get; set; }
 
-        public int TenantId { get; set; }
+        /// <summary>
+        /// 行程集合
+        /// </summary>
+        /// <value>The trips.</value>
+        public List<Trip> Trips { get; set; }
+
+        //public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public long? LastModifierUserId { get; set; }

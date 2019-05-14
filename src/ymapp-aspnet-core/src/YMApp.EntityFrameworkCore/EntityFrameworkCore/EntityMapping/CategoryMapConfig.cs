@@ -12,9 +12,10 @@ namespace YMApp.EntityFrameworkCore.EntityMapping
         public override void Map(EntityTypeBuilder<Category> b)
         {
             b.Property(p => p.Name).HasMaxLength(50).IsRequired();
-            b.Property(p => p.ParentId).HasDefaultValue().IsRequired();
+            b.Property(p => p.ParentId).HasDefaultValue(0).IsRequired();
             b.Property(p => p.Grade).HasDefaultValue(0).IsRequired();
             b.Property(p => p.Sort).HasDefaultValue(0).IsRequired();
+            b.HasMany(p => p.Trips);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
@@ -10,12 +11,18 @@ using Abp.Extensions;
 using Abp.Runtime.Session;
 using Microsoft.EntityFrameworkCore;
 using YMApp.Categorys.Dtos;
+using Abp.Linq.Extensions;
+
 
 namespace YMApp.Categorys
 {
-    public class CategoryApplicationService : ICategoryApplicationService
+    public class CategoryApplicationService : YMAppAppServiceBase, ICategoryApplicationService
     {
         private readonly IRepository<Category, long> _entityRepository;
+        public CategoryApplicationService(IRepository<Category, long> entityRepository)
+        {
+            _entityRepository = entityRepository;
+        }
 
         public async Task BatchDelete(List<long> input)
         {
@@ -52,8 +59,7 @@ namespace YMApp.Categorys
 
             var entity = await _entityRepository.GetAsync(input.Id.Value);
             input.MapTo(entity);
-
-            // ObjectMapper.Map(input, entity);
+            //ObjectMapper.Map(input, entity);
             await _entityRepository.UpdateAsync(entity);
 
         }
@@ -89,7 +95,7 @@ namespace YMApp.Categorys
             return output;
         }
 
-        public async Task<PagedResultDto<CategoryListDto>> GetPagedAsync(GetCategorysInput input)
+        public async Task<PagedResultDto<CategoryListDto>> GetPaged(GetCategorysInput input)
         {
             var query = _entityRepository
                 .GetAll()
