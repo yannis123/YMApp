@@ -40,8 +40,6 @@ namespace YMApp.Categorys
         /// </summary>
         /// <value>The trips.</value>
         public List<Trip> Trips { get; set; }
-
-        //public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }
         public long? CreatorUserId { get; set; }
         public long? LastModifierUserId { get; set; }

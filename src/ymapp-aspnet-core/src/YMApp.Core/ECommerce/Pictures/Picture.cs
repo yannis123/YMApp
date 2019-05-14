@@ -6,7 +6,7 @@ using System.Text;
 
 namespace YMApp.ECommerce.Pictures
 {
-    public class Picture : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited
+    public class Picture : Entity<long>, IHasCreationTime, IDeletionAudited, ICreationAudited, IModificationAudited, IMustHaveTenant
     {
         /// <summary>
         /// 图片地址
@@ -40,5 +40,6 @@ namespace YMApp.ECommerce.Pictures
         public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
         public bool IsDeleted { get; set; }
+        public int TenantId { get; set; }
     }
 }
