@@ -28,6 +28,10 @@ namespace YMApp.ECommerce.Pictures
         /// 排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>
+        /// 商品Id
+        /// </summary>
+        public long ProductId { get; set; }
 
         public DateTime CreationTime { get; set; }
         public long? CreatorUserId { get; set; }

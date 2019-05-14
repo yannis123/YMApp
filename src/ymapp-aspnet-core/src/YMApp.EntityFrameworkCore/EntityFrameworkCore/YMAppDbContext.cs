@@ -4,6 +4,8 @@ using YMApp.Authorization.Roles;
 using YMApp.Authorization.Users;
 using YMApp.MultiTenancy;
 using YMApp.Categorys;
+using YMApp.ECommerce.Pictures;
+using YMApp.ECommerce.Products;
 
 namespace YMApp.EntityFrameworkCore
 {
@@ -11,7 +13,8 @@ namespace YMApp.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Category> Categorys { get; set; }
-
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public YMAppDbContext(DbContextOptions<YMAppDbContext> options)
             : base(options)

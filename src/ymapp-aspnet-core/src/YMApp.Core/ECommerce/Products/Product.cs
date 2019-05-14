@@ -29,11 +29,15 @@ namespace YMApp.ECommerce.Products
         /// <summary>
         /// 商品图片列表
         /// </summary>
-        public List<Picture> Pictures { get; set; }
+        public virtual List<Picture> Pictures { get; set; }
         /// <summary>
         /// 商品描述
         /// </summary>
         public string Describe { get; set; }
+        /// <summary>
+        /// 商品状态 1 上架 2 下架
+        /// </summary>
+        public int State { get; set; }
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }

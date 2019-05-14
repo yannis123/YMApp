@@ -3,6 +3,8 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using YMApp.Authorization;
 using YMApp.Categorys.Mapper;
+using YMApp.ECommerce.Pictures.Mapper;
+using YMApp.ECommerce.Products.Mapper;
 
 namespace YMApp
 {
@@ -20,7 +22,8 @@ namespace YMApp
             {
                 // XXXMapper.CreateMappers(configuration);
                 CategoryMapper.CreateMappings(configuration);
-
+                PictureMapper.CreateMappings(configuration);
+                ProductMapper.CreateMappings(configuration);
             });
         }
 
