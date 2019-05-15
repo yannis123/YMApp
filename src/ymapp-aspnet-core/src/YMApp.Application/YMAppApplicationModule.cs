@@ -18,6 +18,7 @@ namespace YMApp
         {
             Configuration.Authorization.Providers.Add<YMAppAuthorizationProvider>();
             Configuration.Authorization.IsEnabled = false;
+            //Configuration.MultiTenancy.IsEnabled = false;
             // 自定义类型映射
             Configuration.Modules.AbpAutoMapper().Configurators.Add(configuration =>
             {
