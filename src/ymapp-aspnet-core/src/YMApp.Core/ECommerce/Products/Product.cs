@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using YMApp.Categorys;
 using YMApp.ECommerce.Pictures;
+using YMApp.ECommerce.ProductAttributes;
+using YMApp.ECommerce.ProductFields;
 
 namespace YMApp.ECommerce.Products
 {
@@ -38,6 +40,11 @@ namespace YMApp.ECommerce.Products
         /// 商品状态 1 上架 2 下架
         /// </summary>
         public int State { get; set; }
+        /// <summary>
+        /// 产品参数
+        /// </summary>
+        /// <value>The product attributes.</value>
+        public virtual List<ProductAttribute> ProductAttributes { get; set; }
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }

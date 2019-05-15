@@ -6,6 +6,8 @@ using YMApp.Categorys.Mapper;
 using YMApp.Trips.Mapper;
 using YMApp.ECommerce.Pictures.Mapper;
 using YMApp.ECommerce.Products.Mapper;
+using YMApp.ECommerce.Pictures.Authorization;
+using YMApp.ECommerce.Products.Authorization;
 
 namespace YMApp
 {
@@ -17,8 +19,14 @@ namespace YMApp
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<YMAppAuthorizationProvider>();
-            Configuration.Authorization.IsEnabled = false;
+            Configuration.Authorization.Providers.Add<PictureAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<ProductAuthorizationProvider>();
+
+
+
+            //Configuration.Authorization.IsEnabled = false;
             //Configuration.MultiTenancy.IsEnabled = false;
+
             // 自定义类型映射
             Configuration.Modules.AbpAutoMapper().Configurators.Add(configuration =>
             {

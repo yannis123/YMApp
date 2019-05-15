@@ -26,5 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Trips\" />
+    <Folder Include="ECommerce\ProductFields\" />
+    <Folder Include="ECommerce\ProductAttributes\" />
   </ItemGroup>
 </Project>
