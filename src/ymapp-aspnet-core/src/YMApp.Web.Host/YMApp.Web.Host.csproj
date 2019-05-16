@@ -9,10 +9,10 @@
     <UserSecretsId>LTMCompanyNameFree-YMApp-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="App_Data\Logs\**" />
-    <Content Remove="App_Data\Logs\**" />
-    <EmbeddedResource Remove="App_Data\Logs\**" />
-    <None Remove="App_Data\Logs\**" />
+    <Compile Remove="bin\**" />
+    <Content Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\swagger\ui\index.html" />
@@ -59,5 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

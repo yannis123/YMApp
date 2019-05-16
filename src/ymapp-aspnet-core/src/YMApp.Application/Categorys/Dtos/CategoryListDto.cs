@@ -22,6 +22,10 @@ namespace YMApp.Categorys.Dtos
         /// <value>The grade.</value>
         public int Grade { get; set; }
         /// <summary>
+        /// 分类类型
+        /// </summary>
+        public int Type { get; set; }
+        /// <summary>
         /// 排序
         /// </summary>
         /// <value>The sort.</value>

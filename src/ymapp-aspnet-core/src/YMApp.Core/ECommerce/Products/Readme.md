@@ -78,6 +78,7 @@ public DbSet<Product>  Products { get; set; }
 <text name="ProductName"  value="ProductName"></text>
 <text name="Describe"  value="Describe"></text>
 <text name="State"  value="State"></text>
+<text name="ProductAttributes"  value="ProductAttributes"></text>
 
 
 <text name="Product" value=""></text><text name="QueryProduct"  value="查询"></text><text name="CreateProduct"  value="添加"></text><text name="EditProduct"  value="编辑"></text><text name="DeleteProduct"  value="删除"></text><text name="BatchDeleteProduct" value="批量删除"></text><text name="ExportProduct"  value="导出"></text>                             

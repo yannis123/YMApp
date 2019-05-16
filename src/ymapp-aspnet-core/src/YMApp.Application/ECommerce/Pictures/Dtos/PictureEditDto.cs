@@ -52,7 +52,7 @@ namespace  YMApp.ECommerce.Pictures.Dtos
 		/// </summary>
 		public int Sort { get; set; }
 
-        public long Productid { get; set; }
+        public long ProductId { get; set; }
 
 
     }

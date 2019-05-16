@@ -8,6 +8,10 @@ using YMApp.ECommerce.Products;
 using YMApp.Categorys;
 using System.Collections.Generic;
 using YMApp.ECommerce.Pictures;
+using YMApp.ECommerce.ProductAttributes;
+using YMApp.ECommerce.ProductAttributes.Dtos;
+using YMApp.ECommerce.Pictures.Dtos;
+using YMApp.Categorys.Dtos;
 
 namespace YMApp.ECommerce.Products.Dtos
 {
@@ -26,14 +30,14 @@ namespace YMApp.ECommerce.Products.Dtos
 		/// <summary>
 		/// Category
 		/// </summary>
-		public Category Category { get; set; }
+		public CategoryListDto Category { get; set; }
 
 
 
 		/// <summary>
 		/// Pictures
 		/// </summary>
-		public List<Picture> Pictures { get; set; }
+		public List<PictureListDto> Pictures { get; set; }
 
 
 		/// <summary>
@@ -73,7 +77,11 @@ namespace YMApp.ECommerce.Products.Dtos
 		public int State { get; set; }
 
 
-
+        /// <summary>
+        /// 产品参数
+        /// </summary>
+        /// <value>The product attributes.</value>
+        public List<ProductAttributeListDto> ProductAttributes { get; set; }
 
     }
 }

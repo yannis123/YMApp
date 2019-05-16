@@ -18,7 +18,10 @@ namespace YMApp.Web.Host.Startup
             _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
-
+        public override void PreInitialize()
+        {
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+        }
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(YMAppWebHostModule).GetAssembly());

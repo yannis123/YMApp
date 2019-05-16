@@ -11,8 +11,13 @@ namespace YMApp.ECommerce.ProductFields
         /// </summary>
         /// <value>The product type.</value>
         public int ProductType { get; set; }
+
         /// <summary>
-        /// 字段名称
+        /// 参数级别 
+        /// </summary>
+        public int FieldGrade { get; set; }
+        /// <summary>
+        /// 参数名称
         /// </summary>
         /// <value>The name of the field.</value>
         public string FieldName { get; set; }

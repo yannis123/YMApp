@@ -2,12 +2,13 @@ using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using YMApp.EntityFrameworkCore.Seed;
 
 namespace YMApp.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(YMAppCoreModule), 
+        typeof(YMAppCoreModule),
         typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class YMAppEntityFrameworkModule : AbpModule
     {
@@ -35,16 +36,16 @@ namespace YMApp.EntityFrameworkCore
         }
 
         public override void Initialize()
-        {
-            IocManager.RegisterAssemblyByConvention(typeof(YMAppEntityFrameworkModule).GetAssembly());
-        }
+{
+    IocManager.RegisterAssemblyByConvention(typeof(YMAppEntityFrameworkModule).GetAssembly());
+}
 
-        public override void PostInitialize()
-        {
-            if (!SkipDbSeed)
-            {
-                SeedHelper.SeedHostDb(IocManager);
-            }
-        }
+public override void PostInitialize()
+{
+    if (!SkipDbSeed)
+    {
+        SeedHelper.SeedHostDb(IocManager);
+    }
+}
     }
 }

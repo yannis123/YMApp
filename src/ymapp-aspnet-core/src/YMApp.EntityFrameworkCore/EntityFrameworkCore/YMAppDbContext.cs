@@ -7,6 +7,8 @@ using YMApp.Categorys;
 using YMApp.Trips;
 using YMApp.ECommerce.Pictures;
 using YMApp.ECommerce.Products;
+using YMApp.ECommerce.ProductFields;
+using YMApp.ECommerce.ProductAttributes;
 
 namespace YMApp.EntityFrameworkCore
 {
@@ -17,6 +19,8 @@ namespace YMApp.EntityFrameworkCore
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductField> ProductFields { get; set; }
+        public DbSet<ProductAttribute> ProductAttributes { get; set; }
 
         public YMAppDbContext(DbContextOptions<YMAppDbContext> options)
             : base(options)

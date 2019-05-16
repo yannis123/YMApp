@@ -22,6 +22,7 @@ using Abp.Domain.Entities;
 using YMApp.Categorys;
 using YMApp.ECommerce.Pictures;
 using Abp.AutoMapper;
+using YMApp.ECommerce.ProductAttributes;
 
 namespace YMApp.ECommerce.Products.DomainService
 {
@@ -34,6 +35,7 @@ namespace YMApp.ECommerce.Products.DomainService
         private readonly IRepository<Product, long> _repository;
         private readonly IRepository<Category, long> _categoryRepository;
         private readonly IRepository<Picture, long> _pictureRepository;
+        private readonly IRepository<ProductAttribute, long> _productAttributeRepository;
 
         /// <summary>
         /// Product的构造方法
@@ -42,11 +44,13 @@ namespace YMApp.ECommerce.Products.DomainService
             IRepository<Product, long> repository
             , IRepository<Category, long> categoryRepository
             , IRepository<Picture, long> pictureRepository
+            , IRepository<ProductAttribute, long> productAttributeRepository
         )
         {
             _repository = repository;
             _categoryRepository = categoryRepository;
             _pictureRepository = pictureRepository;
+            _productAttributeRepository = productAttributeRepository;
         }
 
 
@@ -73,27 +77,32 @@ namespace YMApp.ECommerce.Products.DomainService
                 model.Category = await _categoryRepository.GetAsync(model.CategoryId);
             }
             model.Pictures = await _pictureRepository.GetAllListAsync(m => m.ProductId == model.Id);
+            model.ProductAttributes = await _productAttributeRepository.GetAllListAsync(m => m.ProductId == model.Id);
             return model;
         }
 
         public async Task UpdateAsync(Product input)
         {
-            var entity = await _repository.GetAsync(input.Id);
-            input.MapTo(entity);
-            await _repository.UpdateAsync(entity);
+            await _repository.UpdateAsync(input);
 
-            //删除旧图片 添加新图片 
-            if (input.Pictures != null && input.Pictures.Count > 0)
-            {
-                var pictureIds = entity.Pictures.Select(m => m.Id);
-                await _pictureRepository.DeleteAsync(m => pictureIds.Contains(m.Id));
-
-                input.Pictures.ForEach(async (m) =>
-               {
-                   var picture = m.MapTo<Picture>();
-                   await _pictureRepository.InsertAsync(picture);
-               });
-            }
+            ////删除旧图片 添加新图片 
+            //if (input.Pictures != null && input.Pictures.Count > 0)
+            //{
+            //    await _pictureRepository.DeleteAsync(m => m.ProductId == input.Id);
+            //    input.Pictures.ForEach(async (m) =>
+            //   {
+            //       await _pictureRepository.InsertAsync(m);
+            //   });
+            //}
+            ////删除旧参数 添加新参数  
+            //if (input.ProductAttributes != null && input.ProductAttributes.Count > 0)
+            //{
+            //    await _productAttributeRepository.DeleteAsync(m => m.ProductId == input.Id);
+            //    input.ProductAttributes.ForEach(async (m) =>
+            //    {
+            //        await _productAttributeRepository.InsertAsync(m);
+            //    });
+            //}
 
         }
     }

@@ -8,6 +8,8 @@ using YMApp.ECommerce.Pictures.Mapper;
 using YMApp.ECommerce.Products.Mapper;
 using YMApp.ECommerce.Pictures.Authorization;
 using YMApp.ECommerce.Products.Authorization;
+using YMApp.ECommerce.ProductFields.Mapper;
+using YMApp.ECommerce.ProductAttributes.Mapper;
 
 namespace YMApp
 {
@@ -35,6 +37,8 @@ namespace YMApp
                 TripMapper.CreateMappings(configuration);
                 PictureMapper.CreateMappings(configuration);
                 ProductMapper.CreateMappings(configuration);
+                ProductFieldMapper.CreateMappings(configuration);
+                ProductAttributeMapper.CreateMappings(configuration);
             });
         }
 

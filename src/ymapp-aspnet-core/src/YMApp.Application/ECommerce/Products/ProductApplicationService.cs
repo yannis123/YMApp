@@ -57,6 +57,7 @@ namespace YMApp.ECommerce.Products
             var entityList = await query
                 .Include(m => m.Pictures)
                 .Include(m => m.Category)
+                .Include(m => m.ProductAttributes)
                 .OrderBy(input.Sorting).AsNoTracking()
                 .PageBy(input)
                 .ToListAsync();
@@ -153,9 +154,8 @@ namespace YMApp.ECommerce.Products
 
             var entity = await _entityRepository.GetAsync(input.Id.Value);
             input.MapTo(entity);
-
+            await _entityManager.UpdateAsync(entity);
             // ObjectMapper.Map(input, entity);
-            await _entityRepository.UpdateAsync(entity);
         }
 
 

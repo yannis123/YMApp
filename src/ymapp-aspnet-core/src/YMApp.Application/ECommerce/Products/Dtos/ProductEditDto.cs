@@ -6,6 +6,8 @@ using Abp.Domain.Entities.Auditing;
 using YMApp.Categorys;
 using YMApp.ECommerce.Pictures;
 using YMApp.ECommerce.Pictures.Dtos;
+using YMApp.ECommerce.ProductAttributes;
+using YMApp.ECommerce.ProductAttributes.Dtos;
 using YMApp.ECommerce.Products;
 
 namespace YMApp.ECommerce.Products.Dtos
@@ -64,7 +66,11 @@ namespace YMApp.ECommerce.Products.Dtos
         [Required(ErrorMessage = "State不能为空")]
         public int State { get; set; }
 
-
+        /// <summary>
+        /// 产品参数
+        /// </summary>
+        /// <value>The product attributes.</value>
+        public List<ProductAttributeEditDto> ProductAttributes { get; set; }
 
 
     }

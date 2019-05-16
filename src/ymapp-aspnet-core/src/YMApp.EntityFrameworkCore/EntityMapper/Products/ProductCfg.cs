@@ -12,13 +12,23 @@ namespace YMApp.EntityMapper.Products
         {
 
             builder.ToTable("Products", YoYoAbpefCoreConsts.SchemaNames.CMS);
-            builder.Property(a => a.CategoryId).HasDefaultValue(0).IsRequired();
-            builder.Property(a => a.ProductCode).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
-            builder.Property(a => a.ProductName).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
-            builder.Property(a => a.Describe).HasColumnType("ntext");
-            builder.Property(a => a.State).HasDefaultValue(0).IsRequired();
-            builder.HasOne(a => a.Category);
-            builder.HasMany(a => a.Pictures);
+			builder.Property(a => a.CategoryId).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.Category).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.Pictures).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.TenantId).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.CreationTime).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.CreatorUserId).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.LastModifierUserId).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.LastModificationTime).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.DeleterUserId).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.DeletionTime).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.IsDeleted).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.ProductCode).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.ProductName).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.Describe).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.State).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+			builder.Property(a => a.ProductAttributes).HasMaxLength(YoYoAbpefCoreConsts.EntityLengthNames.Length64);
+
 
         }
     }

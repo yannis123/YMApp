@@ -1119,6 +1119,76 @@ namespace YMApp.Migrations
                     b.ToTable("Pictures");
                 });
 
+            modelBuilder.Entity("YMApp.ECommerce.ProductAttributes.ProductAttribute", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<int>("FieldGrade");
+
+                    b.Property<string>("FieldName");
+
+                    b.Property<string>("FieldValue");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<long>("ProductId");
+
+                    b.Property<int>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductAttributes");
+                });
+
+            modelBuilder.Entity("YMApp.ECommerce.ProductFields.ProductField", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<int>("FieldGrade");
+
+                    b.Property<string>("FieldName");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("ProductType");
+
+                    b.Property<int>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductFields");
+                });
+
             modelBuilder.Entity("YMApp.ECommerce.Products.Product", b =>
                 {
                     b.Property<long>("Id")
@@ -1408,6 +1478,14 @@ namespace YMApp.Migrations
                 {
                     b.HasOne("YMApp.ECommerce.Products.Product")
                         .WithMany("Pictures")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("YMApp.ECommerce.ProductAttributes.ProductAttribute", b =>
+                {
+                    b.HasOne("YMApp.ECommerce.Products.Product")
+                        .WithMany("ProductAttributes")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
