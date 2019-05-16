@@ -9,6 +9,10 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using YMApp.Categorys;
+using YMApp.ECommerce.Pictures;
+using YMApp.ECommerce.Pictures.Dtos;
+using YMApp.ECommerce.ProductAttributes;
+using YMApp.ECommerce.ProductAttributes.Dtos;
 using YMApp.ECommerce.Products.Authorization;
 using YMApp.ECommerce.Products.DomainService;
 using YMApp.ECommerce.Products.Dtos;
@@ -22,7 +26,8 @@ namespace YMApp.ECommerce.Products
     public class ProductAppService : YMAppAppServiceBase, IProductAppService
     {
         private readonly IRepository<Product, long> _entityRepository;
-
+        private readonly IRepository<Picture, long> _pictureRepository;
+        private readonly IRepository<ProductAttribute, long> _attributeRepository;
         private readonly IProductManager _entityManager;
 
         /// <summary>
@@ -31,11 +36,14 @@ namespace YMApp.ECommerce.Products
         public ProductAppService(
         IRepository<Product, long> entityRepository
         , IProductManager entityManager
-        , IRepository<Category, long> categoryRepository
+            , IRepository<Picture, long> pictureRepository
+            , IRepository<ProductAttribute, long> attributeRepository
         )
         {
             _entityRepository = entityRepository;
             _entityManager = entityManager;
+            _pictureRepository = pictureRepository;
+            _attributeRepository = attributeRepository;
         }
 
 
@@ -96,7 +104,12 @@ namespace YMApp.ECommerce.Products
                 var entity = await _entityManager.GetByIdAsync(input.Id.Value);
                 editDto = entity.MapTo<ProductEditDto>();
 
-                //productEditDto = ObjectMapper.Map<List<productEditDto>>(entity);
+                var pictures = await _pictureRepository.GetAllListAsync(m => m.ProductId == entity.Id);
+
+                output.Pictures = pictures.MapTo<List<PictureEditDto>>();
+
+                var attributes = await _attributeRepository.GetAllListAsync(m => m.ProductId == entity.Id);
+                output.ProductAttributes = attributes.MapTo<List<ProductAttributeEditDto>>();
             }
             else
             {
@@ -119,11 +132,11 @@ namespace YMApp.ECommerce.Products
 
             if (input.Product.Id.HasValue)
             {
-                await Update(input.Product);
+                await Update(input);
             }
             else
             {
-                await Create(input.Product);
+                await Create(input);
             }
         }
 
@@ -132,15 +145,33 @@ namespace YMApp.ECommerce.Products
         /// 新增Product
         /// </summary>
         [AbpAuthorize(ProductPermissions.Create)]
-        protected virtual async Task<ProductEditDto> Create(ProductEditDto input)
+        protected virtual async Task<ProductEditDto> Create(CreateOrUpdateProductInput input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
 
             // var entity = ObjectMapper.Map <Product>(input);
-            var entity = input.MapTo<Product>();
-            entity.TenantId = 1;
+            var entity = input.Product.MapTo<Product>();
 
             entity = await _entityRepository.InsertAsync(entity);
+
+            if (input.Pictures != null && input.Pictures.Count > 0)
+            {
+                foreach (var item in input.Pictures)
+                {
+                    item.ProductId = entity.Id;
+                    await _pictureRepository.InsertAsync(item.MapTo<Picture>());
+                }
+            }
+
+            if (input.ProductAttributes != null && input.ProductAttributes.Count > 0)
+            {
+                foreach (var item in input.ProductAttributes)
+                {
+                    item.ProductId = entity.Id;
+                    await _attributeRepository.InsertAsync(item.MapTo<ProductAttribute>());
+                }
+            }
+
             return entity.MapTo<ProductEditDto>();
         }
 
@@ -148,13 +179,34 @@ namespace YMApp.ECommerce.Products
         /// 编辑Product
         /// </summary>
         [AbpAuthorize(ProductPermissions.Edit)]
-        protected virtual async Task Update(ProductEditDto input)
+        protected virtual async Task Update(CreateOrUpdateProductInput input)
         {
             //TODO:更新前的逻辑判断，是否允许更新
 
-            var entity = await _entityRepository.GetAsync(input.Id.Value);
-            input.MapTo(entity);
+            var entity = await _entityRepository.GetAsync(input.Product.Id.Value);
+            input.Product.MapTo(entity);
             await _entityManager.UpdateAsync(entity);
+
+            if (input.Pictures != null && input.Pictures.Count > 0)
+            {
+                await _pictureRepository.DeleteAsync(m => m.ProductId == entity.Id);
+                foreach (var item in input.Pictures)
+                {
+                    item.ProductId = entity.Id;
+                    await _pictureRepository.InsertAsync(item.MapTo<Picture>());
+                }
+            }
+
+            if (input.ProductAttributes != null && input.ProductAttributes.Count > 0)
+            {
+                await _attributeRepository.DeleteAsync(m=>m.ProductId==entity.Id);
+                foreach (var item in input.ProductAttributes)
+                {
+                    item.ProductId = entity.Id;
+                    await _attributeRepository.InsertAsync(item.MapTo<ProductAttribute>());
+                }
+            }
+
             // ObjectMapper.Map(input, entity);
         }
 

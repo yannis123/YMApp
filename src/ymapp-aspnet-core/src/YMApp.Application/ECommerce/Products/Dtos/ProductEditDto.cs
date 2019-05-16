@@ -29,14 +29,6 @@ namespace YMApp.ECommerce.Products.Dtos
         public long CategoryId { get; set; }
 
 
-
-        /// <summary>
-        /// Pictures
-        /// </summary>
-        public List<PictureEditDto> Pictures { get; set; }
-
-
-
         /// <summary>
         /// ProductCode
         /// </summary>
@@ -65,12 +57,6 @@ namespace YMApp.ECommerce.Products.Dtos
         /// </summary>
         [Required(ErrorMessage = "State不能为空")]
         public int State { get; set; }
-
-        /// <summary>
-        /// 产品参数
-        /// </summary>
-        /// <value>The product attributes.</value>
-        public List<ProductAttributeEditDto> ProductAttributes { get; set; }
 
 
     }
