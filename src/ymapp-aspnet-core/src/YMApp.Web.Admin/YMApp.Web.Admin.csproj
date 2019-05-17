@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
@@ -57,8 +60,9 @@
 
 
   <ItemGroup>
-    <Folder Include="upload\" />
     <Folder Include="wwwroot\Files\Pictures\" />
+    <Folder Include="upload\" />
+    <Folder Include="Models\Products\" />
   </ItemGroup>
 
 
