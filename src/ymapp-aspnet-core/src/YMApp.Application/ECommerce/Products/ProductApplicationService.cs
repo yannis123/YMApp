@@ -105,7 +105,6 @@ namespace YMApp.ECommerce.Products
                 editDto = entity.MapTo<ProductEditDto>();
 
                 var pictures = await _pictureRepository.GetAllListAsync(m => m.ProductId == entity.Id);
-
                 output.Pictures = pictures.MapTo<List<PictureEditDto>>();
 
                 var attributes = await _attributeRepository.GetAllListAsync(m => m.ProductId == entity.Id);
