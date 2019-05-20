@@ -8,6 +8,21 @@
 
   <ItemGroup>
     <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
@@ -63,6 +78,7 @@
     <Folder Include="wwwroot\Files\Pictures\" />
     <Folder Include="upload\" />
     <Folder Include="Models\Products\" />
+    <Folder Include="wwwroot\view-resources\Views\account\" />
   </ItemGroup>
 
 

@@ -15,21 +15,28 @@
             table.render({
                 elem: '#productlist'
                 ,height: 312
-                ,url: '/api/services/app/product/getpaged' //数据接口
-                ,headers:{
-                    token:''
-                }
+                ,url: '/api/services/app/product/GetPaged' //数据接口
+                ,parseData: function(res){ //res 即为原始返回的数据
+                    return {
+                      "code": 0, //解析接口状态
+                      "msg": res.error, //解析提示文本
+                      "count": res.result.totalCount, //解析数据长度
+                      "data": res.result.items //解析数据列表
+                    };
+                  }
                 ,request: {
                     pageName: 'pageIndex' //页码的参数名称，默认：page
                     ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
-                  },
+                  }
                 ,page: true //开启分页
                 ,cols: [[ //表头
                   {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-                  ,{field: 'productName', title: '商品名称', width:80}
-                  ,{field: 'categoryId', title: '分类', width:80, sort: true}
+                  ,{field: 'productName', title: '商品名称', width:250}
+                  ,{field: 'categoryId', title: '分类', width:120, sort: true,templet: function(d){
+                        return d.category.name;
+                      }}
                   ,{field: 'state', title: '状态', width:80} 
-
+                  ,{field: 'creationTime', title: '创建时间', width:80} 
                 ]]
               });
             });

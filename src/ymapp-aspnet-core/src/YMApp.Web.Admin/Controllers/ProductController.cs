@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using YMApp.Authorization;
 using YMApp.Controllers;
 using YMApp.ECommerce.Products;
+using YMApp.ECommerce.Products.Authorization;
 using YMApp.Web.Admin.Models.Products;
 
 namespace YMApp.Web.Admin.Controllers
 {
+    [AbpMvcAuthorize(ProductPermissions.Node)]
     public class ProductController : YMAppControllerBase
     {
         IProductAppService _productservice;
@@ -21,16 +25,9 @@ namespace YMApp.Web.Admin.Controllers
             return View();
         }
 
-        public async Task<JsonResult> GetProductByPage(GetProductByPageRequest input)
+        public ActionResult Edit()
         {
-            var list = await _productservice.GetPaged(new ECommerce.Products.Dtos.GetProductsInput()
-            {
-                MaxResultCount = input.PageSize,
-                SkipCount = input.PageIndex
-            });
-
-
-
+            return View();
         }
     }
 }

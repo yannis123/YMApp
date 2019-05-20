@@ -22,7 +22,7 @@ namespace YMApp.ECommerce.Products
     /// <summary>
     /// Product应用层服务的接口实现方法  
     ///</summary>
-    [AbpAuthorize]
+    [AbpAuthorize(ProductPermissions.Node)]
     public class ProductAppService : YMAppAppServiceBase, IProductAppService
     {
         private readonly IRepository<Product, long> _entityRepository;
