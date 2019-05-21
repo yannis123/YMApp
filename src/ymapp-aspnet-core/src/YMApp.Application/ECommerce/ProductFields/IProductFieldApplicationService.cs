@@ -71,6 +71,8 @@ namespace YMApp.ECommerce.ProductFields
         /// </summary>
         Task BatchDelete(List<long> input);
 
+        Task<List<ProductFieldListDto>> GetProductFieldByProductType(long productType);
+
 
 		/// <summary>
         /// 导出ProductField为excel表

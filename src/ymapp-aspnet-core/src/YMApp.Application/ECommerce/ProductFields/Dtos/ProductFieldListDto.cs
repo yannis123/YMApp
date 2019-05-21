@@ -23,12 +23,15 @@ namespace YMApp.ECommerce.ProductFields.Dtos
 		/// </summary>
 		public string FieldName { get; set; }
 
+        /// <summary>
+        /// 参数级别 
+        /// </summary>
+        public int FieldGrade { get; set; }
 
-
-		/// <summary>
-		/// CreationTime
-		/// </summary>
-		public DateTime CreationTime { get; set; }
+        /// <summary>
+        /// CreationTime
+        /// </summary>
+        public DateTime CreationTime { get; set; }
 
 
 

@@ -6,6 +6,8 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YMApp.Authorization;
 using YMApp.Controllers;
+using YMApp.ECommerce.Pictures;
+using YMApp.ECommerce.ProductFields;
 using YMApp.ECommerce.Products;
 using YMApp.ECommerce.Products.Authorization;
 using YMApp.Web.Admin.Models.Products;
@@ -16,18 +18,30 @@ namespace YMApp.Web.Admin.Controllers
     public class ProductController : YMAppControllerBase
     {
         IProductAppService _productservice;
-        public ProductController(IProductAppService productservice)
+        IProductFieldAppService _productFieldservice;
+        IPictureAppService _pictureAppService;
+        public ProductController(IProductAppService productservice
+            , IProductFieldAppService productFieldservice
+            , IPictureAppService pictureAppService)
         {
             _productservice = productservice;
+            _productFieldservice = productFieldservice;
+            _pictureAppService = pictureAppService;
         }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Edit()
+        public async Task<IActionResult> Edit()
         {
-            return View();
+            EditProductViewModel model = new EditProductViewModel();
+
+            var fields = await _productFieldservice.GetProductFieldByProductType((long)ProductTypeEnum.UltrasonicSensor);
+            model.ProductFields = fields;
+
+            return View(model);
         }
     }
 }

@@ -6,6 +6,9 @@ namespace YMApp.ConstEnum
 {
     public enum CategoryTypeEnum
     {
+        /// <summary>
+        /// 商品
+        /// </summary>
         Product = 1
     }
 }
