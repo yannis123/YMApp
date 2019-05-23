@@ -113,5 +113,31 @@ namespace YMApp.Categorys
 
             return new PagedResultDto<CategoryListDto>(count, entityListDtos);
         }
+
+        public async Task<List<CategoryListDto>> GetListByParentId(long pId)
+        {
+            var query = _entityRepository
+               .GetAll()
+               .AsNoTracking()
+               .Where(m => m.ParentId == pId);
+            var entityList = await query
+                 .ToListAsync();
+
+            var entityListDtos = entityList.MapTo<List<CategoryListDto>>();
+            return entityListDtos;
+        }
+
+        public async Task<List<CategoryListDto>> GetListByType(int type)
+        {
+            var query = _entityRepository
+               .GetAll()
+               .AsNoTracking()
+               .Where(m => m.Type == type);
+            var entityList = await query
+                .ToListAsync();
+
+            var entityListDtos = entityList.MapTo<List<CategoryListDto>>();
+            return entityListDtos;
+        }
     }
 }

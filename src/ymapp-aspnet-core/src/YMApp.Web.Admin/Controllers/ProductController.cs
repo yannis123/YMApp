@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YMApp.Authorization;
+using YMApp.Categorys;
 using YMApp.Controllers;
 using YMApp.ECommerce.Pictures;
 using YMApp.ECommerce.ProductFields;
@@ -20,13 +21,16 @@ namespace YMApp.Web.Admin.Controllers
         IProductAppService _productservice;
         IProductFieldAppService _productFieldservice;
         IPictureAppService _pictureAppService;
+        ICategoryApplicationService _categoryAppService;
         public ProductController(IProductAppService productservice
             , IProductFieldAppService productFieldservice
-            , IPictureAppService pictureAppService)
+            , IPictureAppService pictureAppService
+            , ICategoryApplicationService categoryAppService)
         {
             _productservice = productservice;
             _productFieldservice = productFieldservice;
             _pictureAppService = pictureAppService;
+            _categoryAppService = categoryAppService;
         }
 
         public IActionResult Index()
@@ -38,9 +42,9 @@ namespace YMApp.Web.Admin.Controllers
         {
             EditProductViewModel model = new EditProductViewModel();
 
-            var fields = await _productFieldservice.GetProductFieldByProductType((long)ProductTypeEnum.UltrasonicSensor);
+            var fields = await _categoryAppService.GetListByType(2);
             model.ProductFields = fields;
-
+            model.Categorys = await _categoryAppService.GetListByType(1);
             return View(model);
         }
     }
