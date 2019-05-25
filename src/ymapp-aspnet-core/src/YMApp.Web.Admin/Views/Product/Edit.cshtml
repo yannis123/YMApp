@@ -66,15 +66,17 @@
                     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
                         <legend _grade="1" _fieldId="@item.Id" _fieldName="@item.FieldName" _pid="@item.ParentId">@item.FieldName</legend>
                     </fieldset>
-                    @foreach (var field in fields.Where(m => m.ParentId == item.Id))
-                    {
-                        <div class="layui-form-item" _fieldId="@field.Id" _grade="2" _fieldName="@field.FieldName" _pid="@field.ParentId">
+
+                    <div class="layui-form-item">
+                        @foreach (var field in fields.Where(m => m.ParentId == item.Id))
+                        {
                             <label class="layui-form-label">@field.FieldName</label>
-                            <div class="layui-input-inline">
+                            <div class="layui-input-inline" _fieldId="@field.Id" _grade="2" _fieldName="@field.FieldName" _pid="@field.ParentId">
                                 <input type="text" autocomplete="off" class="layui-input" value="@field.FieldValue">
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
+
                 </div>
             }
         }

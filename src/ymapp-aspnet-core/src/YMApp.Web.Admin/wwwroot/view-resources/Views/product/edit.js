@@ -55,7 +55,7 @@
             var model = { FieldId: fieldId, FieldName: fieldName, ParentId: parentId, FieldValue: "" };
             fields.push(model);
 
-            var childFields = $(item).find(".layui-form-item");
+            var childFields = $(item).find(".layui-input-inline");
             for (var j = 0; j < childFields.length; j++) {
                 var citem = childFields[j];
                 var cmodel = { FieldId: $(citem).attr("_fieldid"), FieldName: $(citem).attr("_fieldname"), ParentId: $(citem).attr("_pid"), FieldValue: $(citem).find("input").val() };
