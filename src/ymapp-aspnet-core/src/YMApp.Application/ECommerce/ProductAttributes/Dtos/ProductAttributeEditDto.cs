@@ -36,9 +36,9 @@ namespace  YMApp.ECommerce.ProductAttributes.Dtos
 		public string FieldValue { get; set; }
 
         /// <summary>
-        /// 参数等级
+        /// 分类Id
         /// </summary>
-        public int FieldGrade { get; set; }
+        public long CategoryId { get; set; }
 
 
     }

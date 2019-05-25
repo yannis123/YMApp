@@ -8,6 +8,22 @@
 
   <ItemGroup>
     <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.4" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />

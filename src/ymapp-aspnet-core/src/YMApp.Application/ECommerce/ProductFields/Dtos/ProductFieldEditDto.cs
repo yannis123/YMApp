@@ -28,5 +28,10 @@ namespace  YMApp.ECommerce.ProductFields.Dtos
 		/// </summary>
 		public string FieldName { get; set; }
 
+        /// <summary>
+        /// 参数级别 
+        /// </summary>
+        public int FieldGrade { get; set; }
+
     }
 }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YMApp.Controllers;
 using YMApp.Web.Admin.Models;
 
 namespace YMApp.Web.Admin.Controllers
 {
+    [AbpMvcAuthorize]
     public class HomeController : YMAppControllerBase
     {
         public IActionResult Index()

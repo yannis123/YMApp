@@ -22,9 +22,9 @@ namespace YMApp.ECommerce.ProductAttributes
         /// <value>The field value.</value>
         public string FieldValue { get; set; }
         /// <summary>
-        /// 参数等级
+        /// 分类Id
         /// </summary>
-        public int FieldGrade { get; set; }
+        public long CategoryId { get; set; }
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }

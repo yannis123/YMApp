@@ -87,9 +87,9 @@ namespace YMApp.Web.Startup
                 }
             });
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
 
-            //app.UseJwtTokenMiddleware();
+            app.UseJwtTokenMiddleware();
 
             //app.UseSignalR(routes =>
             //{

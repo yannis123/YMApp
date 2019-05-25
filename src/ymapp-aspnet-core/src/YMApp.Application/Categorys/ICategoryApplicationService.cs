@@ -32,6 +32,9 @@ namespace YMApp.Categorys
        
         Task BatchDelete(List<long> input);
 
+        Task<List<CategoryListDto>> GetListByParentId(long pId);
+
+        Task<List<CategoryListDto>> GetListByType(int type);
 
        
         //Task<FileDto> GetToExcel();
