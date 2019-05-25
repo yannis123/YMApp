@@ -18,6 +18,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Abp;
 using UEditor.Core;
+using Newtonsoft.Json.Serialization;
 
 namespace YMApp.Web.Startup
 {
@@ -36,7 +37,11 @@ namespace YMApp.Web.Startup
             // MVC
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
-            );
+            ).AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            }); ;
 
             #region CORS
             services.AddCors(options =>

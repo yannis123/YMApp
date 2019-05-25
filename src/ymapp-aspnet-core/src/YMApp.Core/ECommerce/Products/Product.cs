@@ -29,6 +29,10 @@ namespace YMApp.ECommerce.Products
         /// </summary>
         public Category Category { get; set; }
         /// <summary>
+        /// 价格
+        /// </summary>
+        public decimal Price { get; set; }
+        /// <summary>
         /// 商品图片列表
         /// </summary>
         public virtual List<Picture> Pictures { get; set; }
@@ -37,7 +41,7 @@ namespace YMApp.ECommerce.Products
         /// </summary>
         public string Describe { get; set; }
         /// <summary>
-        /// 商品状态 1 上架 2 下架
+        /// 商品状态 1 已审核 2 未审核
         /// </summary>
         public int State { get; set; }
         /// <summary>

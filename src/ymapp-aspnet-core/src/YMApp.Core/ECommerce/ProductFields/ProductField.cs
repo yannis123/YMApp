@@ -21,6 +21,10 @@ namespace YMApp.ECommerce.ProductFields
         /// </summary>
         /// <value>The name of the field.</value>
         public string FieldName { get; set; }
+        /// <summary>
+        /// 上级参数Id
+        /// </summary>
+        public long ParentId { get; set; }
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }

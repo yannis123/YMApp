@@ -32,6 +32,10 @@ namespace  YMApp.ECommerce.ProductFields.Dtos
         /// 参数级别 
         /// </summary>
         public int FieldGrade { get; set; }
+        /// <summary>
+        /// 上级参数Id
+        /// </summary>
+        public long ParentId { get; set; }
 
     }
 }

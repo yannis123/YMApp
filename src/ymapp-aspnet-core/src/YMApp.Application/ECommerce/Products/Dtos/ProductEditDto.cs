@@ -43,7 +43,10 @@ namespace YMApp.ECommerce.Products.Dtos
         [Required(ErrorMessage = "ProductName不能为空")]
         public string ProductName { get; set; }
 
-
+        /// <summary>
+        /// 价格
+        /// </summary>
+        public decimal Price { get; set; }
 
         /// <summary>
         /// Describe

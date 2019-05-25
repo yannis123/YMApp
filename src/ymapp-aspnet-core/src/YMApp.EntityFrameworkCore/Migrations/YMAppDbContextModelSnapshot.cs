@@ -1133,7 +1133,7 @@ namespace YMApp.Migrations
 
                     b.Property<DateTime?>("DeletionTime");
 
-                    b.Property<int>("FieldGrade");
+                    b.Property<long>("FieldId");
 
                     b.Property<string>("FieldName");
 
@@ -1144,6 +1144,8 @@ namespace YMApp.Migrations
                     b.Property<DateTime?>("LastModificationTime");
 
                     b.Property<long?>("LastModifierUserId");
+
+                    b.Property<long>("ParentId");
 
                     b.Property<long>("ProductId");
 
@@ -1180,6 +1182,8 @@ namespace YMApp.Migrations
 
                     b.Property<long?>("LastModifierUserId");
 
+                    b.Property<long>("ParentId");
+
                     b.Property<int>("ProductType");
 
                     b.Property<int>("TenantId");
@@ -1212,6 +1216,8 @@ namespace YMApp.Migrations
                     b.Property<DateTime?>("LastModificationTime");
 
                     b.Property<long?>("LastModifierUserId");
+
+                    b.Property<decimal>("Price");
 
                     b.Property<string>("ProductCode");
 
