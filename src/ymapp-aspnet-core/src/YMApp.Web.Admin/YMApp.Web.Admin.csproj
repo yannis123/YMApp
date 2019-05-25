@@ -63,6 +63,7 @@
     <Folder Include="wwwroot\Files\Pictures\" />
     <Folder Include="upload\" />
     <Folder Include="Models\Products\" />
+    <Folder Include="wwwroot\view-resources\Views\account\" />
   </ItemGroup>
 
 
