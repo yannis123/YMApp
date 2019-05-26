@@ -64,9 +64,9 @@ namespace YMApp.Web.Startup
 
             app.UseStaticFiles();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
-            app.UseJwtTokenMiddleware();
+            //app.UseJwtTokenMiddleware();
 
             app.UseSignalR(routes =>
             {

@@ -17,27 +17,35 @@
 @inject ISettingManager SettingManager
 @inject IAlertManager AlertManager
 @{
-    Layout = null;
-    AbpAntiForgeryManager.SetCookie(Context);
-    //var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme); //无换肤功能
+Layout = null;
+AbpAntiForgeryManager.SetCookie(Context);
+//var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme); //无换肤功能
 }
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.2</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <link rel="stylesheet" href="~/lib/xadmin/css/font.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/lib/xadmin/css/xadmin.css" asp-append-version="true">
-    <script src="~/lib/xadmin/lib/layui/layui.js" charset="utf-8" asp-append-version="true"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/video-js.min.css" />
+    <script type="text/javascript" src="~/assets/js/video.js"></script>
+    <title> 网站</title>
+    <meta name="keywords" content="网站" />
+    <meta name="description" content="" />
+    <meta name="author" content="网站" />
+
+    <link rel="stylesheet" href="~/assets/css/dhtmlxwindows.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/assets/css/dhtmlxwindows_dhx_skyblue.css">
+    <link rel="stylesheet" href="~/assets/css/dhtmlxcolorpicker.css" />
+    <script type="text/javascript" src="~/assets/js/dhtmlxcommon.js"></script>
+    <script type="text/javascript" src="~/assets/js/dhtmlxwindows.js"></script>
+    <script type="text/javascript" src="~/assets/js/dhtmlxcontainer.js"></script>
+    <script type="text/javascript" src="~/assets/js/cookies.js"></script>
+    <script src="~/assets/js/jquery-1.7.1.min.js"></script>
+
+    <script type="text/javascript" src="~/assets/js/Language.js?may0524"></script>
     @RenderSection("styles", required: false)
     <script type="text/javascript">
         // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
@@ -45,104 +53,746 @@
         abp.appPath = '@ApplicationPath';
     </script>
 </head>
-<body>
-    <!-- Header (Topbar) -->
-    <header class="u-header">
-        <div class="u-header-left">
-            <a class="u-header-logo" href="/">
-                <img class="u-logo-desktop" src="~/images/logo/52abplogo.png" width="160" alt="52ABP.com Logo">
-                <img class="img-fluid u-logo-mobile" src="~/images/logo/logo-mobile.png" width="50" alt="52ABP框架">
-            </a>
-        </div>
-        <div class="u-header-middle">
-            <a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
-               data-is-close-all-except-this="true"
-               data-target="#sidebar">
-                <i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
-                <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
-            </a>
-            @* 搜索 *@
-            <div class="u-header-search"
-                 data-search-mobile-invoker="#headerSearchMobileInvoker"
-                 data-search-target="#headerSearch">
-                <a id="headerSearchMobileInvoker" class="btn btn-link input-group-prepend u-header-search__mobile-invoker" href="#!">
-                    <i class="fa fa-search"></i>
-                </a>
-                <div id="headerSearch" class="u-header-search-form">
-                    <div class="input-group">
-                        <button class="btn-link input-group-prepend u-header-search__btn" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        <input class="form-control u-header-search__field" type="search" placeholder="@L("StartTyping")...">
-                    </div>
+
+<body data-chid="1" data-operate="0" data-bigclassid="0" data-type="0" data-hyid="0" id="webBody" data-copyid="0"
+  data-copyuserid="0">
+  <div class="wrapper wrapper-1200" id="wrapper">
+    <script type="text/javascript" src="~/assets/js/Language.js?may0524"></script>
+
+    <script type="text/javascript">
+      var ev123_no_edit = '';
+      var user_name = 'zmnew318';
+      var isTj = '1';
+      var user_level = 3;
+      var agent_id = 0;
+      var channel_type = 0;
+      var channel_id = 0;
+      var userSiteWidth = 1200;
+      var is_action = false;
+      var isParentWindow = false;
+      var rowIds = "47,48,49,50,51,52,65,64,61";
+      var MJsData = {};
+      var CURRENCY_SIGN = '￥';
+      var tncode_div = null;
+      var ALIYUN_OSS_DOMAIN = "/";
+
+
+      var GData = {
+        SMAlbumIds: "",
+        SMAlbumSysIds: "",
+        docSysIds: "",
+        tabAlertStrMs: "",
+        allChId: "1",
+        wapDomain: 'web.zhongqijueqi.cn',
+        end: null
+      };
+    </script>
+    <link rel="stylesheet" href="~/assets/css/skin.min.css?may0524" />
+    <script type="text/javascript" src="~/assets/js/ev_popup.min.js?may0524"></script>
+    <script type="text/javascript">
+      function createLogin(trespass, userid) {
+        $.popup({
+          type: 5,
+          cName: "evPopupOpacity",
+          head: {
+            yes: 0
+          },
+          shade: {
+            yes: 1,
+            bgColor: '#000',
+            opacity: 0.6,
+            animate: {
+              type: 1,
+              target: 0.6
+            },
+            close: false
+          },
+          area: {
+            w: 790,
+            h: 500
+          },
+          con: {
+            src: '/dom/alert_login.php?username=zmnew318&trespass=' + trespass + '&userid=' + userid
+          }
+        });
+      }
+    </script>
+    <script type="text/javascript" src="~/assets/js/public.js?may0524"></script>
+    <script type="text/javascript" src="~/assets/js/lightgallery-all.min.js?may0524"></script>
+    <link type="text/css" rel="stylesheet" href="~/assets/css/lightgallery.min.css?may0524" />
+    <script type="text/javascript" src="~/assets/js/jquery.scrollify.min.js?may0524"></script>
+    <script type="text/javascript" src="~/assets/js/public_fun.min.js?may0524"></script>
+    <link type="text/css" rel="stylesheet" href="~/assets/css/base.min.css?may0524" />
+    <link type="text/css" rel="stylesheet" href="~/assets/css/animate.min.css?may0524" />
+    <link type="text/css" rel="stylesheet" href="~/assets/css/iconfont.min.css?may0524" />
+    <link type="text/css" rel="stylesheet" href="~/assets/css/web_frame.min.css?may0524" />
+    <link type="text/css" rel="stylesheet" href="~/assets/css/inner_frame.min.css?may0524" />
+
+    <link type="text/css" rel="stylesheet" href="~/assets/css/webskin.css?may0524" id="webSkinCss" />
+    <link type="text/css" rel="stylesheet" href="~/assets/css/base_module_style.min.css?may0524" />
+
+    <script type="text/javascript" src="~/assets/js/base64.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/json2.js"></script>
+    <script id="languages_jquery_validationEngine_js" type="text/javascript" charset="gb2312"
+      src="~/assets/js/jquery.validationEngine-zh_CN.js"></script>
+    <link type="text/css" rel="stylesheet" id="from_module_form_css" href="~/assets/css/form.css" />
+    <script id="from_module_form_js" type="text/javascript" src="~/assets/js/form.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function () {
+        $('#formField_3038999').validationEngine('attach', {
+          promptPosition: 'bottomLeft'
+        });
+      });
+    </script>
+    <div class="customModuleRow headPublicModuleRow customModuleRowAbsolute " id="row_65">
+
+      <div class="customModuleRowInner">
+        <div class="CModulePA" style="height:0px;">
+          <div data-fixed="1" data-fixedx="1" id="evMo_UqTrt" class="ev-module-edit"
+            style="width:176px; height:22px; left:0px; top:38px; z-index:1;">
+            <div class="ev-module-edit-box " id="Mo_UqTrt">
+
+              <div class="ev-pic ev-pic-1 ">
+                <img src="" class="default-img lazy-loading"
+                  data-original-src="//aimg8.dlszyht.net.cn/module/simplepicbackground/1843869/922/5c7c8b7e2a7d8.png?x-oss-process=image/resize,m_fixed,w_176,h_22,limit_0" />
+
+              </div>
+
+            </div>
+          </div>
+          <div class="ev-module-edit" data-fixed="1" data-fixedx="1" id="evMo_aHe7R"
+            style="width:170px; height:46px; left:1034px; top:24px; z-index:2;">
+            <div class="ev-module-edit-box " id="Mo_aHe7R">
+              <div class="ev-search-module" data-tishi="请填写关键词！" data-type="1" data-url="" data-param="">
+                <div class="s s-skin-1-3">
+                  <div class="s-i">
+                    <form class="s-f" id="search_form_aHe7R" method="get" action="">
+                      <dl class="s-c" data-type="11"
+                        data-url="/dom/search.php?s_m_str_id=aHe7R&username=zmnew318&navtype=doc&keyWord=###">
+                        <dt class="s-w">
+                          <div class="s-w-i">
+                            <b class="s-w-t">文章</b>
+                            <em class="s-w-s"></em>
+                          </div>
+                        </dt>
+                        <dd class="s-w-l">
+                          <ul class="s-w-l-i">
+                            <li data-type="11"
+                              data-url="/dom/search.php?s_m_str_id=aHe7R&username=zmnew318&navtype=doc&keyWord=###"
+                              data-type="11" class="w-l-e">
+                              <div class="w-l-e-i">
+                                <b class="w-l-e-t">文章</b>
+                              </div>
+                            </li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <div class="s-k s-k-place">
+                        <div class="s-k-i">
+                          <div class="module-zz"></div>
+                          <div class="s-k-area">
+                            <em class="s-k-icon"></em>
+                            <div class="s-k-w">
+                              <input class="key-word" type="text" data-defaultv="请输入关键字" value="请输入关键字"
+                                data-keywordtype="0">
+                              <input type="text" class="none">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="s-b">
+                        <div class="s-b-i"><em class="s-b-icon"></em><b class="s-b-t">&#25628;&#32034;</b></div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="u-header-right">
-            @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
-            @await Component.InvokeAsync(typeof(TopBarNotificationsViewComponent))
-            @await Component.InvokeAsync(typeof(TopBarUserProfileViewComponent))
-        </div>
-    </header>
-    <!-- End Header (Topbar) -->
-    <main class="u-main" role="main">
-        @* 侧边栏--导航条 *@
-        @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { activeMenu = ViewBag.CurrentPageName })
+      </div>
+    </div>
+    <link type="text/css" rel="stylesheet" id="sliding_verification_style_css"
+      href="~/assets/css/sliding_verification_style.css?may0524" />
+    <script type="text/javascript" id="sliding_tn_code_js" src="~/assets/js/sliding_tn_code.js?may0524"></script>
+    <script type="text/javascript">
+      function userUserLoginInfo() {
+        return true;
+      }
+    </script>
+    <div class="headFullXY" id="headFullXY">
+      <div style="padding-top:1px; margin-bottom: -1px;"></div>
 
-        <div class="u-content">
-            <div class="u-body">
-                @RenderBody()
+      <div class="customModuleRow allSitePublicModuleRow customModuleRowAbsolute " id="row_61">
+
+        <div class="customModuleRowInner">
+          <div class="CModulePA" style="height:0px;">
+            <div class="ev-module-edit" id="evMo_VRw4t" data-column="1" data-positiontype="1" data-position="4"
+              data-lshifting="0" data-tshifting="229" style="width:50px; height:150px; left:0px; top:229px; z-index:1;">
+              <div class="ev-module-edit-box " id="Mo_VRw4t">
+                <div class="ev-RFSwidth-module ev-RFSwidth-2-2">
+                  <ul class="q btnul-box">
+                    <li class="btnli-item active">
+                      <span class="btnli-item-inner">
+                        <b class="btnli-item-text">头部</b>
+                        <em class="btnli-item-bg"></em>
+                      </span>
+                    </li>
+                    <li class="btnli-item">
+                      <span class="btnli-item-inner">
+                        <b class="btnli-item-text">行一</b>
+                        <em class="btnli-item-bg"></em>
+                      </span>
+                    </li>
+                    <li class="btnli-item">
+                      <span class="btnli-item-inner">
+                        <b class="btnli-item-text">行二</b>
+                        <em class="btnli-item-bg"></em>
+                      </span>
+                    </li>
+                    <li class="btnli-item">
+                      <span class="btnli-item-inner">
+                        <b class="btnli-item-text">行三</b>
+                        <em class="btnli-item-bg"></em>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-
-            <partial name="_Layout_Footer" />
+          </div>
         </div>
-    </main>
-    <environment names="Development">
-        <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-migrate/dist/jquery-migrate.js" asp-append-version="true"></script>
-        <script src="~/lib/popper.js/dist/umd/popper.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
-        <script src="~/lib/moment/min/moment.min.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
-        <script src="~/lib/toastr/toastr.min.js" asp-append-version="true"></script>
-        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
-        <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
-        <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
-        <script src="~/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" asp-append-version="true"></script>
-        <script src="~/lib/Waves/waves.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
-        <script src="~/js/main.js"></script>
+      </div>
+      <div class="absoluteModuleWrap" id="absolute_module_wrap" data-attr="l:80,h:0,c:0">
+        <div class="absoluteModuleInner" id="absolute_module_inner">
 
-        <script src="~/assets/js/sidebar-nav.js" asp-append-version="true"></script>
-        <script src="~/assets/js/main.js" asp-append-version="true"></script>
-        <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
-        @if (CultureInfo.CurrentUICulture.Name != "en")
-        {
-            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+
+
+          <div class="webNav" id="web_nav" data-l="p:3,l:254,t:0,w:1200,wt:0"
+            style="  left: 254px; top: 0px; position:absolute; " data-fixed="1" data-fixedx="1" data-numberflag="1"
+            data-number="7">
+            <div class="navInner">
+              <div class="nav" id="nav" style="width:auto;">
+                <i class="NLeft"></i>
+                <i class="NRight"></i>
+                <div class="NMainBg"></div>
+                <div class="NCenter">
+                  <dl class="NMain">
+                    <dd class="NItem NFirst NItemCur">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM">
+                            <a title="网站首页" href="/"><span>网站首页</span></a>
+                          </td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+                    </dd>
+                    <dd class="NLine"></dd>
+
+                    <dd class="NItem ">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM"><a href="/product" title="产品中心">
+                              <span>产品中心</span>
+                            </a></td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+
+
+                    </dd>
+                    <dd class="NLine"></dd>
+                    <dd class="NItem ">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM"><a href="/service" title="服务支持">
+                              <span>服务支持</span>
+                            </a></td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+
+
+                    </dd>
+                    <dd class="NLine"></dd>
+                    <dd class="NItem ">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM"><a href="/solution" title="解决方案">
+                              <span>解决方案</span>
+                            </a></td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+
+
+                    </dd>
+                    <dd class="NLine"></dd>
+                    <dd class="NItem ">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM"><a href="/about" title="关于我们">
+                              <span>关于我们</span>
+                            </a></td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+
+
+                    </dd>
+                    <dd class="NLine"></dd>
+                    <dd class="NItem ">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM"><a href="/news" title="新闻资讯">
+                              <span>新闻资讯</span>
+                            </a></td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+
+
+                    </dd>
+                    <dd class="NLine"></dd>
+                    <dd class="NItem ">
+                      <table class="NItemTable">
+                        <tr>
+                          <td class="NItemL"></td>
+                          <td class="NItemM"><a href="/home/contact" title="联系我们">
+                              <span>联系我们</span>
+                            </a></td>
+                          <td class="NItemR"></td>
+                        </tr>
+                      </table>
+
+
+                    </dd>
+
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header" id="header" data-fixed="1" data-fixedx="1">
+        <div class="headerInner">
+          <div class="headerBg"></div>
+          <div class="headerConArea">
+            <div class="headerCon" style="height:100px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-wrap" id="navWrap">
+      </div>
+
+
+    </div>
+    <div class="mainContainer q " id="main_container">
+        @RenderBody()
+    </div>
+    <div class="customModuleRow footPublicModuleRow customModuleRowAbsolute " id="row_64">
+
+      <div class="customModuleRowInner">
+        <div class="CModulePA" style="height:246px;">
+          <div id="evMo_BUiq7" class="ev-module-edit" style="width:176px; height:22px; left:0px; top:90px; z-index:1;">
+            <div class="ev-module-edit-box " id="Mo_BUiq7">
+
+              <div class="ev-pic ev-pic-1 ">
+                <img src="" class="default-img lazy-loading"
+                  data-original-src="//aimg8.dlszyht.net.cn/module/simplepicbackground/1843869/5564/11127114_1551665329.png?x-oss-process=image/resize,m_fixed,w_176,h_22,limit_0" />
+
+              </div>
+
+            </div>
+          </div>
+          <div id="evMo_Cs5di" class="ev-module-edit" style="width:222px; height:21px; left:0px; top:215px; z-index:2;">
+            <div class="ev-module-text ev-module-edit-box" id="Mo_Cs5di">
+              <p class="ev-text-article-4">
+                <span style="color:#a9a9a9;">一站式解决方案，为客户节约成本。</span>
+              </p>
+            </div>
+          </div>
+          <div id="evMo_vlbHU" class="ev-module-edit"
+            style="width:272px; height:21px; left:928px; top:215px; z-index:3;">
+            <div class="ev-module-text ev-module-edit-box" id="Mo_vlbHU">
+              <p class="ev-text-article-4" style="text-align:right;">
+                <span style="color:#a9a9a9;">Copyright 2014-2025&nbsp; &nbsp; All rights reserved</span>
+              </p>
+            </div>
+          </div>
+          <div id="evMo_kKGuh" class="ev-module-edit" style="width:36px; height:71px; left:283px; top:65px; z-index:4;">
+            <div class="ev-module-edit-box" id="Mo_kKGuh">
+
+              <hr class="ev-line ev-line-4" />
+
+            </div>
+          </div>
+          <div class="ev-module-edit" id="evMo_E77u9"
+            style="width:139px; height:36px; left:1061px; top:84px; z-index:4;">
+            <div class="ev-module-edit-box" id="Mo_E77u9">
+              <div class="ev-interact-module row-sort" data-fontsize="34" data-dir="1">
+                <ul class="share-list share-list-8 q" data-click="0" data-url="" data-title="标题" data-summary="简介"
+                  data-pic="">
+                  <li class="weibo-li">
+                    <span class="span-item">
+                      <em class="evIcon evIcon-weibo-3" data-type="weibo" style="font-size: 34px;"></em>
+                      <b class="icon-name">微博</b>
+                    </span>
+                  </li>
+                  <li class="wechat-li">
+                    <span class="span-item">
+                      <em class="evIcon evIcon-wechat-1" data-type="wechat" style="font-size: 34px;"></em>
+                      <b class="icon-name">微信</b>
+                    </span>
+                  </li>
+                  <li class="qq-li">
+                    <span class="span-item">
+                      <em class="evIcon evIcon-qq-9" data-type="qq" style="font-size: 34px;"></em>
+                      <b class="icon-name">QQ好友</b>
+                    </span>
+                  </li>
+                  <li class="qzone-li">
+                    <span class="span-item">
+                      <em class="evIcon evIcon-qzone-1" data-type="qzone" style="font-size: 34px;"></em>
+                      <b class="icon-name">QQ空间</b>
+                    </span>
+                  </li>
+                  <li class="baidu-li">
+                    <span class="span-item">
+                      <em class="evIcon evIcon-baidu-3" data-type="baidu" style="font-size: 34px;"></em>
+                      <b class="icon-name">百度</b>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="evMo_K8K2Y" class="ev-module-edit" style="width:13px; height:13px; left:332px; top:70px; z-index:5;">
+            <div class="ev-module-edit-box " id="Mo_K8K2Y">
+
+              <div class="ev-pic ev-pic-1 ">
+                <img src="" class="default-img lazy-loading"
+                  data-original-src="//aimg8.dlszyht.net.cn/module/simplepicbackground/1843869/5564/11127272_1551665592.png?x-oss-process=image/resize,m_fixed,w_13,h_13,limit_0" />
+
+              </div>
+
+            </div>
+          </div>
+          <div id="evMo_DuoCL" class="ev-module-edit"
+            style="width:15px; height:12px; left:332px; top:124px; z-index:6;">
+            <div class="ev-module-edit-box " id="Mo_DuoCL">
+
+              <div class="ev-pic ev-pic-1 ">
+                <img src="" class="default-img lazy-loading"
+                  data-original-src="//aimg8.dlszyht.net.cn/module/simplepicbackground/1843869/5564/11127301_1551665636.png?x-oss-process=image/resize,m_fixed,w_15,h_12,limit_0" />
+
+              </div>
+
+            </div>
+          </div>
+          <div id="evMo_o5web" class="ev-module-edit" style="width:10px; height:13px; left:334px; top:98px; z-index:7;">
+            <div class="ev-module-edit-box " id="Mo_o5web">
+
+              <div class="ev-pic ev-pic-1 ">
+                <img src="" class="default-img lazy-loading"
+                  data-original-src="//aimg8.dlszyht.net.cn/module/simplepicbackground/1843869/5564/11127330_1551665682.png?x-oss-process=image/resize,m_fixed,w_10,h_13,limit_0" />
+
+              </div>
+
+            </div>
+          </div>
+          <div id="evMo_SyPvb" class="ev-module-edit"
+            style="width:155px; height:20px; left:353px; top:70px; z-index:8;">
+            <div class="ev-module-text ev-module-edit-box" id="Mo_SyPvb">
+              <p class="ev-text-article-4">
+                <span style="color:#888888;">客服热线：400-0000-000</span>
+              </p>
+            </div>
+          </div>
+          <div id="evMo_nZ1QR" class="ev-module-edit"
+            style="width:377px; height:20px; left:353px; top:98px; z-index:9;">
+            <div class="ev-module-text ev-module-edit-box" id="Mo_nZ1QR">
+              <p class="ev-text-article-4">
+                <span style="color:#888888;">公司地址：北京市海淀区西直门北大街××大楼××号</span>
+              </p>
+            </div>
+          </div>
+          <div id="evMo_joaIw" class="ev-module-edit"
+            style="width:191px; height:21px; left:353px; top:122px; z-index:10;">
+            <div class="ev-module-text ev-module-edit-box" id="Mo_joaIw">
+              <p class="ev-text-article-4">
+                <span style="color:#888888;">公司邮箱：123456@abc.com</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer" id="footer">
+      <div class="footerConArea">
+        <div class="footerCon">
+          <!--FOOTER NAV START-->
+          <!--FOOTER NAV END-->
+          <!--COPYRIGHT START-->
+          <div class="copyright" id="copyright">
+            Copyright <span id="bb_year">2019</span> . All rights reserved. <br>网站
+            <center id="c2"></center>
+          </div>
+          <!--COPYRIGHT START-->
+        </div>
+      </div>
+      <div class="footerBg"></div>
+    </div>
+
+    <script type="text/javascript">
+      $("body").attr('id', 'webBody');
+      wsf.fullRow.countMoPosition();
+    </script>
+    <!--online_type==6(2016在线客服)START-->
+    <script language="JavaScript" src="~/assets/js/new_online_2016.js?may0524"></script>
+    <link href="~/assets/css/sidebar_style.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/sidebar_color.css" rel="stylesheet" type="text/css" />
+    <div id="onService_panel" class="qq_onService_panel">
+      <div class="sidebar2_Mo">
+        <div class="sidebar2_list">
+          <div class="sidebar2_listT ie_w">
+            <div class="list_c"></div>
+          </div>
+          <div class="sidebar2_listC">
+            <a id="prev_btn" class="prev_btn" href="###">
+              <img src="~/assets/images/prev_icon.png">
+            </a>
+            <ul class="function_list">
+              <!---电话-->
+              <li class="list">
+                <a class="tel_icon" href="###"></a>
+                <div class="lxwm_tel alt_c" style="right: -178px; opacity: 0;">
+                  <div class="sidebar2_listT">
+                    <div class="list_c"></div>
+                  </div>
+                  <div class="lxwm_c alt_bg">
+                    <h2 class="lxwm_tit">&#30005;&#35805;&#30452;&#21628;</h2>
+                    <ul class="lxwm_list clearfix">
+                      <li>13888888888</li>
+                    </ul>
+                  </div>
+                  <div class="sidebar2_listB">
+                    <div class="list_c"></div>
+                  </div>
+                </div>
+              </li>
+              <!---QQ-->
+              <!---二维码-->
+              <li class="list">
+                <a class="edit_icon" href="###"></a>
+                <div class="explain_text alt_c" style="right: -106px; opacity: 0;">
+                  <div class="sidebar2_listT">
+                    <div class="list_c"></div>
+                  </div>
+                  <div class="explain_c alt_bg">
+                    <a href="/self_define/guest_book.php?username=zmnew318">
+                      <em>&#22312;&#32447;&#30041;&#35328;</em></a>
+                  </div>
+                  <div class="sidebar2_listB">
+                    <div class="list_c"></div>
+                  </div>
+                </div>
+              </li>
+              <!-- 发送邮件 -->
+              <li class="list">
+                <a class="mail_icon" href="###"></a>
+                <div class="explain_text alt_c" style="right: -106px; opacity: 0;">
+                  <div class="sidebar2_listT">
+                    <div class="list_c"></div>
+                  </div>
+                  <div class="explain_c alt_bg">
+                    <a href="mailto:1977600311@qq.com"><em>&#21457;&#36865;&#37038;&#20214;</em></a>
+                  </div>
+                  <div class="sidebar2_listB">
+                    <div class="list_c"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a id="next_btn" class="next_btn" href="###">
+              <img src="~/assets/images/next_icon.png">
+            </a>
+          </div>
+          <div class="sidebar2_listB ie_w">
+            <div class="list_c"></div>
+          </div>
+        </div>
+        <div class="sidebar2_state">
+          <a id="state_btn" href="###" class=""></a>
+        </div>
+      </div>
+    </div>
+    <!--END-->
+
+
+
+    <a class="backTop_Z" id="backTop" onclick="backTop();" href="javascript:void(0);"></a>
+    <!-- END -->
+    <script type="text/javascript">
+      window.onscroll = function () {
+        var winTop_1 = document.documentElement.scrollTop;
+        var winTop_2 = document.body.scrollTop;
+        var winTop;
+        (winTop_1 > winTop_2) ? winTop = winTop_1: winTop = winTop_2;
+        if (winTop > 0) {
+          $("#backTop").css({
+            'display': 'block'
+          });
         }
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
-    </environment>
-    <script>
+        if (winTop == 0) {
+          $("#backTop").css({
+            'display': 'none'
+          });
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      $(function () {
+        $("a[href$='#_blank']").attr('target', '_blank');
+        //$("a[href^='http://']").attr('target','_blank');
+        $("a[href$='#_blank']").each(function () {
+          var tmp_url = $(this).attr('href').slice(0, -7);
+          $(this).attr('href', tmp_url);
+        });
+      })
+    </script>
+    <script type="text/javascript">
+      var ev_log_userid = '1843869';
+      var is_edit = '';
+      var channel_id = '0';
+      var hide_qu_ids = [];
+      var hide_qu_ids_seted = [];
+      var hide_big_qu_ids = [];
+      var is_move = 0;
+    </script>
+    <script src="~/assets/js/md5.js"></script>
+
+    <script language="javascript">
+      function submitdefineForm_1541386() {
+        if ($("#formField_3038999").validationEngine("validate")) {
+          if (!tncode_div) {
+            tncode.init('MessageBut', 1);
+            tncode_div = true;
+          } else {
+            tncode.show();
+          }
+          $TN.onsuccess(function () {
+            $("#formField_3038999").append('<input type="hidden" name="tn_r" value="' + tncode._mark_offset + '">')
+            $("#isSubmit3038999").val(1);
+            $("#formField_3038999").submit();
+            $("#sublimt-p-1541386").html("<font style=\'color:red;font-size:14px\'>&#25552;&#20132;...</font>");
+          });
+        }
+      }
+    </script>
+
+
+    <script type="text/javascript">
+      $(function () {
+        $("body").on("click", ".fieldTypeUploadFile", function () {
+          var id = $(this).data("id");
+          if (!id) {
+            return false;
+          }
+
+          $.popup({
+            type: 5,
+            head: {
+              "text": $(this).data("name")
+            },
+            area: {
+              w: 600,
+              h: 400
+            },
+            con: {
+              src: "/dom/FormFile.php?username=zmnew318&field_id=" + id
+            }
+          });
+        });
+      });
+
+      function updateFormFieldUploadfile(fieldId, filePath) {
+        jQuery("#field_" + fieldId).validationEngine('hide')
+        $("#field_" + fieldId).css("background-image", "none");
+        $("#field_" + fieldId).val(filePath);
+      }
+    </script>
+
+    <script src="~/assets/js/alert_box.js?may0524"></script>
+    <script type="text/javascript">
+      function ini_set_mode() {
+        dhxWins = new dhtmlXWindows();
+        dhxWins.enableAutoViewport(true);
+        dhxWins.setImagePath("./msg/codebase/imgs/");
+      }
+      setTimeout('ini_set_mode()', 500);
+    </script>
+
+
+    <img id="pcCountImg" src="" style="width: 0;height: 0; display: block;">
+    <img id="countTimeImg" src="" style="width: 0;height: 0; display: block;">
+    <script type="text/javascript">
+      $(function () {
+        $('#pcCountImg').attr('src', "/assets/images/stat.png?username=zmnew318&client=pc&url=" + encodeURI(window
+            .location.href) +
+          "&t=1558855410&new=1&userid=1843869&uv_id=1568e548c28e2fa428c709d9a303cfc5&session_id=8fmd1c5ougijmnet03sm61hk66&title=" +
+          encodeURI($("title").text()));
+        //访问时长统计
+        setInterval(function () {
+          $('#countTimeImg').attr('src', "/assets/images/count_time.png?t=" + Math.random() + "&new=1");
+        }, 60000);
+      });
+    </script>
+
+  </div>
+
+
+     <script>
     // Localizing momentjs
     moment.locale('@CultureInfo.CurrentUICulture.Name');
     </script>
+
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
     <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
     <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
-    <script src="~/lib/aspnet-signalr/signalr.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js" asp-append-version="true"></script>
+
+    @*<script src="~/lib/signalr-client/signalr.min.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js" asp-append-version="true"></script>*@
+
     @WebResourceManager.RenderScripts()
-    <!-- View specific scripts -->
-    @RenderSection("scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
 </body>
+
+<script type="text/javascript">
+  $(function () {
+    if ($('#select2').length) {
+      var mobile_class = $('#mobile').attr('class');
+      $('#select2').change(function () {
+        var val = $(this).val();
+        if (val != '+86') {
+          $('#mobile').attr('class', 'text-input validate[required]');
+        } else {
+          $('#mobile').attr('class', mobile_class);
+        }
+      })
+    }
+  })
+</script>
+
 </html>

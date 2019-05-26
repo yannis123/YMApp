@@ -4,12 +4,15 @@ using YMApp.Controllers;
 
 namespace YMApp.Web.Controllers
 {
-    [AbpMvcAuthorize]
     public class HomeController : YMAppControllerBase
     {
         public ActionResult Index()
         {
             return View();
         }
-	}
+        public ActionResult Contact()
+        {
+            return View();
+        }
+    }
 }

@@ -10,6 +10,28 @@
     <RootNamespace>YMApp.Web</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.4" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.3" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.8" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+    <None Remove="App_Data\Logs\Logs.txt.10" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
     <None Include="wwwroot\favicon.ico" />
     <None Include="wwwroot\lib\bootstrap-select\.github\ISSUE_TEMPLATE.md" />
@@ -52,6 +74,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
+    <Folder Include="wwwroot\assets\fonts\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\Service\" />
+    <Folder Include="Views\Solution\" />
+    <Folder Include="Views\News\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\assets\js\Language.js" />
+    <Content Remove="wwwroot\assets\css\skin.min.css" />
+    <Content Remove="wwwroot\assets\js\ev_popup.min.js" />
+    <Content Remove="wwwroot\assets\js\public.js" />
+    <Content Remove="wwwroot\assets\js\lightgallery-all.min.js" />
+    <Content Remove="wwwroot\assets\images\tel_icon.png" />
+    <Content Remove="wwwroot\assets\images\tel_border.png" />
+    <Content Remove="wwwroot\assets\images\edit_icon.png" />
+    <Content Remove="wwwroot\assets\images\mail_icon.png" />
+    <Content Remove="wwwroot\assets\images\hide_btn.png" />
+    <Content Remove="wwwroot\assets\images\back_top_Z.png" />
+    <Content Remove="wwwroot\assets\images\tmp1551756500_1843869_s.jpg" />
+    <Content Remove="wwwroot\assets\images\loading-wait-bg.gif" />
+    <Content Remove="wwwroot\assets\images\5c7c8b7e2a7d8.png" />
+    <Content Remove="wwwroot\assets\images\stat %281%29.png" />
+    <Content Remove="wwwroot\assets\images\tmp1551756520_1843869_s.jpg" />
+    <Content Remove="wwwroot\assets\images\count_time %281%29.png" />
+    <Content Remove="wwwroot\assets\images\mail_icon_h.png" />
+    <Content Remove="wwwroot\assets\images\tel_icon_h.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="log4net.config">
