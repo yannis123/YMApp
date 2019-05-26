@@ -12,6 +12,10 @@ namespace YMApp.ECommerce.ProductAttributes
         /// <value>The product identifier.</value>
         public long ProductId { get; set; }
         /// <summary>
+        /// 参数Id
+        /// </summary>
+        public long FieldId { get; set; }
+        /// <summary>
         /// 参数名称
         /// </summary>
         /// <value>The name of the field.</value>
@@ -22,9 +26,9 @@ namespace YMApp.ECommerce.ProductAttributes
         /// <value>The field value.</value>
         public string FieldValue { get; set; }
         /// <summary>
-        /// 分类Id
+        /// 上级Id
         /// </summary>
-        public long CategoryId { get; set; }
+        public long ParentId { get; set; }
 
         public int TenantId { get; set; }
         public DateTime CreationTime { get; set; }

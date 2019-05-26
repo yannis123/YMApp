@@ -71,12 +71,13 @@ namespace YMApp.ECommerce.ProductAttributes
         /// </summary>
         Task BatchDelete(List<long> input);
 
+        Task<List<ProductAttributeListDto>> GetListByProductId(NullableIdDto<long> input);
 
-		/// <summary>
+        /// <summary>
         /// 导出ProductAttribute为excel表
         /// </summary>
         /// <returns></returns>
-		//Task<FileDto> GetToExcel();
+        //Task<FileDto> GetToExcel();
 
     }
 }

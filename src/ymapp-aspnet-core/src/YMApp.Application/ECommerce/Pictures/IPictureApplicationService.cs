@@ -71,6 +71,8 @@ namespace YMApp.ECommerce.Pictures
         /// </summary>
         Task BatchDelete(List<long> input);
 
+        Task<List<PictureListDto>> GetListByProductId(NullableIdDto<long> input);
+
 
 		/// <summary>
         /// 导出Picture为excel表

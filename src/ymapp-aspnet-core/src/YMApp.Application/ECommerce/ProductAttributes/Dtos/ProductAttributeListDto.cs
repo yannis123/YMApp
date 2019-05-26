@@ -18,7 +18,10 @@ namespace YMApp.ECommerce.ProductAttributes.Dtos
         /// </summary>
         public long ProductId { get; set; }
 
-
+        /// <summary>
+        /// FieldId
+        /// </summary>
+        public long FieldId { get; set; }
 
         /// <summary>
         /// FieldName
@@ -33,9 +36,10 @@ namespace YMApp.ECommerce.ProductAttributes.Dtos
         public string FieldValue { get; set; }
 
         /// <summary>
-        /// 分类Id
+        /// 上级Id
         /// </summary>
-        public long CategoryId { get; set; }
+        public long ParentId { get; set; }
+
 
         /// <summary>
         /// CreationTime

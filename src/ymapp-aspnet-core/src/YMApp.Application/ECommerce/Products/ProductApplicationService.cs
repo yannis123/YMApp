@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.AutoMapper;
+using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -56,9 +57,12 @@ namespace YMApp.ECommerce.Products
         public async Task<PagedResultDto<ProductListDto>> GetPaged(GetProductsInput input)
         {
 
-            var query = _entityRepository.GetAll();
-            // TODO:根据传入的参数添加过滤条件
-
+            var query = _entityRepository.GetAll().AsNoTracking()
+                .WhereIf(!string.IsNullOrEmpty(input.ProductName), m => m.ProductName.Contains(input.ProductName))
+                .WhereIf(input.State.HasValue, m => m.State == input.State)
+                .WhereIf(input.CategoryId.HasValue, m => m.CategoryId == input.CategoryId)
+                .WhereIf(input.Start.HasValue, m => m.CreationTime > input.Start)
+                .WhereIf(input.End.HasValue, m => m.CreationTime < input.End);
 
             var count = await query.CountAsync();
 
@@ -66,7 +70,7 @@ namespace YMApp.ECommerce.Products
                 .Include(m => m.Pictures)
                 .Include(m => m.Category)
                 .Include(m => m.ProductAttributes)
-                .OrderBy(input.Sorting).AsNoTracking()
+                .OrderBy(input.Sorting)
                 .PageBy(input)
                 .ToListAsync();
 
@@ -198,11 +202,14 @@ namespace YMApp.ECommerce.Products
 
             if (input.ProductAttributes != null && input.ProductAttributes.Count > 0)
             {
-                await _attributeRepository.DeleteAsync(m=>m.ProductId==entity.Id);
                 foreach (var item in input.ProductAttributes)
                 {
-                    item.ProductId = entity.Id;
-                    await _attributeRepository.InsertAsync(item.MapTo<ProductAttribute>());
+                    var oldAttribute = await _attributeRepository.SingleAsync(m => m.FieldId == item.FieldId && m.ProductId == entity.Id);
+                    if (oldAttribute != null)
+                    {
+                        oldAttribute.FieldValue = item.FieldValue;
+                        await _attributeRepository.UpdateAsync(oldAttribute);
+                    }
                 }
             }
 
@@ -235,6 +242,13 @@ namespace YMApp.ECommerce.Products
             await _entityRepository.DeleteAsync(s => input.Contains(s.Id));
         }
 
+
+        public async Task ChangePrpductAuditState(ChangePrpductAuditStateDto input)
+        {
+            var entity = await _entityRepository.GetAsync(input.Id.Value);
+            entity.State = input.State;
+            await _entityRepository.UpdateAsync(entity);
+        }
 
         /// <summary>
         /// 导出Product为excel表,等待开发。
