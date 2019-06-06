@@ -41,11 +41,11 @@ namespace YMApp.ECommerce.Articles
         ///</summary>
         public ArticleAppService(
         IRepository<Article, long> entityRepository
-        ,IArticleManager entityManager
+        , IArticleManager entityManager
         )
         {
-            _entityRepository = entityRepository; 
-             _entityManager=entityManager;
+            _entityRepository = entityRepository;
+            _entityManager = entityManager;
         }
 
 
@@ -54,145 +54,150 @@ namespace YMApp.ECommerce.Articles
         ///</summary>
         /// <param name="input"></param>
         /// <returns></returns>
-		[AbpAuthorize(ArticlePermissions.Query)] 
+		[AbpAuthorize(ArticlePermissions.Query)]
         public async Task<PagedResultDto<ArticleListDto>> GetPaged(GetArticlesInput input)
-		{
+        {
 
-		    var query = _entityRepository.GetAll();
-			// TODO:根据传入的参数添加过滤条件
-            
+            var query = _entityRepository.GetAll().AsNoTracking()
+                .WhereIf(!string.IsNullOrEmpty(input.Title), m => m.Title.Contains(input.Title))
+                .WhereIf(input.State.HasValue, m => m.State == input.State)
+                .WhereIf(input.CategoryId.HasValue, m => m.CategoryId == input.CategoryId)
+                .WhereIf(input.Start.HasValue, m => m.CreationTime > input.Start)
+                .WhereIf(input.End.HasValue, m => m.CreationTime < input.End);
+            // TODO:根据传入的参数添加过滤条件
 
-			var count = await query.CountAsync();
 
-			var entityList = await query
+            var count = await query.CountAsync();
+
+            var entityList = await query
                     .Include(m => m.Category)
                     .OrderBy(input.Sorting).AsNoTracking()
-					.PageBy(input)
-					.ToListAsync();
+                    .PageBy(input)
+                    .ToListAsync();
 
-			// var entityListDtos = ObjectMapper.Map<List<ArticleListDto>>(entityList);
-			var entityListDtos =entityList.MapTo<List<ArticleListDto>>();
+            // var entityListDtos = ObjectMapper.Map<List<ArticleListDto>>(entityList);
+            var entityListDtos = entityList.MapTo<List<ArticleListDto>>();
 
-			return new PagedResultDto<ArticleListDto>(count,entityListDtos);
-		}
-
-
-		/// <summary>
-		/// 通过指定id获取ArticleListDto信息
-		/// </summary>
-		[AbpAuthorize(ArticlePermissions.Query)] 
-		public async Task<ArticleListDto> GetById(EntityDto<long> input)
-		{
-			var entity = await _entityRepository.GetAsync(input.Id);
-
-		    return entity.MapTo<ArticleListDto>();
-		}
-
-		/// <summary>
-		/// 获取编辑 Article
-		/// </summary>
-		/// <param name="input"></param>
-		/// <returns></returns>
-		[AbpAuthorize(ArticlePermissions.Create,ArticlePermissions.Edit)]
-		public async Task<GetArticleForEditOutput> GetForEdit(NullableIdDto<long> input)
-		{
-			var output = new GetArticleForEditOutput();
-ArticleEditDto editDto;
-
-			if (input.Id.HasValue)
-			{
-				var entity = await _entityRepository.GetAsync(input.Id.Value);
-
-				editDto = entity.MapTo<ArticleEditDto>();
-
-				//articleEditDto = ObjectMapper.Map<List<articleEditDto>>(entity);
-			}
-			else
-			{
-				editDto = new ArticleEditDto();
-			}
-
-			output.Article = editDto;
-			return output;
-		}
+            return new PagedResultDto<ArticleListDto>(count, entityListDtos);
+        }
 
 
-		/// <summary>
-		/// 添加或者修改Article的公共方法
-		/// </summary>
-		/// <param name="input"></param>
-		/// <returns></returns>
-		[AbpAuthorize(ArticlePermissions.Create,ArticlePermissions.Edit)]
-		public async Task CreateOrUpdate(CreateOrUpdateArticleInput input)
-		{
+        /// <summary>
+        /// 通过指定id获取ArticleListDto信息
+        /// </summary>
+        [AbpAuthorize(ArticlePermissions.Query)]
+        public async Task<ArticleListDto> GetById(EntityDto<long> input)
+        {
+            var entity = await _entityRepository.GetAsync(input.Id);
 
-			if (input.Article.Id.HasValue)
-			{
-				await Update(input.Article);
-			}
-			else
-			{
-				await Create(input.Article);
-			}
-		}
+            return entity.MapTo<ArticleListDto>();
+        }
+
+        /// <summary>
+        /// 获取编辑 Article
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(ArticlePermissions.Create, ArticlePermissions.Edit)]
+        public async Task<GetArticleForEditOutput> GetForEdit(NullableIdDto<long> input)
+        {
+            var output = new GetArticleForEditOutput();
+            ArticleEditDto editDto;
+
+            if (input.Id.HasValue)
+            {
+                var entity = await _entityRepository.GetAsync(input.Id.Value);
+
+                editDto = entity.MapTo<ArticleEditDto>();
+
+                //articleEditDto = ObjectMapper.Map<List<articleEditDto>>(entity);
+            }
+            else
+            {
+                editDto = new ArticleEditDto();
+            }
+
+            output.Article = editDto;
+            return output;
+        }
 
 
-		/// <summary>
-		/// 新增Article
-		/// </summary>
-		[AbpAuthorize(ArticlePermissions.Create)]
-		protected virtual async Task<ArticleEditDto> Create(ArticleEditDto input)
-		{
-			//TODO:新增前的逻辑判断，是否允许新增
+        /// <summary>
+        /// 添加或者修改Article的公共方法
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(ArticlePermissions.Create, ArticlePermissions.Edit)]
+        public async Task CreateOrUpdate(CreateOrUpdateArticleInput input)
+        {
+
+            if (input.Article.Id.HasValue)
+            {
+                await Update(input.Article);
+            }
+            else
+            {
+                await Create(input.Article);
+            }
+        }
+
+
+        /// <summary>
+        /// 新增Article
+        /// </summary>
+        [AbpAuthorize(ArticlePermissions.Create)]
+        protected virtual async Task<ArticleEditDto> Create(ArticleEditDto input)
+        {
+            //TODO:新增前的逻辑判断，是否允许新增
 
             // var entity = ObjectMapper.Map <Article>(input);
-            var entity=input.MapTo<Article>();
-			
-
-			entity = await _entityRepository.InsertAsync(entity);
-			return entity.MapTo<ArticleEditDto>();
-		}
-
-		/// <summary>
-		/// 编辑Article
-		/// </summary>
-		[AbpAuthorize(ArticlePermissions.Edit)]
-		protected virtual async Task Update(ArticleEditDto input)
-		{
-			//TODO:更新前的逻辑判断，是否允许更新
-
-			var entity = await _entityRepository.GetAsync(input.Id.Value);
-			input.MapTo(entity);
-
-			// ObjectMapper.Map(input, entity);
-		    await _entityRepository.UpdateAsync(entity);
-		}
+            var entity = input.MapTo<Article>();
 
 
+            entity = await _entityRepository.InsertAsync(entity);
+            return entity.MapTo<ArticleEditDto>();
+        }
 
-		/// <summary>
-		/// 删除Article信息的方法
-		/// </summary>
-		/// <param name="input"></param>
-		/// <returns></returns>
-		[AbpAuthorize(ArticlePermissions.Delete)]
-		public async Task Delete(EntityDto<long> input)
-		{
-			//TODO:删除前的逻辑判断，是否允许删除
-			await _entityRepository.DeleteAsync(input.Id);
-		}
+        /// <summary>
+        /// 编辑Article
+        /// </summary>
+        [AbpAuthorize(ArticlePermissions.Edit)]
+        protected virtual async Task Update(ArticleEditDto input)
+        {
+            //TODO:更新前的逻辑判断，是否允许更新
+
+            var entity = await _entityRepository.GetAsync(input.Id.Value);
+            input.MapTo(entity);
+
+            // ObjectMapper.Map(input, entity);
+            await _entityRepository.UpdateAsync(entity);
+        }
 
 
 
-		/// <summary>
-		/// 批量删除Article的方法
-		/// </summary>
-		[AbpAuthorize(ArticlePermissions.BatchDelete)]
-		public async Task BatchDelete(List<long> input)
-		{
-			// TODO:批量删除前的逻辑判断，是否允许删除
-			await _entityRepository.DeleteAsync(s => input.Contains(s.Id));
-		}
+        /// <summary>
+        /// 删除Article信息的方法
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(ArticlePermissions.Delete)]
+        public async Task Delete(EntityDto<long> input)
+        {
+            //TODO:删除前的逻辑判断，是否允许删除
+            await _entityRepository.DeleteAsync(input.Id);
+        }
+
+
+
+        /// <summary>
+        /// 批量删除Article的方法
+        /// </summary>
+        [AbpAuthorize(ArticlePermissions.BatchDelete)]
+        public async Task BatchDelete(List<long> input)
+        {
+            // TODO:批量删除前的逻辑判断，是否允许删除
+            await _entityRepository.DeleteAsync(s => input.Contains(s.Id));
+        }
 
         public async Task ChangeAuditState(ChangetAuditStateDto input)
         {

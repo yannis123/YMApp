@@ -75,7 +75,7 @@
             }
         });
 
-        form.on('submit(searchProduct)', function (data) {
+        form.on('submit(search)', function (data) {
             console.log(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             productTabe.reload({
                 where: data.field

@@ -23,7 +23,7 @@
                     </div>
                     <div class="layui-input-inline layui-show-xs-block">
                         <select name="CategoryId">
-                            <option value="">文章分类</option>
+                            <option value="">分类</option>
                             @foreach (var item in categorys)
                             {
                                 <option value="@item.Id">@item.Name</option>
@@ -31,14 +31,14 @@
                         </select>
                     </div>
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" placeholder="开始日" name="Start" id="Start">
+                        <input class="layui-input" placeholder="开始日期" name="Start" id="Start">
                     </div>
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" placeholder="截止日" name="End" id="End">
+                        <input class="layui-input" placeholder="截止日期" name="End" id="End">
                     </div>
 
                     <div class="layui-input-inline layui-show-xs-block">
-                        <button class="layui-btn" lay-submit lay-filter="searchProduct">
+                        <button class="layui-btn" lay-submit lay-filter="search">
                             <i class="layui-icon">&#xe615;</i>
                         </button>
                     </div>
