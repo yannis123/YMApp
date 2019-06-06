@@ -9,6 +9,7 @@ using YMApp.ECommerce.Pictures;
 using YMApp.ECommerce.Products;
 using YMApp.ECommerce.ProductFields;
 using YMApp.ECommerce.ProductAttributes;
+using YMApp.ECommerce.Articles;
 
 namespace YMApp.EntityFrameworkCore
 {
@@ -21,6 +22,7 @@ namespace YMApp.EntityFrameworkCore
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductField> ProductFields { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         public YMAppDbContext(DbContextOptions<YMAppDbContext> options)
             : base(options)

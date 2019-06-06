@@ -71,7 +71,7 @@ namespace YMApp.ECommerce.Products
         /// </summary>
         Task BatchDelete(List<long> input);
 
-        Task ChangePrpductAuditState(ChangePrpductAuditStateDto input);
+        Task ChangeAuditState(ChangetAuditStateDto input);
 
         /// <summary>
         /// 导出Product为excel表

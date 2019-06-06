@@ -11,6 +11,7 @@ using YMApp.Authorization.Roles;
 using YMApp.Authorization.Users;
 using YMApp.ECommerce.Pictures.Authorization;
 using YMApp.ECommerce.Products.Authorization;
+using YMApp.ECommerce.Articles.Authorization;
 
 namespace YMApp.EntityFrameworkCore.Seed.Tenants
 {
@@ -53,7 +54,8 @@ namespace YMApp.EntityFrameworkCore.Seed.Tenants
                 .GetAllPermissions(
                 new YMAppAuthorizationProvider(),
                 new PictureAuthorizationProvider(),
-                new ProductAuthorizationProvider())
+                new ProductAuthorizationProvider()
+                , new ArticleAuthorizationProvider())
                 .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant) &&
                             !grantedPermissions.Contains(p.Name))
                 .ToList();

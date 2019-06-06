@@ -9,6 +9,9 @@ using YMApp.Authorization.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using YMApp.ECommerce.Pictures.Authorization;
+using YMApp.ECommerce.Products.Authorization;
+using YMApp.ECommerce.Articles.Authorization;
 
 namespace YMApp.EntityFrameworkCore.Seed.Host
 {
@@ -52,7 +55,10 @@ namespace YMApp.EntityFrameworkCore.Seed.Host
                 .ToList();
 
             var permissions = PermissionFinder
-                .GetAllPermissions(new YMAppAuthorizationProvider())
+                .GetAllPermissions(new YMAppAuthorizationProvider()
+                ,new PictureAuthorizationProvider()
+                ,new ProductAuthorizationProvider()
+                ,new ArticleAuthorizationProvider())
                 .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host) &&
                             !grantedPermissions.Contains(p.Name))
                 .ToList();

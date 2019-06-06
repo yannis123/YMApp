@@ -10,6 +10,8 @@ using YMApp.ECommerce.Pictures.Authorization;
 using YMApp.ECommerce.Products.Authorization;
 using YMApp.ECommerce.ProductFields.Mapper;
 using YMApp.ECommerce.ProductAttributes.Mapper;
+using YMApp.ECommerce.Articles.Mapper;
+using YMApp.ECommerce.Articles.Authorization;
 
 namespace YMApp
 {
@@ -23,7 +25,7 @@ namespace YMApp
             Configuration.Authorization.Providers.Add<YMAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PictureAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ProductAuthorizationProvider>();
-
+            Configuration.Authorization.Providers.Add<ArticleAuthorizationProvider>();
 
 
             //Configuration.Authorization.IsEnabled = false;
@@ -39,6 +41,7 @@ namespace YMApp
                 ProductMapper.CreateMappings(configuration);
                 ProductFieldMapper.CreateMappings(configuration);
                 ProductAttributeMapper.CreateMappings(configuration);
+                ArticleMapper.CreateMappings(configuration);
             });
         }
 

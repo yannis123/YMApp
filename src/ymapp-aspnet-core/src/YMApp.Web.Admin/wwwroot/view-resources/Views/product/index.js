@@ -15,7 +15,7 @@
         });
 
         var productTabe = table.render({
-            elem: '#productlist'
+            elem: '#list'
             , height: 312
             , url: '/api/services/app/product/GetPaged' //数据接口
             , parseData: function (res) { //res 即为原始返回的数据
@@ -33,21 +33,21 @@
             , page: true //开启分页
             , cols: [[ //表头
                 { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left' }
-                , { field: 'productName', title: '商品名称', width: 250 }
+                , { field: 'productName', title: '商品名称' }
                 , {
-                    field: 'categoryId', title: '分类', width: 120, sort: true, templet: function (d) {
+                    field: 'categoryId', title: '分类',sort: true, templet: function (d) {
                         return d.category.name;
                     }
                 }
-                , { field: 'price', title: '价格',width: 100 }
-                , { field: 'state', title: '状态', templet: '#stateTpl', width: 100 }
-                , { field: 'creationTime', title: '创建时间', width: 150 }
+                , { field: 'price', title: '价格'}
+                , { field: 'state', title: '状态', templet: '#stateTpl' }
+                , { field: 'creationTime', title: '创建时间' }
                 , { fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo' }
             ]]
         });
         //监听状态操作
         form.on('switch(state)', function (obj) {
-            _productService.changePrpductAuditState({ id: this.value, state: obj.elem.checked ? 1 : 0 }).done(function () {
+            _productService.changeAuditState({ id: this.value, state: obj.elem.checked ? 1 : 0 }).done(function () {
                 layer.tips("修改成功", obj.othis);
             });
             return false;

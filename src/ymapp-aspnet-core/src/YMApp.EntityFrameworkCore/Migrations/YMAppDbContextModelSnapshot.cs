@@ -1078,6 +1078,60 @@ namespace YMApp.Migrations
                     b.ToTable("Categorys");
                 });
 
+            modelBuilder.Entity("YMApp.ECommerce.Articles.Article", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Author")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasDefaultValue("");
+
+                    b.Property<long>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0L);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Source")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("State")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("TenantId");
+
+                    b.Property<string>("TextContent")
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(200)
+                        .HasDefaultValue("");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Articles");
+                });
+
             modelBuilder.Entity("YMApp.ECommerce.Pictures.Picture", b =>
                 {
                     b.Property<long>("Id")
@@ -1478,6 +1532,14 @@ namespace YMApp.Migrations
                     b.HasOne("YMApp.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("YMApp.ECommerce.Articles.Article", b =>
+                {
+                    b.HasOne("YMApp.Categorys.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("YMApp.ECommerce.Pictures.Picture", b =>

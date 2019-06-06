@@ -7,6 +7,7 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YMApp.Authorization;
 using YMApp.Categorys;
+using YMApp.ConstEnum;
 using YMApp.Controllers;
 using YMApp.ECommerce.Pictures;
 using YMApp.ECommerce.ProductAttributes;
@@ -42,7 +43,7 @@ namespace YMApp.Web.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             ProductIndeViewModel model = new ProductIndeViewModel();
-            model.Categorys = await _categoryAppService.GetListByType(1);
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.Product);
             return View(model);
         }
 
@@ -68,7 +69,7 @@ namespace YMApp.Web.Admin.Controllers
             }
 
             model.ProductFields = fields;
-            model.Categorys = await _categoryAppService.GetListByType(1);
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.Product);
 
             return View(model);
         }

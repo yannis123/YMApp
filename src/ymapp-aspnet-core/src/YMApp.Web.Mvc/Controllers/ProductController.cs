@@ -13,5 +13,10 @@ namespace YMApp.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Detail(long productId)
+        {
+            return View();
+        }
     }
 }

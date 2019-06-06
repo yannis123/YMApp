@@ -243,7 +243,7 @@ namespace YMApp.ECommerce.Products
         }
 
 
-        public async Task ChangePrpductAuditState(ChangePrpductAuditStateDto input)
+        public async Task ChangeAuditState(ChangetAuditStateDto input)
         {
             var entity = await _entityRepository.GetAsync(input.Id.Value);
             entity.State = input.State;
