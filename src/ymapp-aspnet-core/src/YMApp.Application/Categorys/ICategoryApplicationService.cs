@@ -36,7 +36,8 @@ namespace YMApp.Categorys
 
         Task<List<CategoryListDto>> GetListByType(int type);
 
-       
+        Task<TreeTableeDto> GetTreeTableByType();
+
         //Task<FileDto> GetToExcel();
     }
 }

@@ -9,11 +9,11 @@ namespace YMApp.ConstEnum
         /// <summary>
         /// 商品
         /// </summary>
-        Product = 1,
+        商品 = 1,
         /// <summary>
         /// 文章
         /// </summary>
-        Article = 2
+        文章 = 2
 
     }
 }

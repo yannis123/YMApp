@@ -14,8 +14,6 @@
     <ProjectReference Include="..\YMApp.Core\YMApp.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Categorys\" />
-    <Folder Include="Categorys\Dtos\" />
     <Folder Include="Categorys\Mapper\" />
     <Folder Include="Dtos\" />
     <Folder Include="Trips\" />

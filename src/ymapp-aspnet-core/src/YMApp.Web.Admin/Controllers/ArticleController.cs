@@ -27,7 +27,7 @@ namespace YMApp.Web.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             ArticleIndexViewModel model = new ArticleIndexViewModel();
-            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.Article);
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.文章);
             return View(model);
         }
 
@@ -35,7 +35,7 @@ namespace YMApp.Web.Admin.Controllers
         {
             EditArticleViewModel model = new EditArticleViewModel();
             model.Article = (await _articleAppService.GetForEdit(input)).Article;
-            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.Article);
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.文章);
             return View(model);
         }
     }

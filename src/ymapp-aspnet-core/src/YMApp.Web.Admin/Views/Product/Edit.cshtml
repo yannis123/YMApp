@@ -28,7 +28,15 @@
                         <option value="">请选则分类</option>
                         @foreach (var item in categorys)
                         {
-                            <option value="@item.Id" selected="@(product.CategoryId!=0&&product.CategoryId==item.Id?"selected":"")">@item.Name</option>
+                            if (product.CategoryId != 0 && product.CategoryId == item.Id)
+                            {
+                                <option value="@item.Id" selected>@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+
                         }
                     </select>
                 </div>

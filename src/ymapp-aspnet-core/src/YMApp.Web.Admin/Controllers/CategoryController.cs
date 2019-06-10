@@ -26,8 +26,10 @@ namespace YMApp.Web.Admin.Controllers
 
         public async Task<IActionResult> Edit(NullableIdDto<long> input)
         {
-
-            return View();
+            EditCategoryViewModel model = new EditCategoryViewModel();
+            model.Category = (await _categoryAppService.GetForEdit(input)).Category;
+            model.Categorys = await _categoryAppService.GetListByType(0);
+            return View(model);
         }
     }
 }

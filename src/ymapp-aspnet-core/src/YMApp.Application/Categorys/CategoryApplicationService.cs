@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using YMApp.Categorys.Dtos;
 using Abp.Linq.Extensions;
 using Abp.Extensions;
+using Abp.Web.Models;
 
 namespace YMApp.Categorys
 {
@@ -132,12 +133,30 @@ namespace YMApp.Categorys
             var query = _entityRepository
                .GetAll()
                .AsNoTracking()
-               .Where(m => m.Type == type);
+               .WhereIf(type > 0, m => m.Type == type);
             var entityList = await query
                 .ToListAsync();
 
             var entityListDtos = entityList.MapTo<List<CategoryListDto>>();
             return entityListDtos;
         }
+
+        [DontWrapResult]
+
+        public async Task<TreeTableeDto> GetTreeTableByType()
+        {
+            var query = _entityRepository
+               .GetAll()
+               .AsNoTracking();
+
+            var count = await query.CountAsync();
+
+            var entityList = await query
+                .ToListAsync();
+
+            var entityListDtos = entityList.MapTo<List<CategoryListDto>>();
+            return new TreeTableeDto() { Code = 0, Data = entityListDtos, Msg = "ok", Count = count };
+        }
+
     }
 }

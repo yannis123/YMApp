@@ -43,7 +43,7 @@ namespace YMApp.Web.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             ProductIndeViewModel model = new ProductIndeViewModel();
-            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.Product);
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.商品);
             return View(model);
         }
 
@@ -69,7 +69,7 @@ namespace YMApp.Web.Admin.Controllers
             }
 
             model.ProductFields = fields;
-            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.Product);
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.商品);
 
             return View(model);
         }
