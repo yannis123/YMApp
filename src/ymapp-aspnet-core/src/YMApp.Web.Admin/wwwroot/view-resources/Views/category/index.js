@@ -2,11 +2,13 @@
     var $ = layui.jquery;
     var treetable = layui.treetable;
     var table = layui.table;
+    var _categoryService = abp.services.app.category;
 
     // 渲染表格
     treetable.render({
         treeColIndex: 1,          // treetable新增参数
-        treeSpid: 0,             // treetable新增参数
+        treeSpid: 0,
+        height: 600,// treetable新增参数
         treeIdName: 'id',       // treetable新增参数
         treePidName: 'parentId',     // treetable新增参数
         treeDefaultClose: true,   // treetable新增参数
@@ -14,21 +16,21 @@
         elem: '#table',
         url: '/api/services/app/category/GetTreeTableByType',
         cols: [[
-            { type: 'numbers' },
-            { field: 'name', title: '名称' },
+            { type: 'numbers',width: 80  },
+            { field: 'name',  title: '名称' },
             {
-                field: 'type', width: 80, align: 'center', templet: function (d) {
+                field: 'type', width: 120,  align: 'center', templet: function (d) {
                     if (d.type === 1) {
                         return '<span class="layui-badge layui-bg-green">商品</span>';
                     }
                     if (d.type === 2) {
-                        return '<span class="layui-badge layui-bg-blue">属性</span>';
+                        return '<span class="layui-badge layui-bg-blue">文章</span>';
                     } else {
-                        return '<span class="layui-badge-rim">菜单</span>';
+                        return '<span class="layui-badge-rim">其他</span>';
                     }
                 }, title: '类型'
             },
-            { templet: '#oper-col', title: '操作' }
+            { templet: '#oper-col', width: 200, title: '操作' }
         ]]
     });
 
@@ -38,7 +40,13 @@
         var layEvent = obj.event;
 
         if (layEvent === 'del') {
-            layer.msg('删除' + data.id);
+            _categoryService.delete({ id: data.id }).done(function () {
+                obj.del(); //删除对应行（tr）的DOM结构
+                layer.close(index);
+            }).always(function () {
+                //abp.ui.clearBusy(_$modal);
+            });
+
         } else if (layEvent === 'edit') {
             xadmin.open('编辑', '/category/edit?id=' + data.id, "600", "400");
         }

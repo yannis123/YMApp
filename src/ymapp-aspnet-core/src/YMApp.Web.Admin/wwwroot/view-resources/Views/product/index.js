@@ -16,7 +16,7 @@
 
         var productTabe = table.render({
             elem: '#list'
-            , height: 312
+            , height: 600
             , url: '/api/services/app/product/GetPaged' //数据接口
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
@@ -48,7 +48,8 @@
         //监听状态操作
         form.on('switch(state)', function (obj) {
             _productService.changeAuditState({ id: this.value, state: obj.elem.checked ? 1 : 0 }).done(function () {
-                layer.tips("修改成功", obj.othis);
+                //layer.tips("修改成功", obj.othis);
+                layer.msg('修改成功!', { icon: 1, time: 1000 });
             });
             return false;
         });
@@ -86,50 +87,6 @@
         });
     });
 
-
-/*用户-停用*/
-function member_stop(obj, id) {
-    layer.confirm('确认要停用吗？',
-        function (index) {
-
-            if ($(obj).attr('title') == '启用') {
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title', '停用');
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!', {
-                    icon: 5,
-                    time: 1000
-                });
-
-            } else {
-                $(obj).attr('title', '启用');
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!', {
-                    icon: 5,
-                    time: 1000
-                });
-            }
-
-        });
-}
-
-/*用户-删除*/
-function member_del(obj, id) {
-    layer.confirm('确认要删除吗？',
-        function (index) {
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!', {
-                icon: 1,
-                time: 1000
-            });
-        });
-}
 
 function delAll(argument) {
 

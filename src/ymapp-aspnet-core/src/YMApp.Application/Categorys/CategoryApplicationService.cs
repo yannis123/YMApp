@@ -46,7 +46,11 @@ namespace YMApp.Categorys
 
             // var entity = ObjectMapper.Map <Book>(input);
             var entity = input.MapTo<Category>();
-
+            if (input.Type == 0)
+            {
+                var model = await _entityRepository.SingleAsync(m => m.Id == input.ParentId);
+                entity.Type = model.Type;
+            }
             var entityId = await _entityRepository.InsertAndGetIdAsync(entity);
 
             return entity.MapTo<CategoryEditDto>();

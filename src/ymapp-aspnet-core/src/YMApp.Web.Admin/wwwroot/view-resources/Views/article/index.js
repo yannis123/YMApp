@@ -49,7 +49,8 @@
         //监听状态操作
         form.on('switch(state)', function (obj) {
             _articleService.changeAuditState({ id: this.value, state: obj.elem.checked ? 1 : 0 }).done(function () {
-                layer.tips("修改成功", obj.othis);
+               // layer.tips("修改成功", obj.othis);
+                layer.msg('修改成功!', { icon: 1, time: 1000 });
             });
             return false;
         });
@@ -65,6 +66,7 @@
                     _articleService.delete({ id: data.id }).done(function () {
                         obj.del(); //删除对应行（tr）的DOM结构
                         layer.close(index);
+                        layer.msg('删除成功!', { icon: 1, time: 1000 });
                     }).always(function () {
                         //abp.ui.clearBusy(_$modal);
                     });

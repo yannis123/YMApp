@@ -13,58 +13,47 @@
 <div class="layui-row">
     <form class="layui-form layui-form-pane" action="">
         <input type="hidden" value="@category.Id" name="Id" />
-
+        <input type="hidden" id="parentCategoryId" name="parentCategoryId" value="@category.ParentId" />
         <div class="layui-form-item">
             <label class="layui-form-label">上级分类</label>
             <div class="layui-input-block">
-                <select name="ParentId" lay-verify="required" lay-filter="aihao">
-                    <option value="0">请选则分类</option>
-                    @foreach (var item in categorys)
-                    {
-                        if (item.ParentId == category.Id)
-                        {
-                            <option value="@item.Id" selected>@item.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
-                    }
-                </select>
+                <input type="text" id="ParentId" lay-filter="ParentId" name="ParentId" class="layui-input">
+
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label"> <span class="x-red">*</span>名称</label>
             <div class="layui-input-block">
-                <input type="text" lay-verify="required" name="Title" autocomplete="off" placeholder="请输入名称" value="@category.Name" class="layui-input">
+                <input type="text" lay-verify="required" name="Name" autocomplete="off" placeholder="请输入名称" value="@category.Name" class="layui-input">
             </div>
         </div>
+        @if (category.Id == 0 || category.ParentId == 0)
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label"> <span class="x-red">*</span>类型</label>
+                <div class="layui-input-block">
+                    <select name="Type" lay-verify="required">
+                        <option value="">请选则类型</option>
+                        @foreach (int value in Enum.GetValues(typeof(YMApp.ConstEnum.CategoryTypeEnum)))
+                        {
+                            var name = Enum.GetName(typeof(YMApp.ConstEnum.CategoryTypeEnum), value);
+                            if (value == category.Type)
+                            {
+                                <option value="@value" selected>@name</option>
+                            }
+                            else
+                            {
+                                <option value="@value">@name</option>
+                            }
+                        }
+                    </select>
+                </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label"> <span class="x-red">*</span>类型</label>
-            <div class="layui-input-block">
-                <select name="CategoryId" lay-verify="required" lay-filter="aihao">
-                    <option value="">请选则类型</option>
-                    @foreach (int value in Enum.GetValues(typeof(YMApp.ConstEnum.CategoryTypeEnum)))
-                    {
-                        var name = Enum.GetName(typeof(YMApp.ConstEnum.CategoryTypeEnum), value);
-                        if (value == category.Type)
-                        {
-                            <option value="@value" selected>@name</option>
-                        }
-                        else
-                        {
-                            <option value="@value">@name</option>
-                        }
-                    }
-                </select>
             </div>
-
-        </div>
-
+        }
         <div class="layui-form-item">
-            <button class="layui-btn" lay-submit="" lay-filter="demo2">保存</button>
+            <button class="layui-btn" lay-submit="" lay-filter="add">保存</button>
         </div>
     </form>
 </div>
