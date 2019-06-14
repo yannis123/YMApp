@@ -27,7 +27,6 @@ namespace YMApp
             Configuration.Authorization.Providers.Add<ProductAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ArticleAuthorizationProvider>();
 
-
             //Configuration.Authorization.IsEnabled = false;
             //Configuration.MultiTenancy.IsEnabled = false;
 

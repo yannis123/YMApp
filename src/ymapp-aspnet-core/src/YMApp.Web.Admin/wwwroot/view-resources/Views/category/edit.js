@@ -40,7 +40,7 @@
     });
     
     //监听提交
-    form.on('submit(add)', function (data) {
+    form.on('submit(save)', function (data) {
         _categoryService.createOrUpdate({ category: data.field }).done(function () {
             window.parent.location.reload();
             // 获得frame索引

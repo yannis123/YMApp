@@ -86,11 +86,16 @@ namespace YMApp.Roles
 
         public Task<ListResultDto<PermissionDto>> GetAllPermissions()
         {
+            List<PermissionDto> list = new List<PermissionDto>();
             var permissions = PermissionManager.GetAllPermissions();
+            foreach (var item in permissions)
+            {
+                var model = ObjectMapper.Map<PermissionDto>(item);
+                model.ParentName = item.Parent?.Name;
+                list.Add(model);
+            }
 
-            return Task.FromResult(new ListResultDto<PermissionDto>(
-                ObjectMapper.Map<List<PermissionDto>>(permissions)
-            ));
+            return Task.FromResult(new ListResultDto<PermissionDto>(list));
         }
 
         protected override IQueryable<Role> CreateFilteredQuery(PagedResultRequestDto input)
@@ -120,10 +125,18 @@ namespace YMApp.Roles
             var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
             var roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
 
+            List<FlatPermissionDto> permissionsList = new List<FlatPermissionDto>();
+            foreach (var item in permissions)
+            {
+                var model = ObjectMapper.Map<FlatPermissionDto>(item);
+                model.ParentName = item.Parent?.Name;
+                permissionsList.Add(model);
+            }
+
             return new GetRoleForEditOutput
             {
                 Role = roleEditDto,
-                Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
+                Permissions = permissionsList,
                 GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
             };
         }

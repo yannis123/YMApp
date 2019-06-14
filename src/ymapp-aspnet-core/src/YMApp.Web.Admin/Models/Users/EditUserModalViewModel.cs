@@ -7,6 +7,10 @@ namespace YMApp.Web.Admin.Models.Users
 {
     public class EditUserModalViewModel
     {
+        public EditUserModalViewModel()
+        {
+            User = new UserDto();
+        }
         public UserDto User { get; set; }
 
         public IReadOnlyList<RoleDto> Roles { get; set; }

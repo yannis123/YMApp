@@ -235,5 +235,33 @@
     <text name="ClickHere" value="点击这里" />
     <text name="Apply" value="应用" />
     <text name="CustomRange" value="自定义范围" />
+
+    <text name="Article" value="文章管理"></text>
+    <text name="QueryArticle"  value="查询"></text>
+    <text name="CreateArticle"  value="添加"></text>
+    <text name="EditArticle"  value="编辑"></text>
+    <text name="DeleteArticle"  value="删除"></text>
+    <text name="BatchDeleteArticle" value="批量删除"></text>
+    <text name="ExportArticle"  value="导出"></text>
+
+
+    <text name="Picture" value="图片管理"></text>
+    <text name="QueryPicture"  value="查询"></text>
+    <text name="CreatePicture"  value="添加"></text>
+    <text name="EditPicture"  value="编辑"></text>
+    <text name="DeletePicture"  value="删除"></text>
+    <text name="BatchDeletePicture" value="批量删除"></text>
+    <text name="ExportPicture"  value="导出"></text>
+
+
+    <text name="Product" value="产品管理"></text>
+    <text name="QueryProduct"  value="查询"></text>
+    <text name="CreateProduct"  value="添加"></text>
+    <text name="EditProduct"  value="编辑"></text>
+    <text name="DeleteProduct"  value="删除"></text>
+    <text name="BatchDeleteProduct" value="批量删除"></text>
+    <text name="ExportProduct"  value="导出"></text>
+
+
   </texts>
 </localizationDictionary>

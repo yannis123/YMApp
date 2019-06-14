@@ -19,5 +19,6 @@ namespace YMApp.Roles.Dto
         public string Description { get; set; }
 
         public bool IsStatic { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

@@ -1,0 +1,77 @@
+﻿@model YMApp.Web.Admin.ViewModels.Roles.EditRoleModalViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var role = Model.Role;
+    var permissions = Model.Permissions;
+    var grantedPermissionNames = Model.GrantedPermissionNames;
+}
+@section scripts{
+    <script src="~/view-resources/views/roles/edit.js" asp-append-version="true"></script>
+}
+<div class="layui-fluid">
+    <div class="layui-row">
+        <form action="" method="post" class="layui-form layui-form-pane">
+            <input type="hidden" value="@role.Id" name="id" />
+            <div class="layui-form-item">
+                <label for="name" class="layui-form-label">
+                    <span class="x-red">*</span>角色名
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" value="@role.Name" required="" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <label for="name" class="layui-form-label">
+                    显示名称
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" name="displayName" value="@role.DisplayName" autocomplete="off" class="layui-input">
+                </div>
+                <label for="name" class="layui-form-label">
+                    是否默认
+                </label>
+                <div class="layui-input-inline">
+                    <input type="checkbox" name="isDefault" value="@(role.IsDefault)" lay-skin="switch" lay-text="是|否" lay-filter="isDefault" @(role.IsDefault ? "checked" : "")>
+                </div>
+
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">
+                    拥有权限
+                </label>
+                <table class="layui-table layui-input-block">
+                    <tbody>
+                        @foreach (var item in permissions.Where(m => m.ParentName == YMApp.Authorization.AppLtmPermissions.Pages_Administration))
+                        {
+                            <tr>
+                                <td>
+                                    <input name="permission" type="checkbox" lay-skin="primary" lay-filter="father" @(grantedPermissionNames.Contains(item.Name) ? "checked" : "") title="@item.DisplayName" value="@item.Name">
+                                </td>
+                                <td>
+                                    <div class="layui-input-block">
+                                        @foreach (var p in permissions.Where(m => m.ParentName == item.Name))
+                                        {
+                                            <input name="permission" lay-skin="primary" type="checkbox" @(grantedPermissionNames.Contains(p.Name) ? "checked" : "") title="@p.DisplayName" value="@p.Name">
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label for="desc" class="layui-form-label">
+                    描述
+                </label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" name="description" class="layui-textarea">@role.Description</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit="" lay-filter="save">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

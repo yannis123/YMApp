@@ -3,7 +3,7 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var user = Model.User;
-    var roles = Model.Roles;.
+    var roles = Model.Roles;
 }
 
 @section scripts{
@@ -13,20 +13,45 @@
     <form class="layui-form layui-form-pane" action="">
         <input type="hidden" value="@user.Id" name="Id" />
         <div class="layui-form-item">
-            <label class="layui-form-label">上级分类</label>
+            <label class="layui-form-label">登录名</label>
             <div class="layui-input-block">
-                <input type="text" id="ParentId" lay-filter="ParentId" name="ParentId" class="layui-input">
+                <input type="text" name="UserName" value="@user.UserName" class="layui-input">
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="EmailAddress" value="@user.EmailAddress" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="Password" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="ConfirmPassword" class="layui-input">
+            </div>
+        </div>
+        @if (roles != null && roles.Count() > 0)
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="x-red">*</span>角色</label>
+                <div class="layui-input-block">
 
-        <div class="layui-form-item">
-            <label class="layui-form-label"> <span class="x-red">*</span>名称</label>
-            <div class="layui-input-block">
-                <input type="text" lay-verify="required" name="Name" autocomplete="off" placeholder="请输入名称" value="@category.Name" class="layui-input">
+                    @foreach (var item in roles)
+                    {
+                        <input type="checkbox" name="Role[@item.Id]" lay-skin="primary" title="@item.Name" checked="">
+                    }
+
+                </div>
             </div>
-        </div>
+        }
         <div class="layui-form-item">
-            <button class="layui-btn" lay-submit="" lay-filter="add">保存</button>
+            <button class="layui-btn" lay-submit="" lay-filter="save">保存</button>
         </div>
     </form>
 </div>

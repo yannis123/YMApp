@@ -33,16 +33,17 @@ namespace YMApp.Web.Admin
             return View();
         }
 
-        public async Task<ActionResult> Edit(long userId)
+        public async Task<ActionResult> Edit(NullableIdDto<long> input)
         {
-            var user = await _userAppService.Get(new EntityDto<long>(userId));
-            var roles = (await _userAppService.GetRoles()).Items;
-            var model = new EditUserModalViewModel
+            var model = new EditUserModalViewModel();
+            if (input.Id.HasValue)
             {
-                User = user,
-                Roles = roles
-            };
-            return View( model);
+                var user = await _userAppService.Get(new EntityDto<long>() { Id = input.Id.Value });
+                model.User = user;
+            }
+            var roles = (await _userAppService.GetRoles()).Items;
+            model.Roles = roles;
+            return View(model);
         }
     }
 }

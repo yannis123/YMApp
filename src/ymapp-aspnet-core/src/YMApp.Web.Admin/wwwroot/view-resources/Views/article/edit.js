@@ -8,7 +8,7 @@
 
 
     //监听提交
-    form.on('submit(demo2)', function (data) {
+    form.on('submit(save)', function (data) {
         _articleService.createOrUpdate({ article: data.field }).done(function () {
             window.parent.location.reload();
             //获得frame索引

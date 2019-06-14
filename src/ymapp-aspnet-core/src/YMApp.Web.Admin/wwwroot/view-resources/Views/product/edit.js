@@ -40,7 +40,7 @@
         }
     });
 
-    form.on('submit(demo2)', function (data) {
+    form.on('submit(save)', function (data) {
         //layer.alert(JSON.stringify(data.field), {
         //title: '最终的提交信息'
         // })
