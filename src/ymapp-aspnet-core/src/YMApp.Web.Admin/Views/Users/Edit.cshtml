@@ -14,26 +14,31 @@
         <input type="hidden" value="@user.Id" name="Id" />
         <div class="layui-form-item">
             <label class="layui-form-label">登录名</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" name="UserName" value="@user.UserName" class="layui-input">
             </div>
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">邮箱地址</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" name="EmailAddress" value="@user.EmailAddress" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
-            <div class="layui-input-block">
-                <input type="text" name="Password" class="layui-input">
+            <div class="layui-input-inline">
+                <input type="password" name="Password" class="layui-input">
+            </div>
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="ConfirmPassword" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">确认密码</label>
-            <div class="layui-input-block">
-                <input type="text" name="ConfirmPassword" class="layui-input">
+            <label for="name" class="layui-form-label">
+                是否激活
+            </label>
+            <div class="layui-input-inline">
+                <input type="checkbox" name="isActive" value="@(user.IsActive)" lay-skin="switch" lay-text="是|否" lay-filter="isDefault" @(user.IsActive ? "checked" : "")>
             </div>
         </div>
         @if (roles != null && roles.Count() > 0)

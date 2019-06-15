@@ -60,7 +60,7 @@
         var data = obj.data //获得当前行数据
             , layEvent = obj.event; //获得 lay-event 对应的值
         if (layEvent === 'edit') {
-            xadmin.open('编辑', '/users/edit?id=' + data.id);
+            xadmin.open('编辑', '/users/edit?id=' + data.id, 800, 600);
         } else if (layEvent === 'del') {
             layer.confirm('真的删除行么', function (index) {
                 _userService.delete({ id: data.id }).done(function () {
