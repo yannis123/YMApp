@@ -10,7 +10,7 @@ using YMApp.Web.ViewModels.Roles;
 
 namespace YMApp.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Roles)]
+    [AbpMvcAuthorize(RolePermissions.Pages_Roles)]
     public class RolesController : YMAppControllerBase
     {
         private readonly IRoleAppService _roleAppService;

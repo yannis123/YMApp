@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using YMApp.Authorization;
 using YMApp.Controllers;
 using YMApp.Roles;
 using YMApp.Roles.Dto;
@@ -12,6 +14,7 @@ using YMApp.Web.Admin.ViewModels.Roles;
 
 namespace YMApp.Web.Admin.Controllers
 {
+    [AbpMvcAuthorize(RolePermissions.Pages_Roles)]
     public class RolesController : YMAppControllerBase
     {
         private readonly IRoleAppService _roleAppService;

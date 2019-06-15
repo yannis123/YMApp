@@ -10,7 +10,7 @@ using YMApp.Web.Admin.Models.Users;
 
 namespace YMApp.Web.Admin
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Users)]
+    [AbpMvcAuthorize(UserPermissions.Pages_Users)]
     public class UsersController : YMAppControllerBase
     {
         private readonly IUserAppService _userAppService;

@@ -19,7 +19,7 @@ using YMApp.Users.Dto;
 
 namespace YMApp.Users
 {
-    [AbpAuthorize(PermissionNames.Pages_Users)]
+    [AbpAuthorize(UserPermissions.Pages_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
@@ -40,7 +40,7 @@ namespace YMApp.Users
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
         }
-
+        [AbpAuthorize(UserPermissions.Create)]
         public override async Task<UserDto> Create(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -63,6 +63,7 @@ namespace YMApp.Users
             return MapToEntityDto(user);
         }
 
+        [AbpAuthorize(UserPermissions.Edit)]
         public override async Task<UserDto> Update(UserDto input)
         {
             CheckUpdatePermission();
@@ -81,6 +82,7 @@ namespace YMApp.Users
             return await Get(input);
         }
 
+        [AbpAuthorize(UserPermissions.Delete)]
         public override async Task Delete(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);

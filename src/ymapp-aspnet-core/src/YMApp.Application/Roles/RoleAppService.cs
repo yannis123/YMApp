@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace YMApp.Roles
 {
-    [AbpAuthorize(PermissionNames.Pages_Roles)]
+    [AbpAuthorize(RolePermissions.Pages_Roles)]
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
         private readonly RoleManager _roleManager;
@@ -29,7 +29,7 @@ namespace YMApp.Roles
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
+        [AbpAuthorize(RolePermissions.Create)]
         public override async Task<RoleDto> Create(CreateRoleDto input)
         {
             CheckCreatePermission();
@@ -48,7 +48,7 @@ namespace YMApp.Roles
 
             return MapToEntityDto(role);
         }
-
+        [AbpAuthorize(RolePermissions.Edit)]
         public override async Task<RoleDto> Update(RoleDto input)
         {
             CheckUpdatePermission();
@@ -68,7 +68,7 @@ namespace YMApp.Roles
 
             return MapToEntityDto(role);
         }
-
+        [AbpAuthorize(RolePermissions.Delete)]
         public override async Task Delete(EntityDto<int> input)
         {
             CheckDeletePermission();

@@ -34,7 +34,7 @@ namespace YMApp.Web.Startup
                         L("Users"),
                         url: "Users",
                         icon: "fa-people-carry ",
-                        requiredPermissionName: PermissionNames.Pages_Users
+                        requiredPermissionName: UserPermissions.Pages_Users
                     )
                 ).AddItem(
                     new MenuItemDefinition(
@@ -42,7 +42,7 @@ namespace YMApp.Web.Startup
                         L("Roles"),
                         url: "Roles",
                         icon: "fa-power-off",
-                        requiredPermissionName: PermissionNames.Pages_Roles
+                        requiredPermissionName: RolePermissions.Pages_Roles
                     )
                 )
                 .AddItem(

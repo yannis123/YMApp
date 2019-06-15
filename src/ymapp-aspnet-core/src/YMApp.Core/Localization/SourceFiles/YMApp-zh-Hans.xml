@@ -51,12 +51,10 @@
  
 
     <text name="LoginFailed" value="登录失败!" />
-    <text name="Roles" value="角色" />
-    <text name="Users" value="用户" />
+  
 
     <text name="Pages" value="页面" />
     <text name="RoleName" value="角色名称" />
-    <text name="EditRole" value="修改角色" />
     <text name="CreateNewRole" value="添加角色" />
     <text name="RoleProperties" value="角色属性" />
     <text name="Permissions" value="权限" />
@@ -76,8 +74,7 @@
     <text name="Name" value="名字" />
     <text name="Surname" value="姓氏" />
     <text name="EmailAddress" value="邮箱地址" />
-    <text name="LastLoginTime" value="上次登录时间" />
-    <text name="EditUser" value="修改用户" />
+    <text name="LastLoginTime" value="上次登录时间" />   
     <text name="UserInformations" value="用户信息" />
     <text name="PasswordRepeat" value="密码 (核对)" />
     <text name="SuccessfullyDeleted" value="删除成功." />
@@ -235,6 +232,20 @@
     <text name="ClickHere" value="点击这里" />
     <text name="Apply" value="应用" />
     <text name="CustomRange" value="自定义范围" />
+
+   
+    <text name="Users" value="用户管理" />    
+    <text name="QueryUser"  value="查询"></text>
+    <text name="CreateUser"  value="添加"></text>
+    <text name="EditUser"  value="编辑"></text>
+    <text name="DeleteUser"  value="删除"></text>
+
+    <text name="Roles" value="角色管理" />
+    <text name="QueryRole"  value="查询"></text>
+    <text name="CreateRole"  value="添加"></text>
+    <text name="EditRole"  value="编辑"></text>
+    <text name="DeleteRole"  value="删除"></text>
+    
 
     <text name="Article" value="文章管理"></text>
     <text name="QueryArticle"  value="查询"></text>
