@@ -42,7 +42,7 @@ namespace YMApp.Users
         }
         [AbpAuthorize(UserPermissions.Create)]
         public override async Task<UserDto> Create(CreateUserDto input)
-        {
+        {            
             CheckCreatePermission();
 
             var user = ObjectMapper.Map<User>(input);

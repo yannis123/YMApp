@@ -12,6 +12,8 @@ namespace YMApp.Authorization
             // 在这里配置了Article 的权限。
             var pages = context.GetPermissionOrNull(AppLtmPermissions.Pages) ?? context.CreatePermission(AppLtmPermissions.Pages, L("Pages"));
 
+            context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+
             var administration = pages.Children.FirstOrDefault(p => p.Name == AppLtmPermissions.Pages_Administration) ?? pages.CreateChildPermission(AppLtmPermissions.Pages_Administration, L("Administration"));
 
             var entityPermission_user = administration.CreateChildPermission(UserPermissions.Pages_Users, L("Users"));

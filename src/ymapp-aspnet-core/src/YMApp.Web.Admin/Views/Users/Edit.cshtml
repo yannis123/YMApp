@@ -11,45 +11,57 @@
 }
 <div class="layui-row">
     <form class="layui-form layui-form-pane" action="">
-        <input type="hidden" value="@user.Id" name="Id" />
+        <input type="hidden" value="@user.Id" name="id" />
         <div class="layui-form-item">
-            <label class="layui-form-label">登录名</label>
+            <label class="layui-form-label"><span class="x-red">*</span>登录名</label>
             <div class="layui-input-inline">
                 <input type="text" name="UserName" value="@user.UserName" class="layui-input">
             </div>
-            <label class="layui-form-label">邮箱地址</label>
+            <label class="layui-form-label"><span class="x-red">*</span>邮箱地址</label>
             <div class="layui-input-inline">
-                <input type="text" name="EmailAddress" value="@user.EmailAddress" class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">密码</label>
-            <div class="layui-input-inline">
-                <input type="password" name="Password" class="layui-input">
-            </div>
-            <label class="layui-form-label">确认密码</label>
-            <div class="layui-input-inline">
-                <input type="text" name="ConfirmPassword" class="layui-input">
+                <input type="text" name="EmailAddress" lay-verify="required" value="@user.EmailAddress" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="name" class="layui-form-label">
+            <label class="layui-form-label"><span class="x-red">*</span>昵称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" lay-verify="required" value="@user.Name" class="layui-input">
+            </div>
+            <label class="layui-form-label"><span class="x-red">*</span>真实姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="surname" lay-verify="required" value="@user.Surname" class="layui-input">
+            </div>
+        </div>
+        @if (user.Id == 0)
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="x-red">*</span>密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" lay-verify="required" name="password" class="layui-input">
+                </div>
+                <label class="layui-form-label"><span class="x-red">*</span>确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="confirmPassword" lay-verify="confirmPassword" class="layui-input">
+                </div>
+            </div>
+        }
+        <div class="layui-form-item">
+            <label for="IsActive" class="layui-form-label">
                 是否激活
             </label>
             <div class="layui-input-inline">
-                <input type="checkbox" name="isActive" value="@(user.IsActive)" lay-skin="switch" lay-text="是|否" lay-filter="isDefault" @(user.IsActive ? "checked" : "")>
+                <input type="checkbox" name="isActive" value="@(user.IsActive)" lay-skin="switch" lay-text="是|否" lay-filter="isActive" @(user.IsActive ? "checked" : "")>
             </div>
         </div>
         @if (roles != null && roles.Count() > 0)
         {
             <div class="layui-form-item">
-                <label class="layui-form-label"><span class="x-red">*</span>角色</label>
+                <label class="layui-form-label">角色</label>
                 <div class="layui-input-block">
 
                     @foreach (var item in roles)
                     {
-                        <input type="checkbox" name="Role[@item.Id]" lay-skin="primary" title="@item.Name" checked="">
+                        <input type="checkbox" name="role" lay-skin="primary" value="@item.Name" title="@item.Name" @(Model.UserIsInRole(item) ? "checked" : "")>
                     }
 
                 </div>

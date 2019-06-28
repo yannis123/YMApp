@@ -22,7 +22,7 @@
             , { field: 'userName', title: '用户名' }
             , {
                 field: 'roleNames', title: '角色', templet: function (d) {
-                    return d.roleNames[0];
+                    return d.roleNames.join(',');
                 }
             }
             , { field: 'emailAddress', title: '邮箱地址' }
