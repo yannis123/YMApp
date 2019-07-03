@@ -34,11 +34,11 @@ namespace YMApp.Web.Admin.Controllers
                 return Json(FileUploadResult.Error_Msg_Ecode_Elevel_HttpCode("files total size > 100MB , server refused !"));
             }
 
-            List<string> filePathResultList = new List<string>();
+            List<FileModel> fileList = new List<FileModel>();
 
             foreach (var file in files)
             {
-                var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                var oldfileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
 
                 string filePath = hostingEnv.WebRootPath + $@"\Files\Files\";
 
@@ -47,7 +47,7 @@ namespace YMApp.Web.Admin.Controllers
                     Directory.CreateDirectory(filePath);
                 }
 
-                fileName = Guid.NewGuid() + "." + fileName.Split('.')[1];
+                string fileName = Guid.NewGuid() + "." + oldfileName.Split('.')[1];
 
                 string fileFullName = filePath + fileName;
 
@@ -56,12 +56,18 @@ namespace YMApp.Web.Admin.Controllers
                     file.CopyTo(fs);
                     fs.Flush();
                 }
-                filePathResultList.Add($"/Files/Files/{fileName}");
+                FileModel model = new FileModel()
+                {
+                    FileName = oldfileName,
+                    FileSize = file.Length.ToString(),
+                    FilePath = $"/Files/Files/{fileName}"
+                };
+                fileList.Add(model);
             }
 
             string message = $"{files.Count} file(s) /{size} bytes uploaded successfully!";
 
-            return Json(FileUploadResult.Success_Msg_Data_DCount_HttpCode(message, filePathResultList, filePathResultList.Count));
+            return Json(FileUploadResult.Success_Msg_Data_DCount_HttpCode(message, fileList, fileList.Count));
         }
 
     }

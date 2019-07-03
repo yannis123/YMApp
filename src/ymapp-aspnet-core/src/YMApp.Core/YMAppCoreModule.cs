@@ -27,7 +27,7 @@ namespace YMApp
             YMAppLocalizationConfigurer.Configure(Configuration.Localization);
 
             // Enable this line to create a multi-tenant application.
-            Configuration.MultiTenancy.IsEnabled = YMAppConsts.MultiTenancyEnabled;
+            //Configuration.MultiTenancy.IsEnabled = YMAppConsts.MultiTenancyEnabled;
 
             // Configure roles
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);

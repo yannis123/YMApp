@@ -12,6 +12,8 @@ using YMApp.ECommerce.ProductFields.Mapper;
 using YMApp.ECommerce.ProductAttributes.Mapper;
 using YMApp.ECommerce.Articles.Mapper;
 using YMApp.ECommerce.Articles.Authorization;
+using YMApp.DocManage.Documents.Authorization;
+using YMApp.DocManage.Documents.Mapper;
 
 namespace YMApp
 {
@@ -26,7 +28,7 @@ namespace YMApp
             Configuration.Authorization.Providers.Add<PictureAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ProductAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ArticleAuthorizationProvider>();
-
+            Configuration.Authorization.Providers.Add<DocumentAuthorizationProvider>();
             //Configuration.Authorization.IsEnabled = false;
             //Configuration.MultiTenancy.IsEnabled = false;
 
@@ -41,6 +43,7 @@ namespace YMApp
                 ProductFieldMapper.CreateMappings(configuration);
                 ProductAttributeMapper.CreateMappings(configuration);
                 ArticleMapper.CreateMappings(configuration);
+                DocumentMapper.CreateMappings(configuration);
             });
         }
 

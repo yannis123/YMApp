@@ -1,0 +1,132 @@
+
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="anticon anticon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+            <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">{{l('Name')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="name" #name="ngModel"
+                                   [(ngModel)]="entity.name"
+                                   [placeholder]="l('Name')"  required  maxlength='200'  minlength='200' >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="name.control.dirty&&name.control.errors">
+<ng-container *ngIf="name.control.hasError('maxlength')">{{l('超过最大长度')+200}}</ng-container>                                <ng-container *ngIf="name.control.hasError('minlength')">{{l('小于最小长度')+200}}</ng-container>                                <ng-container *ngIf="name.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="categoryId">{{l('CategoryId')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="categoryId" #categoryId="ngModel"
+                                   [(ngModel)]="entity.categoryId"
+                                   [placeholder]="l('CategoryId')"  required >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="categoryId.control.dirty&&categoryId.control.errors">
+                                                                <ng-container *ngIf="categoryId.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="describe">{{l('Describe')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="describe" #describe="ngModel"
+                                   [(ngModel)]="entity.describe"
+                                   [placeholder]="l('Describe')"  maxlength='500'  minlength='500' >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="describe.control.dirty&&describe.control.errors">
+<ng-container *ngIf="describe.control.hasError('maxlength')">{{l('超过最大长度')+500}}</ng-container>                                <ng-container *ngIf="describe.control.hasError('minlength')">{{l('小于最小长度')+500}}</ng-container>                                
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fileSize">{{l('FileSize')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="fileSize" #fileSize="ngModel"
+                                   [(ngModel)]="entity.fileSize"
+                                   [placeholder]="l('FileSize')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="filePath">{{l('FilePath')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="filePath" #filePath="ngModel"
+                                   [(ngModel)]="entity.filePath"
+                                   [placeholder]="l('FilePath')"  required  maxlength='200'  minlength='200' >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="filePath.control.dirty&&filePath.control.errors">
+<ng-container *ngIf="filePath.control.hasError('maxlength')">{{l('超过最大长度')+200}}</ng-container>                                <ng-container *ngIf="filePath.control.hasError('minlength')">{{l('小于最小长度')+200}}</ng-container>                                <ng-container *ngIf="filePath.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="state">{{l('State')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="state" #state="ngModel"
+                                   [(ngModel)]="entity.state"
+                                   [placeholder]="l('State')"  required >
+
+                            <!-- 校验 -->
+                            <nz-form-explain *ngIf="state.control.dirty&&state.control.errors">
+                                                                <ng-container *ngIf="state.control.hasError('required')">{{l('CanNotNull')}}</ng-container>
+                            </nz-form-explain>
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="oriName">{{l('OriName')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="oriName" #oriName="ngModel"
+                                   [(ngModel)]="entity.oriName"
+                                   [placeholder]="l('OriName')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="category">{{l('Category')}}</nz-form-label>
+                <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                            <input nz-input name="category" #category="ngModel"
+                                   [(ngModel)]="entity.category"
+                                   [placeholder]="l('Category')" >
+
+
+                </nz-form-control>
+            </nz-form-item>
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="anticon anticon-close-circle-o"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="anticon anticon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>
+
+
+
+
+

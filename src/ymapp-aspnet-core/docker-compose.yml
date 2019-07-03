@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ymapp.web.admin:
+    image: ${DOCKER_REGISTRY-}ymappwebadmin
+    build:
+      context: .
+      dockerfile: src/YMApp.Web.Admin/Dockerfile

@@ -1078,6 +1078,69 @@ namespace YMApp.Migrations
                     b.ToTable("Categorys");
                 });
 
+            modelBuilder.Entity("YMApp.DocManage.Documents.Document", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0L);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("Describe")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(200)
+                        .HasDefaultValue("");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(200)
+                        .HasDefaultValue("");
+
+                    b.Property<string>("FileSize")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasDefaultValue("");
+
+                    b.Property<string>("OriName")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasDefaultValue("");
+
+                    b.Property<int>("State")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Documents");
+                });
+
             modelBuilder.Entity("YMApp.ECommerce.Articles.Article", b =>
                 {
                     b.Property<long>("Id")
@@ -1532,6 +1595,14 @@ namespace YMApp.Migrations
                     b.HasOne("YMApp.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("YMApp.DocManage.Documents.Document", b =>
+                {
+                    b.HasOne("YMApp.Categorys.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("YMApp.ECommerce.Articles.Article", b =>

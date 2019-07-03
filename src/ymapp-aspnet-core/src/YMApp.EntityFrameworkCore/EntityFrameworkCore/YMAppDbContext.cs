@@ -10,6 +10,7 @@ using YMApp.ECommerce.Products;
 using YMApp.ECommerce.ProductFields;
 using YMApp.ECommerce.ProductAttributes;
 using YMApp.ECommerce.Articles;
+using YMApp.DocManage.Documents;
 
 namespace YMApp.EntityFrameworkCore
 {
@@ -23,6 +24,7 @@ namespace YMApp.EntityFrameworkCore
         public DbSet<ProductField> ProductFields { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Document> Documents { get; set; }
 
         public YMAppDbContext(DbContextOptions<YMAppDbContext> options)
             : base(options)

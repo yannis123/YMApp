@@ -13,7 +13,11 @@ namespace YMApp.ConstEnum
         /// <summary>
         /// 文章
         /// </summary>
-        文章 = 2
+        文章 = 2,
+        /// <summary>
+        /// 文件
+        /// </summary>
+        文件 = 3
 
     }
 }
