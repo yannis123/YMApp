@@ -28,11 +28,11 @@ namespace YMApp.Web.Startup
 
         public Startup(IHostingEnvironment env)
         {
-            _appConfiguration = env.GetAppConfiguration();
+            _appConfiguration = env.GetAppConfiguration();            
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
+        {            
             services.AddUEditorService();
             // MVC
             services.AddMvc(
@@ -50,7 +50,7 @@ namespace YMApp.Web.Startup
                                 builder => builder.WithOrigins("http://localhost:62992").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
             });
             #endregion
-
+            
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 

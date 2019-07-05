@@ -1,6 +1,9 @@
 ﻿@using System.Globalization
 @using YMApp.Web.Resources
+@using Abp.Configuration.Startup
+@using YMApp
 @using Abp.Web.Security.AntiForgery
+@using YMApp.Web.Views.Shared.Components.TopBarLanguageSwitch
 
 @inject IAbpAntiForgeryManager AbpAntiForgeryManager
 @inject YMApp.Timing.AppTimes AppTimes
@@ -39,6 +42,8 @@
 
     <div class="layui-fluid">
         @RenderBody()
+
+        <vc:account-languages></vc:account-languages>
     </div>
 
     <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
