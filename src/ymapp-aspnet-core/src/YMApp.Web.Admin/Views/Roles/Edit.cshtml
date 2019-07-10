@@ -44,13 +44,13 @@
                         {
                             <tr>
                                 <td>
-                                    <input name="permission" type="checkbox" lay-skin="primary" lay-filter="father" @(grantedPermissionNames.Contains(item.Name) ? "checked" : "") title="@item.DisplayName" value="@item.Name">
+                                    <input name="permission" type="checkbox" lay-skin="primary" lay-filter="father" @(grantedPermissionNames.Contains(item.Name) ? "checked" : "") title="@item.DisplayName" value="@L(item.Name)">
                                 </td>
                                 <td>
                                     <div class="layui-input-block">
                                         @foreach (var p in permissions.Where(m => m.ParentName == item.Name))
                                         {
-                                            <input name="permission" lay-skin="primary" type="checkbox" @(grantedPermissionNames.Contains(p.Name) ? "checked" : "") title="@p.DisplayName" value="@p.Name">
+                                            <input name="permission" lay-skin="primary" type="checkbox" @(grantedPermissionNames.Contains(p.Name) ? "checked" : "") title="@p.DisplayName" value="@L(p.Name)">
                                         }
                                     </div>
                                 </td>

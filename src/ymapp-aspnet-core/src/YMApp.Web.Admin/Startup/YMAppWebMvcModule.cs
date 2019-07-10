@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using YMApp.Configuration;
+using Abp.Localization;
 
 namespace YMApp.Web.Startup
 {
@@ -19,9 +20,9 @@ namespace YMApp.Web.Startup
         }
 
         public override void PreInitialize()
-        {            
+        {
             //Abp.AspNetCore.Configuration.AbpAspNetCoreConfiguration.
-            Configuration.Navigation.Providers.Add<YMAppNavigationProvider>();
+            Configuration.Navigation.Providers.Add<YMAppNavigationProvider>();          
         }
 
         public override void Initialize()

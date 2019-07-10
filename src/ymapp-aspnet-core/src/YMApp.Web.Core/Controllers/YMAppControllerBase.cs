@@ -8,7 +8,7 @@ namespace YMApp.Controllers
     {
         protected YMAppControllerBase()
         {
-            LocalizationSourceName = YMAppConsts.LocalizationSourceName;
+               LocalizationSourceName = YMAppConsts.LocalizationSourceName;
         }
 
         protected void CheckErrors(IdentityResult identityResult)

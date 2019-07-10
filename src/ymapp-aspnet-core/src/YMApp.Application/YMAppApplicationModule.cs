@@ -14,6 +14,7 @@ using YMApp.ECommerce.Articles.Mapper;
 using YMApp.ECommerce.Articles.Authorization;
 using YMApp.DocManage.Documents.Authorization;
 using YMApp.DocManage.Documents.Mapper;
+using Abp.Localization;
 
 namespace YMApp
 {
@@ -31,7 +32,7 @@ namespace YMApp
             Configuration.Authorization.Providers.Add<DocumentAuthorizationProvider>();
             //Configuration.Authorization.IsEnabled = false;
             //Configuration.MultiTenancy.IsEnabled = false;
-
+          
             // 自定义类型映射
             Configuration.Modules.AbpAutoMapper().Configurators.Add(configuration =>
             {
