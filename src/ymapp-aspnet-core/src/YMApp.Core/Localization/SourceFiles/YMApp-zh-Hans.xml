@@ -273,6 +273,15 @@
     <text name="BatchDeleteProduct" value="批量删除"></text>
     <text name="ExportProduct"  value="导出"></text>
 
+    <text name="Document" value="资料管理"></text>
+    <text name="QueryDocument"  value="查询"></text>
+    <text name="CreateDocument"  value="添加"></text>
+    <text name="EditDocument"  value="编辑"></text>
+    <text name="DeleteDocument"  value="删除"></text>
+    <text name="BatchDeleteDocument" value="批量删除"></text>
+    <text name="ExportDocument"  value="导出"></text>
+
+
 
   </texts>
 </localizationDictionary>

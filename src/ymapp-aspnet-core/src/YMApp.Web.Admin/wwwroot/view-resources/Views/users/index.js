@@ -13,7 +13,7 @@
     laydate.render({
         elem: '#end' //指定元素
     });
-    var projectTab = table.render({
+    var _table = table.render({
         elem: '#list'
         , url: '/api/services/app/user/GetAll' //数据接口
         , page: true //开启分页

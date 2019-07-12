@@ -6,6 +6,7 @@ using Abp.Domain.Entities.Auditing;
 using System.ComponentModel.DataAnnotations;
 using YMApp.DocManage.Documents;
 using YMApp.Categorys;
+using YMApp.Categorys.Dtos;
 
 namespace YMApp.DocManage.Documents.Dtos
 {
@@ -86,7 +87,7 @@ namespace YMApp.DocManage.Documents.Dtos
 		/// <summary>
 		/// Category
 		/// </summary>
-		public Category Category { get; set; }
+		public CategoryListDto Category { get; set; }
 
 
 

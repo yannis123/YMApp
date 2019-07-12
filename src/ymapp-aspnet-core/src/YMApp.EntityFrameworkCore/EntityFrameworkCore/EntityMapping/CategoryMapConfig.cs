@@ -15,7 +15,6 @@ namespace YMApp.EntityFrameworkCore.EntityMapping
             b.Property(p => p.ParentId).HasDefaultValue(0).IsRequired();
             b.Property(p => p.Grade).HasDefaultValue(0).IsRequired();
             b.Property(p => p.Sort).HasDefaultValue(0).IsRequired();
-            b.HasMany(p => p.Trips);
         }
     }
 }

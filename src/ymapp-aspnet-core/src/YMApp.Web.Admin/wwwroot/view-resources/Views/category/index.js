@@ -16,15 +16,17 @@
         elem: '#table',
         url: '/api/services/app/category/GetTreeTableByType',
         cols: [[
-            { type: 'numbers',width: 80  },
-            { field: 'name',  title: '名称' },
+            { type: 'numbers', width: 80 },
+            { field: 'name', title: '名称' },
             {
-                field: 'type', width: 120,  align: 'center', templet: function (d) {
+                field: 'type', width: 120, align: 'center', templet: function (d) {
                     if (d.type === 1) {
                         return '<span class="layui-badge layui-bg-green">商品</span>';
                     }
                     if (d.type === 2) {
                         return '<span class="layui-badge layui-bg-blue">文章</span>';
+                    } else if (d.type === 3) {
+                        return '<span class="layui-badge layui-bg-yellow">文件</span>';
                     } else {
                         return '<span class="layui-badge-rim">其他</span>';
                     }

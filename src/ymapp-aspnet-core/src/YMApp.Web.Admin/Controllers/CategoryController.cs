@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using YMApp.Categorys;
 using YMApp.Categorys.Dtos;
 using YMApp.Controllers;
+using YMApp.Core;
 using YMApp.Web.Admin.Models.Category;
 
 namespace YMApp.Web.Admin.Controllers
@@ -38,7 +39,7 @@ namespace YMApp.Web.Admin.Controllers
         public async Task<JsonResult> GetCategoryTree(long selectedId)
         {
             List<CategoryTreeViewModel> treeViewModelList = new List<CategoryTreeViewModel>();
-            var list = (await _categoryAppService.GetPaged(new GetCategorysInput() { SkipCount = 0, MaxResultCount = 10, Sorting = "", FilterText = "" })).Items;
+            var list = (await _categoryAppService.GetPaged(new GetCategorysInput() { SkipCount = 0, MaxResultCount = AppLtmConsts.MaxPageSize, Sorting = "", FilterText = "" })).Items;
             var treeList = GetCategoryTree(0, selectedId, list);
             treeViewModelList.Add(new CategoryTreeViewModel() { Id = 0, Checked = false, Children = treeList, Name = "所有分类", Open = true });
             return Json(treeViewModelList);

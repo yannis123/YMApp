@@ -71,10 +71,11 @@
         _productService.createOrUpdate(requestModel).done(function () {
             //_$modal.modal('hide');
             // 获得frame索引
+            parent.layui.table.reload("list");
             var index = parent.layer.getFrameIndex(window.name);
             //关闭当前frame
             parent.layer.close(index);
-            parent.location.reload(true); //reload page to see edited user!
+           // parent.location.reload(true); //reload page to see edited user!
         }).always(function () {
             //abp.ui.clearBusy(_$modal);
         });

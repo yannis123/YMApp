@@ -20,6 +20,7 @@ using Abp.Application.Services.Dto;
 
 using YMApp.DocManage.Documents.Dtos;
 using YMApp.DocManage.Documents;
+using YMApp.ECommerce.Documents.Dtos;
 
 namespace YMApp.DocManage.Documents
 {
@@ -72,11 +73,13 @@ namespace YMApp.DocManage.Documents
         Task BatchDelete(List<long> input);
 
 
-		/// <summary>
+        /// <summary>
         /// 导出Document为excel表
         /// </summary>
         /// <returns></returns>
-		//Task<FileDto> GetToExcel();
+        //Task<FileDto> GetToExcel();
+
+        Task ChangeAuditState(ChangetAuditStateDto input);
 
     }
 }

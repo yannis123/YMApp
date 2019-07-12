@@ -19,6 +19,7 @@
     var uploadInst = upload.render({
         elem: '#upload' //绑定元素
         , url: '/files/upload' //上传接口
+        , accept: 'file' //普通文件
         , done: function (res) {
             //上传完毕回调
             var file = res.result.data[0];
@@ -36,7 +37,8 @@
     //监听提交
     form.on('submit(save)', function (data) {
         _documentService.createOrUpdate({ "document": data.field }).done(function () {
-            window.parent.location.reload();
+            //window.parent.location.reload();
+            parent.layui.table.reload("list");
             // 获得frame索引
             var index = parent.layer.getFrameIndex(window.name);
             //关闭当前frame

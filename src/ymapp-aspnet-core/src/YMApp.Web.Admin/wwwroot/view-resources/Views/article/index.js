@@ -14,7 +14,7 @@
             elem: '#End' //指定元素
         });
 
-        var productTabe = table.render({
+        var _table = table.render({
             elem: '#list'
             , height: 312
             , url: '/api/services/app/article/GetPaged' //数据接口
@@ -79,7 +79,7 @@
 
         form.on('submit(search)', function (data) {
             console.log(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
-            productTabe.reload({
+            _table.reload({
                 where: data.field
                 , page: {
                     curr: 1 //重新从第 1 页开始

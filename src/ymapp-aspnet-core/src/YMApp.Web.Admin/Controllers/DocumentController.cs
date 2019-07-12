@@ -26,9 +26,11 @@ namespace YMApp.Web.Admin.Controllers
             _documentAppService = documentAppService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            DocumentIndexViewModel model = new DocumentIndexViewModel();
+            model.Categorys = await _categoryAppService.GetListByType((int)CategoryTypeEnum.文件);
+            return View(model);
         }
 
         public async Task<IActionResult> Edit(NullableIdDto<long> input)

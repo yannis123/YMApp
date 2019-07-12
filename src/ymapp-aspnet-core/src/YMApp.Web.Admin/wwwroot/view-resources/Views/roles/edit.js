@@ -39,7 +39,8 @@
         };
         if (data.field.id > 0) {
             _roleService.update(role).done(function () {
-                window.parent.location.reload();
+               // window.parent.location.reload();
+                parent.layui.table.reload("list");
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame
@@ -48,7 +49,8 @@
             });
         } else {
             _roleService.create(role).done(function () {
-                window.parent.location.reload();
+                //window.parent.location.reload();
+                parent.layui.table.reload("list");
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame

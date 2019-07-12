@@ -1444,7 +1444,7 @@ namespace YMApp.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Trips");
+                    b.ToTable("Trip");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1659,7 +1659,7 @@ namespace YMApp.Migrations
             modelBuilder.Entity("YMApp.Trips.Trip", b =>
                 {
                     b.HasOne("YMApp.Categorys.Category", "Category")
-                        .WithMany("Trips")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

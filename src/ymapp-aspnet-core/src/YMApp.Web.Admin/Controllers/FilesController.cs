@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using YMApp.Controllers;
+using YMApp.DocManage.Documents;
 using YMApp.Web.Admin.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,11 +18,13 @@ namespace YMApp.Web.Admin.Controllers
     [EnableCors("AllowSpecificOrigin")]
     public class FilesController : YMAppControllerBase
     {
+        IDocumentAppService _documentAppService;
         private IHostingEnvironment hostingEnv;
 
-        public FilesController(IHostingEnvironment env)
+        public FilesController(IHostingEnvironment env, IDocumentAppService documentAppService)
         {
             this.hostingEnv = env;
+            _documentAppService = documentAppService;
         }
         public JsonResult Upload()
         {
@@ -70,5 +73,27 @@ namespace YMApp.Web.Admin.Controllers
             return Json(FileUploadResult.Success_Msg_Data_DCount_HttpCode(message, fileList, fileList.Count));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Download(Nullable<long> id)
+        {
+            try
+            {
+                var doc = await _documentAppService.GetById(new Abp.Application.Services.Dto.EntityDto<long>() { Id = id.Value });
+                if (doc != null && !string.IsNullOrEmpty(doc.FilePath))
+                {
+                    var addrUrl = Directory.GetCurrentDirectory() + "/wwwroot" + doc.FilePath;
+                    FileStream fs = new FileStream(addrUrl, FileMode.Open);
+                    return File(fs, "application/octet-tream", doc.OriName);
+                }
+                else
+                {
+                    return Content("文件不存在");
+                }
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
     }
 }

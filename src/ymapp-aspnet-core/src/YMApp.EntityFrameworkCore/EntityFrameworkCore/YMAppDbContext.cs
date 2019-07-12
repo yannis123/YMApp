@@ -18,7 +18,7 @@ namespace YMApp.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Category> Categorys { get; set; }
-        public DbSet<Trip> Trips { get; set; }
+        //public DbSet<Trip> Trips { get; set; }
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductField> ProductFields { get; set; }
