@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
 using YMApp.Authorization;
+using YMApp.DocManage.Documents.Authorization;
+using YMApp.ECommerce.Products.Authorization;
 
 namespace YMApp.Web.Startup
 {
@@ -14,127 +16,71 @@ namespace YMApp.Web.Startup
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
-                        PageNames.Home,
-                        L("HomePage"),
-                        url: "",
-                        icon: "home",
-                        requiresAuthentication: true
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Tenants,
-                        L("Tenants"),
-                        url: "Tenants",
-                        icon: "business",
-                        requiredPermissionName: PermissionNames.Pages_Tenants
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Users,
-                        L("Users"),
-                        url: "Users",
-                        icon: "people",
-                        requiredPermissionName: UserPermissions.Pages_Users
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Roles,
-                        L("Roles"),
-                        url: "Roles",
-                        icon: "local_offer",
-                        requiredPermissionName: RolePermissions.Pages_Roles
-                    )
-                )
-                .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.About,
-                        L("About"),
-                        url: "About",
-                        icon: "info"
-                    )
-                ).AddItem(new MenuItemDefinition(
-                     PageNames.Projects,
-                     L("Projects"),
-                     url: "Projects",
-                     icon: "info"
-                    ))
-                .AddItem( // Menu items below is just for demonstration!
-                    new MenuItemDefinition(
-                        "MultiLevelMenu",
-                        L("MultiLevelMenu"),
-                        icon: "menu"
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetBoilerplate",
-                            new FixedLocalizableString("ASP.NET Boilerplate")
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetboilerplate.com?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateTemplates",
-                                new FixedLocalizableString("Templates"),
-                                url: "https://aspnetboilerplate.com/Templates?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateSamples",
-                                new FixedLocalizableString("Samples"),
-                                url: "https://aspnetboilerplate.com/Samples?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetBoilerplateDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl"
-                            )
+                            PageNames.Home,
+                            L("HomePage"),
+                            url: "",
+                            icon: "layui-icon-home",
+                            requiresAuthentication: true
                         )
-                    ).AddItem(
-                        new MenuItemDefinition(
-                            "AspNetZero",
-                            new FixedLocalizableString("ASP.NET Zero")
+                ).AddItem(
+                    new MenuItemDefinition(
+                            PageNames.Users,
+                            L("Users"),
+                            url: "",
+                            icon: "layui-icon-user",
+                            requiresAuthentication: true
                         ).AddItem(
                             new MenuItemDefinition(
-                                "AspNetZeroHome",
-                                new FixedLocalizableString("Home"),
-                                url: "https://aspnetzero.com?ref=abptmpl"
-                            )
+                                    PageNames.Users,
+                                    L("Users"),
+                                    url: "Users",
+                                    icon: "people",
+                                    requiredPermissionName: UserPermissions.Pages_Users
+                                )
                         ).AddItem(
                             new MenuItemDefinition(
-                                "AspNetZeroDescription",
-                                new FixedLocalizableString("Description"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#description"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFeatures",
-                                new FixedLocalizableString("Features"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#features"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroPricing",
-                                new FixedLocalizableString("Pricing"),
-                                url: "https://aspnetzero.com/?ref=abptmpl#pricing"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroFaq",
-                                new FixedLocalizableString("Faq"),
-                                url: "https://aspnetzero.com/Faq?ref=abptmpl"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "AspNetZeroDocuments",
-                                new FixedLocalizableString("Documents"),
-                                url: "https://aspnetzero.com/Documents?ref=abptmpl"
-                            )
+                                    PageNames.Roles,
+                                    L("Roles"),
+                                    url: "Roles",
+                                    icon: "local_offer",
+                                    requiredPermissionName: RolePermissions.Pages_Roles
+                                )
                         )
-                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                            PageNames.Product,
+                            L("Product"),
+                            url: "",
+                            icon: "layui-icon-app",
+                            requiresAuthentication: true
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                    PageNames.Product,
+                                    L("Product"),
+                                    url: "Product",
+                                    icon: "local_offer",
+                                    requiredPermissionName: ProductPermissions.Node
+                                )
+                        )
+                ).AddItem(
+                    new MenuItemDefinition (
+                            PageNames.Document,
+                            L("Document"),
+                            url: "",
+                            icon: "layui-icon-app",
+                            requiresAuthentication: true
+                        ).AddItem(
+                            new MenuItemDefinition (
+                                    PageNames.Document,
+                                    L("Document"),
+                                    url: "Document",
+                                    icon: "layui-icon-app",
+                                    requiredPermissionName: DocumentPermissions.Node
+                                )
+                        )
                 );
+
+
         }
 
         private static ILocalizableString L(string name)
