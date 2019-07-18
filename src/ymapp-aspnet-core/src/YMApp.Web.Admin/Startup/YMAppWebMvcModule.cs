@@ -4,6 +4,7 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using YMApp.Configuration;
 using Abp.Localization;
+using Abp.Configuration.Startup;
 
 namespace YMApp.Web.Startup
 {
@@ -21,6 +22,7 @@ namespace YMApp.Web.Startup
 
         public override void PreInitialize()
         {
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
             //Abp.AspNetCore.Configuration.AbpAspNetCoreConfiguration.
             Configuration.Navigation.Providers.Add<YMAppNavigationProvider>();          
         }

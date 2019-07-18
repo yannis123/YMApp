@@ -15,6 +15,7 @@ using YMApp.ECommerce.Articles.Authorization;
 using YMApp.DocManage.Documents.Authorization;
 using YMApp.DocManage.Documents.Mapper;
 using Abp.Localization;
+using YMApp.Categorys.Authorization;
 
 namespace YMApp
 {
@@ -26,6 +27,7 @@ namespace YMApp
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<YMAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<CategoryAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PictureAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ProductAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ArticleAuthorizationProvider>();

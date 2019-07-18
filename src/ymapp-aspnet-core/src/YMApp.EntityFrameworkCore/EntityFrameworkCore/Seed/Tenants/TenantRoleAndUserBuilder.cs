@@ -12,6 +12,8 @@ using YMApp.Authorization.Users;
 using YMApp.ECommerce.Pictures.Authorization;
 using YMApp.ECommerce.Products.Authorization;
 using YMApp.ECommerce.Articles.Authorization;
+using YMApp.Categorys.Authorization;
+using YMApp.DocManage.Documents.Authorization;
 
 namespace YMApp.EntityFrameworkCore.Seed.Tenants
 {
@@ -51,14 +53,34 @@ namespace YMApp.EntityFrameworkCore.Seed.Tenants
                 .ToList();
 
             var permissions = PermissionFinder
-                .GetAllPermissions(
-                new YMAppAuthorizationProvider(),
-                new PictureAuthorizationProvider(),
-                new ProductAuthorizationProvider()
-                , new ArticleAuthorizationProvider())
+                .GetAllPermissions(new YMAppAuthorizationProvider())
                 .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant) &&
                             !grantedPermissions.Contains(p.Name))
                 .ToList();
+
+            #region 将新增权限授予Admin
+
+            var picturePermissions = PermissionFinder
+                .GetAllPermissions(new PictureAuthorizationProvider()).ToList();
+            permissions.AddRange(picturePermissions);
+
+            var productPermissions = PermissionFinder
+               .GetAllPermissions(new ProductAuthorizationProvider()).ToList();
+            permissions.AddRange(productPermissions);
+
+            var articlePermissions = PermissionFinder
+               .GetAllPermissions(new ArticleAuthorizationProvider()).ToList();
+            permissions.AddRange(articlePermissions);
+
+            var categoryPermissions = PermissionFinder
+              .GetAllPermissions(new CategoryAuthorizationProvider()).ToList();
+            permissions.AddRange(categoryPermissions);
+
+            var documentPermissions = PermissionFinder
+            .GetAllPermissions(new DocumentAuthorizationProvider()).ToList();
+            permissions.AddRange(documentPermissions);
+
+            #endregion
 
             if (permissions.Any())
             {

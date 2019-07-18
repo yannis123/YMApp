@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
 using YMApp.Authorization;
+using YMApp.Categorys.Authorization;
 using YMApp.DocManage.Documents.Authorization;
 using YMApp.ECommerce.Products.Authorization;
 
@@ -48,6 +49,23 @@ namespace YMApp.Web.Startup
                         )
                 ).AddItem(
                     new MenuItemDefinition(
+                            PageNames.Category,
+                            L("Category"),
+                            url: "",
+                            icon: "layui-icon-app",
+                            requiresAuthentication: true
+                        ).AddItem(
+                            new MenuItemDefinition (
+                                    PageNames.Category,
+                                    L("Category"),
+                                    url: "Category",
+                                    icon: "layui-icon-app",
+                                     requiredPermissionName: CategoryPermissions.Query
+                                )
+                        )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
                             PageNames.Product,
                             L("Product"),
                             url: "",
@@ -59,7 +77,7 @@ namespace YMApp.Web.Startup
                                     L("Product"),
                                     url: "Product",
                                     icon: "local_offer",
-                                    requiredPermissionName: ProductPermissions.Node
+                                    requiredPermissionName: ProductPermissions.Query
                                 )
                         )
                 ).AddItem(
@@ -75,7 +93,7 @@ namespace YMApp.Web.Startup
                                     L("Document"),
                                     url: "Document",
                                     icon: "layui-icon-app",
-                                    requiredPermissionName: DocumentPermissions.Node
+                                    requiredPermissionName: DocumentPermissions.Query
                                 )
                         )
                 );

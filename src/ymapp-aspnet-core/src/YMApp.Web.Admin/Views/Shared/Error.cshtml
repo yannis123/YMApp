@@ -1,18 +1,12 @@
 ﻿@using Abp.Collections.Extensions
 @model Abp.Web.Mvc.Models.ErrorViewModel
-<div class="row">
-    <section class="col-lg-12">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h3 class="panel-title">@Model.ErrorInfo.Message</h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    @(!string.IsNullOrEmpty(Model.ErrorInfo.Details) ? Model.ErrorInfo.Details : Model.ErrorInfo.Message)
-                </p>
-                @* Show validation errors *@
-                @if (!Model.ErrorInfo.ValidationErrors.IsNullOrEmpty())
-                {
+
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <blockquote class="layui-elem-quote">@Model.ErrorInfo.Message</blockquote>
+            @if (!Model.ErrorInfo.ValidationErrors.IsNullOrEmpty())
+            {<blockquote class="layui-elem-quote layui-quote-nm">
                     <ul>
                         @foreach (var validationError in Model.ErrorInfo.ValidationErrors)
                         {
@@ -25,8 +19,9 @@
                             </li>
                         }
                     </ul>
-                }
-            </div>
+                </blockquote>
+            }
         </div>
-    </section>
+    </div>
 </div>
+

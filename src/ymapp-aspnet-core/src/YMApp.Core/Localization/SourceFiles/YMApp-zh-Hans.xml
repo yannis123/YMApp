@@ -233,6 +233,11 @@
     <text name="Apply" value="应用" />
     <text name="CustomRange" value="自定义范围" />
 
+    <text name="Category" value="分类管理" />
+    <text name="QueryCategory"  value="查询"></text>
+    <text name="CreateCategory"  value="添加"></text>
+    <text name="EditCategory"  value="编辑"></text>
+    <text name="DeleteCategory"  value="删除"></text>
    
     <text name="Users" value="用户管理" />    
     <text name="QueryUser"  value="查询"></text>

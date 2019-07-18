@@ -4,7 +4,7 @@ namespace YMApp.DocManage.Documents.Authorization
 {
 	/// <summary>
     /// 定义系统的权限名称的字符串常量。
-    /// <see cref="DocumentAuthorizationProvider" />中对权限的定义.
+    /// <see cref="CategoryAuthorizationProvider" />中对权限的定义.
     ///</summary>
 	public static  class DocumentPermissions
 	{

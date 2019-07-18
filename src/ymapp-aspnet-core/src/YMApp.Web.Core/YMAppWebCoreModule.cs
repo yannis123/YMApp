@@ -20,7 +20,7 @@ namespace YMApp
          typeof(YMAppApplicationModule),
          typeof(YMAppEntityFrameworkModule),
          typeof(AbpAspNetCoreModule)
-        ,typeof(AbpAspNetCoreSignalRModule)
+        , typeof(AbpAspNetCoreSignalRModule)
      )]
     public class YMAppWebCoreModule : AbpModule
     {
@@ -40,7 +40,7 @@ namespace YMApp
             );
 
             // TODO:将所有错误信息显示到客户端
-            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = _env.IsDevelopment() ? true : false;
 
             // Use database for language management
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();

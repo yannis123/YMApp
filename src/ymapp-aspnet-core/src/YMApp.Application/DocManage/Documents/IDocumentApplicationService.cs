@@ -79,7 +79,7 @@ namespace YMApp.DocManage.Documents
         /// <returns></returns>
         //Task<FileDto> GetToExcel();
 
-        Task ChangeAuditState(ChangetAuditStateDto input);
+        Task ChangeAuditState(ChangetDocumentAuditStateDto input);
 
     }
 }

@@ -13,7 +13,7 @@
         treePidName: 'parentId',     // treetable新增参数
         treeDefaultClose: true,   // treetable新增参数
         treeLinkage: true,        // treetable新增参数
-        elem: '#table',
+        elem: '#list',
         url: '/api/services/app/category/GetTreeTableByType',
         cols: [[
             { type: 'numbers', width: 80 },

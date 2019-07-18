@@ -199,7 +199,7 @@ namespace YMApp.ECommerce.Articles
             await _entityRepository.DeleteAsync(s => input.Contains(s.Id));
         }
 
-        public async Task ChangeAuditState(ChangetAuditStateDto input)
+        public async Task ChangeAuditState(ChangetArticleAuditStateDto input)
         {
             var entity = await _entityRepository.GetAsync(input.Id.Value);
             entity.State = input.State;

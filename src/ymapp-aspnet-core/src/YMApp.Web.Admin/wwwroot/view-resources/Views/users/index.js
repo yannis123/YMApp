@@ -63,9 +63,9 @@
             xadmin.open('编辑', '/users/edit?id=' + data.id, 800, 600);
         } else if (layEvent === 'del') {
             layer.confirm('真的删除行么', function (index) {
+                layer.close(index);
                 _userService.delete({ id: data.id }).done(function () {
                     obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
                     layer.msg('删除成功!', { icon: 1, time: 1000 });
                 }).always(function () {
                     //abp.ui.clearBusy(_$modal);

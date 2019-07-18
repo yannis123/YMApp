@@ -71,7 +71,7 @@ namespace YMApp.ECommerce.Articles
         /// </summary>
         Task BatchDelete(List<long> input);
 
-        Task ChangeAuditState(ChangetAuditStateDto input);
+        Task ChangeAuditState(ChangetArticleAuditStateDto input);
 
         /// <summary>
         /// 导出Article为excel表

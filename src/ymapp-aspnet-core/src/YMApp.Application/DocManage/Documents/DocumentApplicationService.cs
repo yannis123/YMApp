@@ -209,7 +209,7 @@ namespace YMApp.DocManage.Documents
         //	await FillRoleNames(userListDtos);
         //	return _userListExcelExporter.ExportToFile(userListDtos);
         //}
-        public async Task ChangeAuditState(ChangetAuditStateDto input)
+        public async Task ChangeAuditState(ChangetDocumentAuditStateDto input)
         {
             var entity = await _entityRepository.GetAsync(input.Id.Value);
             entity.State = input.State;

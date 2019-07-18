@@ -62,9 +62,9 @@
                 xadmin.open('编辑', '/product/edit?id=' + data.id);
             } else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
+                    layer.close(index);
                     _productService.delete({ id: data.id }).done(function () {
                         obj.del(); //删除对应行（tr）的DOM结构
-                        layer.close(index);
                     }).always(function () {
                         //abp.ui.clearBusy(_$modal);
                     });
