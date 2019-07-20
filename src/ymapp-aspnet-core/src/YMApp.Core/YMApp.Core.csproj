@@ -25,7 +25,7 @@
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Trips\" />
+    <Folder Include="ECommerce\Trips\" />
     <Folder Include="ECommerce\ProductFields\" />
     <Folder Include="ECommerce\ProductAttributes\" />
   </ItemGroup>

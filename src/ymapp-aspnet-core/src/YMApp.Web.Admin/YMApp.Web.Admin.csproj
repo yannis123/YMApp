@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Account\_Layout.cshtml" />
+    <Content Remove="Views\Account\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="App_Data\Logs\Logs.txt.10" />
     <None Remove="App_Data\Logs\Logs.txt.10" />
     <None Remove="App_Data\Logs\Logs.txt.10" />
@@ -100,6 +105,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="ueditor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="web.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

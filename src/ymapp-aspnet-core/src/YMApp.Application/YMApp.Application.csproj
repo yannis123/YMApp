@@ -16,8 +16,5 @@
   <ItemGroup>
     <Folder Include="Categorys\Mapper\" />
     <Folder Include="Dtos\" />
-    <Folder Include="Trips\" />
-    <Folder Include="Trips\Dtos\" />
-    <Folder Include="Trips\Mapper\" />
   </ItemGroup>
 </Project>

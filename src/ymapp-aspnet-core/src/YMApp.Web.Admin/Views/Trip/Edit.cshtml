@@ -1,0 +1,75 @@
+﻿@model YMApp.Web.Admin.Models.Trip.EditTripViewModel
+@{
+    ViewData["Title"] = "Index";
+    var categorys = Model.Categorys;
+    var trip = Model.Trip;
+}
+
+@section scripts{
+    <script src="~/view-resources/views/trip/edit.js" asp-append-version="true"></script>
+}
+<div class="layui-row">
+    <form class="layui-form layui-form-pane" action="">
+        <input type="hidden" value="@trip.Id" name="Id" />
+        <div class="layui-form-item">
+            <label class="layui-form-label"> <span class="x-red">*</span>名称</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required" name="name" autocomplete="off" placeholder="请输入名称" value="@trip.Name" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"> <span class="x-red">*</span>分类</label>
+            <div class="layui-input-inline">
+                <select name="CategoryId" lay-verify="required" lay-filter="aihao">
+                    <option value="">请选则分类</option>
+                    @foreach (var item in categorys)
+                    {
+                        if (trip.CategoryId != 0 && trip.CategoryId == item.Id)
+                        {
+                            <option value="@item.Id" selected>@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+
+                    }
+                </select>
+            </div>
+
+            <label class="layui-form-label">价格</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input" name="price" value="@trip.Price">
+            </div>
+            <label class="layui-form-label">简介</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input" name="describe" value="@trip.Describe">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="x-red">*</span>封面图片</label>
+            <input name="pictureUrl" value="@trip.PictureUrl" type="hidden" />
+            <div class="layui-upload">
+                <button type="button" class="layui-btn" id="upload">上传图片</button><input class="layui-upload-file" type="file" accept="" name="file">
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img" style="width:100px;height:100px;" id="pictureUrl" src="@trip.PictureUrl">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">正文</label>
+            <div class="layui-input-block">
+                <textarea id="Content" name="Content" placeholder="请输入内容" class="layui-textarea">@trip.Content</textarea>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <button class="layui-btn" lay-submit="" lay-filter="save">保存</button>
+        </div>
+    </form>
+</div>

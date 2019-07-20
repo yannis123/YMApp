@@ -3,7 +3,6 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using YMApp.Authorization;
 using YMApp.Categorys.Mapper;
-using YMApp.Trips.Mapper;
 using YMApp.ECommerce.Pictures.Mapper;
 using YMApp.ECommerce.Products.Mapper;
 using YMApp.ECommerce.Pictures.Authorization;
@@ -16,6 +15,8 @@ using YMApp.DocManage.Documents.Authorization;
 using YMApp.DocManage.Documents.Mapper;
 using Abp.Localization;
 using YMApp.Categorys.Authorization;
+using YMApp.ECommerce.Trips.Authorization;
+using YMApp.ECommerce.Trips.Mapper;
 
 namespace YMApp
 {
@@ -32,21 +33,22 @@ namespace YMApp
             Configuration.Authorization.Providers.Add<ProductAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<ArticleAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<DocumentAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<TripAuthorizationProvider>();
             //Configuration.Authorization.IsEnabled = false;
             //Configuration.MultiTenancy.IsEnabled = false;
-          
+
             // 自定义类型映射
             Configuration.Modules.AbpAutoMapper().Configurators.Add(configuration =>
             {
                 // XXXMapper.CreateMappers(configuration);
                 CategoryMapper.CreateMappings(configuration);
-                TripMapper.CreateMappings(configuration);
                 PictureMapper.CreateMappings(configuration);
                 ProductMapper.CreateMappings(configuration);
                 ProductFieldMapper.CreateMappings(configuration);
                 ProductAttributeMapper.CreateMappings(configuration);
                 ArticleMapper.CreateMappings(configuration);
                 DocumentMapper.CreateMappings(configuration);
+                TripMapper.CreateMappings(configuration);
             });
         }
 

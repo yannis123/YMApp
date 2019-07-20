@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using YMApp.Trips;
+using YMApp.ECommerce.Trips;
 
 namespace YMApp.EntityFrameworkCore.EntityMapping
 {

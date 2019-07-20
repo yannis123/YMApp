@@ -1,0 +1,72 @@
+﻿@model YMApp.Web.Admin.Models.Trip.TripIndexViewModel
+@{
+    ViewData["Title"] = "Index";
+    var categorys = Model.Categorys;
+}
+@section scripts{
+    <script src="~/view-resources/views/trip/index.js" asp-append-version="true"></script>
+}
+<div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-body ">
+                <form class="layui-form layui-col-space5">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" placeholder="标题" name="name">
+                    </div>
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <select name="State">
+                            <option value="">状态</option>
+                            <option value="0">未审核</option>
+                            <option value="1">已审核</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <select name="CategoryId">
+                            <option value="">分类</option>
+                            @foreach (var item in categorys)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" placeholder="开始日期" name="Start" id="Start">
+                    </div>
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" placeholder="截止日期" name="End" id="End">
+                    </div>
+
+
+
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <button class="layui-btn" lay-submit lay-filter="search">
+                            <i class="layui-icon">&#xe615;</i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="layui-card-header">
+                <button class="layui-btn layui-btn-danger" onclick="delAll()">
+                    <i class="layui-icon"></i>批量删除
+                </button>
+                <button class="layui-btn" onclick="xadmin.open('添加线路','/trip/edit','','',true)">
+                    <i class="layui-icon"></i>添加
+                </button>
+            </div>
+            <div class="layui-card-body ">
+                <table class="layui-table layui-form" id="list" lay-filter="test"></table>
+                <script type="text/html" id="barDemo">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                </script>
+                <script type="text/html" id="stateTpl">
+                    <input type="checkbox" name="State" value="{{d.id}}" lay-skin="switch" lay-text="审核|未审核" lay-filter="state" {{ d.state == 1 ? 'checked' : '' }}>
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+

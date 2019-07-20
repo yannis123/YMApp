@@ -4,6 +4,7 @@ using YMApp.Authorization;
 using YMApp.Categorys.Authorization;
 using YMApp.DocManage.Documents.Authorization;
 using YMApp.ECommerce.Products.Authorization;
+using YMApp.ECommerce.Trips.Authorization;
 
 namespace YMApp.Web.Startup
 {
@@ -55,7 +56,7 @@ namespace YMApp.Web.Startup
                             icon: "layui-icon-app",
                             requiresAuthentication: true
                         ).AddItem(
-                            new MenuItemDefinition (
+                            new MenuItemDefinition(
                                     PageNames.Category,
                                     L("Category"),
                                     url: "Category",
@@ -81,19 +82,35 @@ namespace YMApp.Web.Startup
                                 )
                         )
                 ).AddItem(
-                    new MenuItemDefinition (
+                    new MenuItemDefinition(
                             PageNames.Document,
                             L("Document"),
                             url: "",
                             icon: "layui-icon-app",
                             requiresAuthentication: true
                         ).AddItem(
-                            new MenuItemDefinition (
+                            new MenuItemDefinition(
                                     PageNames.Document,
                                     L("Document"),
                                     url: "Document",
                                     icon: "layui-icon-app",
                                     requiredPermissionName: DocumentPermissions.Query
+                                )
+                        )
+                ).AddItem(
+                    new MenuItemDefinition(
+                            PageNames.Trip,
+                            L("Trip"),
+                            url: "",
+                            icon: "layui-icon-app",
+                            requiresAuthentication: true
+                        ).AddItem(
+                            new MenuItemDefinition(
+                                    PageNames.Trip,
+                                    L("Trip"),
+                                    url: "Trip",
+                                    icon: "layui-icon-app",
+                                    requiredPermissionName: TripPermissions.Query
                                 )
                         )
                 );

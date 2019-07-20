@@ -10,6 +10,7 @@
         public const string Category = "Category";
         public const string Product = "Product";
         public const string Document = "Document";
+        public const string Trip = "Trip";
 
         public const string Projects = "Projects";
     }

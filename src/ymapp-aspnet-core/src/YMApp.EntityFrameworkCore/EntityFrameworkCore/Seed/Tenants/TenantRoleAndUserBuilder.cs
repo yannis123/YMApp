@@ -14,6 +14,7 @@ using YMApp.ECommerce.Products.Authorization;
 using YMApp.ECommerce.Articles.Authorization;
 using YMApp.Categorys.Authorization;
 using YMApp.DocManage.Documents.Authorization;
+using YMApp.ECommerce.Trips.Authorization;
 
 namespace YMApp.EntityFrameworkCore.Seed.Tenants
 {
@@ -79,6 +80,10 @@ namespace YMApp.EntityFrameworkCore.Seed.Tenants
             var documentPermissions = PermissionFinder
             .GetAllPermissions(new DocumentAuthorizationProvider()).ToList();
             permissions.AddRange(documentPermissions);
+
+            var tripPermissions = PermissionFinder
+           .GetAllPermissions(new TripAuthorizationProvider()).ToList();
+            permissions.AddRange(tripPermissions);
 
             #endregion
 

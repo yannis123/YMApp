@@ -17,7 +17,11 @@ namespace YMApp.ConstEnum
         /// <summary>
         /// 文件
         /// </summary>
-        文件 = 3
+        文件 = 3,
+        /// <summary>
+        /// 线路
+        /// </summary>
+        线路 = 4
 
     }
 }
