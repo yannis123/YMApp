@@ -36,7 +36,7 @@ namespace YMApp.Web.Startup
             services.AddUEditorService();
             // MVC
             services.AddMvc(
-                options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
+                options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())                
             ).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -47,7 +47,7 @@ namespace YMApp.Web.Startup
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                                builder => builder.WithOrigins("http://localhost:62992").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+                                builder => builder.WithOrigins("http://localhost:55106").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
             });
             #endregion
 
@@ -70,7 +70,7 @@ namespace YMApp.Web.Startup
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseAbp(); // Initializes ABP framework.
-
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();                
@@ -88,7 +88,7 @@ namespace YMApp.Web.Startup
                 RequestPath = "/upload",
                 OnPrepareResponse = ctx =>
                 {
-                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=36000");
+                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=36000");                 
                 }
             });
 

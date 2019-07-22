@@ -42,8 +42,8 @@
     //监听提交
     form.on('submit(save)', function (data) {
         _categoryService.createOrUpdate({ category: data.field }).done(function () {
-            //window.parent.location.reload();
-            parent.layui.table.reload("list");
+            window.parent.location.reload();
+            //parent.layui.table.reload("list");
             // 获得frame索引
             var index = parent.layer.getFrameIndex(window.name);
             //关闭当前frame

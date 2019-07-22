@@ -45,6 +45,7 @@
             _categoryService.delete({ id: data.id }).done(function () {
                 obj.del(); //删除对应行（tr）的DOM结构
                 layer.close(index);
+                layer.msg('删除成功!', { icon: 1, time: 1000 });
             }).always(function () {
                 //abp.ui.clearBusy(_$modal);
             });
@@ -55,11 +56,11 @@
     });
 
     $('#btn-expand').click(function () {
-        treetable.expandAll('#table');
+        treetable.expandAll('#list');
     });
 
     $('#btn-fold').click(function () {
-        treetable.foldAll('#table');
+        treetable.foldAll('#list');
     });
 
     $('#btn-search').click(function () {
@@ -71,7 +72,7 @@
             if (keyword != '' && text.indexOf(keyword) >= 0) {
                 $(this).css('background-color', 'rgba(250,230,160,0.5)');
                 if (searchCount == 0) {
-                    treetable.expandAll('#table');
+                    treetable.expandAll('#list');
                     $('html,body').stop(true);
                     $('html,body').animate({ scrollTop: $(this).offset().top - 150 }, 500);
                 }
