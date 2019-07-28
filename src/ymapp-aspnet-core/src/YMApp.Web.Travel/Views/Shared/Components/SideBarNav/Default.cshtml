@@ -1,0 +1,43 @@
+﻿@using Abp.Collections.Extensions
+@using YMApp.Web.Views
+@using YMApp.Web.Views.Shared.Components.SideBarNav
+@model SideBarNavViewModel
+
+<div class="nav">
+    <div class="menu">
+        <ul>
+            <li>
+                <a class="hide" href="/">首页</a>
+
+                @foreach (var parentCat in Model.Categorys.Where(m => m.ParentId == 0).OrderBy(m => m.Sort))
+                {
+                <li>
+                    <a class="hide" href="/trip/list/@parentCat.Id" target="_blank">@parentCat.Name</a>
+                    <!--[if lte IE 6]>
+                    <a href="/trip/list/@parentCat.Id"  target="_blank">@parentCat.Name
+                    <table><tr><td>
+                    <![endif]-->
+                    @{
+                        var childCat = Model.Categorys.Where(m => m.ParentId == parentCat.Id).OrderBy(m => m.Sort);
+                    }
+                    @if (childCat != null && childCat.Count() > 0)
+                    {
+                        <ul>
+                            @foreach (var cat in childCat)
+                            {
+                                <li><a href="/trip/list/@cat.Id" target="_blank" style="width:180px;">@cat.Name</a></li>
+                            }
+                        </ul>
+                    }
+
+                    <!--[if lte IE 6]>
+                    </td></tr></table>
+                    </a>
+                    <![endif]-->
+                </li>
+            }
+            </ul>
+            <!-- clear the floats if required -->
+            <div class="clear"> </div>
+        </div>
+    </div>

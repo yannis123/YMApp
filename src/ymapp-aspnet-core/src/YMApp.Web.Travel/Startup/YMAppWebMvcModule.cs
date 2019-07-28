@@ -25,6 +25,7 @@ namespace YMApp.Web.Startup
 
         public override void Initialize()
         {
+            Configuration.Authorization.IsEnabled = false;
             IocManager.RegisterAssemblyByConvention(typeof(YMAppWebMvcModule).GetAssembly());
         }
     }
