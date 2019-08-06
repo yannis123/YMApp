@@ -82,6 +82,12 @@ namespace YMApp.Web.Startup
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "list",
+                    template: "{controller=Trip}/{action=List}/{id?}");
+                routes.MapRoute(
+                   name: "detail",
+                   template: "{controller=Trip}/{action=Index}/{id?}");
             });
         }
     }

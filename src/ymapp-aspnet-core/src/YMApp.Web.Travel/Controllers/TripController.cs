@@ -34,7 +34,8 @@ namespace YMApp.Web.Travel.Controllers
             var model = new TripListViewModel()
             {
                 Category = await _ctegoryAppService.GetById(new Abp.Application.Services.Dto.EntityDto<long>() { Id = input.CategoryId }),
-                Trips = trips.Items.ToList()
+                Trips = trips.Items.ToList(),
+                TotalCount = trips.TotalCount
             };
             return View(model);
         }

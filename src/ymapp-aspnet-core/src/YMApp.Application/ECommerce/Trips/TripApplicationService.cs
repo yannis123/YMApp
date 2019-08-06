@@ -57,11 +57,11 @@ namespace YMApp.ECommerce.Trips
 		[AbpAuthorize(TripPermissions.Query)]
         public async Task<PagedResultDto<TripListDto>> GetPaged(GetTripsInput input)
         {
-
-            var query = _entityRepository.GetAll().AsNoTracking()
+            var query = _entityRepository.GetAll().Include(m => m.Category).AsNoTracking()
                 .WhereIf(!string.IsNullOrEmpty(input.Name), m => m.Name.Contains(input.Name))
                 .WhereIf(input.State.HasValue, m => m.State == input.State)
                 .WhereIf(input.CategoryId.HasValue, m => m.CategoryId == input.CategoryId)
+                //.WhereIf(input.CategoryId.HasValue, m => m.Category.ParentId == input.CategoryId)
                 .WhereIf(input.Start.HasValue, m => m.CreationTime > input.Start)
                 .WhereIf(input.End.HasValue, m => m.CreationTime < input.End);
             // TODO:根据传入的参数添加过滤条件

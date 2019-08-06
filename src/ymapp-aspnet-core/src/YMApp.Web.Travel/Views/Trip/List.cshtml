@@ -6,6 +6,24 @@
     var category = Model.Category;
     var trips = Model.Trips;
 }
+
+@section Styles{
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+}
+@section Scripts{
+    <script src="~/lib/layui/layui.all.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        layui.use('laypage', function () {
+            var laypage = layui.laypage;
+            var count = @Model.TotalCount;
+            //执行一个laypage实例
+            laypage.render({
+                elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
+                , count: count //数据总数，从服务端得到
+            });
+        });
+    </script>
+}
 <div class="dqwz"><a href="/">首页</a>-&gt;<a href="/xclist/1.html">河南旅游</a>-&gt;河南一日游</div>
 <div class="content_cont">
     <div class="cont_left float_le">
@@ -152,173 +170,21 @@
     <div class="cont_right float_ri">
         <div class="cont_ri_tit">@category.Name</div>
         <div class="pro_list">
-
-            <ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/294.html" target="_blank"><img src="/upload/201811/t_5be2b54d92905.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/294.html" target="_blank"><b class="blue">少林寺一日游</b></a>
-                    <p>少林寺是我国久负盛名的佛教寺院，声誉显赫的禅宗祖庭，少林功夫的发祥地，位于登封市西12公里处的嵩山五乳峰下，是嵩山风景区的主要核心景区之一。 少林寺建于北魏太和十九年（公元495年），是孝文帝为安顿印度高僧跋陀而建，因其建于嵩山少室密林之中，故定名“少林寺”</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥168</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/295.html" target="_blank"><img src="/upload/201809/t_5bad981047146.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/295.html" target="_blank"><b class="blue">云台山一日游</b></a>
-                    <p>国家五A级风景区，世界地质公园。 河南云台山，位于河南省修武县境内，以独具特色的“北方岩溶地貌”被列入首批世界地质公园名录。同时又是河南省唯一一个集国家重点风景名胜区、国家AAAAA级景区、国家地质公园、国家森林公园、国家水利风景名胜区、国家猕猴自然保护区六个国家级于一体的风景名胜区。景区面积190平方公里，含泉瀑峡、潭瀑峡、红石峡、子房湖、万善寺、百家岩、仙苑、圣顶、叠彩洞、青龙峡十大景点。还有亚洲落差最大的瀑布云台瀑布。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥268</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/293.html" target="_blank"><img src="/upload/201811/t_5be242090b8b9.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/293.html" target="_blank"><b class="blue">少林寺、龙门石窟一日游</b></a>
-                    <p>龙门石窟:位于洛阳市区南面12公里处，是与大同云岗石窟、敦煌千佛洞石窟齐名的我国三大石窟之一。1961年被国务院列为国家重点文物保护单位。 2000年11月洛阳龙门石窟被联合国教科文组织遗产委员会列入《世界遗产名录》。 龙门是一个风景秀丽的地方，这里有东、西两龙门石窟、白园、巴座青山对峙，伊水缓缓北流。远远望去，犹如一座天然门阙，所以古称“伊阙”。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥328</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/296.html" target="_blank"><img src="/upload/201405/t_5385a5d140531.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/296.html" target="_blank"><b class="blue">开封清明上河园一日游</b></a>
-                    <p>开封清明上河园是国家AAAAA级旅游景区，一座以宋文化为主题的大型历史文化公园。它是依照北宋著名画家张择端的传世之作《清明上河图》为蓝本建造的。1998年10月28日正式对外开放。景区占地600余亩，其中水面180亩，大小古船50多艘，房屋400余间，景观建筑面积30000多平方米，形成了中原地区最大的仿宋古建筑群，成为中原大黄河旅游线上的一个重要景区（点），被评为国家文化产业示范基地、全国旅游知名品牌、全国文明景区示范点、全国旅游系统先进集体、河南省文化旅游示范基地.</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥268</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/416.html" target="_blank"><img src="/upload/201809/t_5ba0ac3591f48.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/416.html" target="_blank"><b class="blue">宝泉一日游</b></a>
-                    <p>宝泉（西沟） 位于辉县市薄壁镇境内，平均海拔1150米，距辉县市区50公里、新乡市70公里、焦作市60公里，总面积约78平方公里。小西沟景区森林覆盖率达95%，是国家森林保护区，国家级重点生态公益林和太行猕猴保护区，年平均气温10度左右，气候宜人，空气清新。景区坐拥高峡平湖、雄奇峡谷、超高瀑群等太行奇景，犹如一幅鬼斧神工的峡谷画卷，是乾隆御赐“泉盈水灵”之地，自古“宝泉”就是钱币统称，因此景区是一处吉祥福瑞之地。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥118</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/211.html" target="_blank"><img src="/upload/201811/t_5be3aa454c7c6.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/211.html" target="_blank"><b class="blue">青天河一日游</b></a>
-                    <p>青天河风景名胜区 (北方三峡青天河)，位于太行山南麓，史称\\\"太行山下小江南\\\"的博爱境内，1997年被评为\\\"河南省十佳风景名胜区\\\"。景区面积45.2平方公里，由青天河、靳家岭、月山寺、大泉湖、石佛滩、凤凰岭、寨卜昌明清民居村、太行博竹苑等七大景区、302个景点组成.</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥238</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/310.html" target="_blank"><img src="/upload/201405/t_53731f7b00e41.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/310.html" target="_blank"><b class="blue">尧山漂流一日游</b></a>
-                    <p>
-                        尧山第一漂位于河南省平顶山鲁山县尧山镇，地处国家5A级景区尧山山麓，尧山大峡谷最上端。漂流河段全长6公里，落差150米，河水湍急，惊险刺激，漂流时间大约2.5小时。河道最宽处仅20m，最窄处只有3m，既有急流险滩，又有平湖深潭，是漂流的理想河段。
-                    </p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥178</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/404.html" target="_blank"><img src="/upload/201811/t_5be3aa0e29d8a.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/404.html" target="_blank"><b class="blue">嵩山一日游</b></a>
-                    <p>太室山为嵩山之东峰，据传，禹王的第一个妻子涂山氏生启于此，山下建有启母庙，故称之为“太室”（室：妻也。）。太室山共有三十六峰，主峰峻极峰，海拔1440米，以《诗经·嵩高》“峻极于天”为名，后因清高宗乾隆游嵩山时，曾在此赋诗立碑，所以又称“御碑峰”。登上峻极峰远眺，西有少室侍立，南有箕山面拱，前有颍水奔流，北望黄河如带。倚石俯瞰，脚下峰壑开绽，大有“一览众山小”之气势。山峰间云岚瞬息万变，美不胜收。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥138</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/189.html" target="_blank"><img src="/upload/201809/t_5bad985c2af20.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/189.html" target="_blank"><b class="blue">郭亮村一日游</b></a>
-                    <p>万仙山景区为国家AAAA级旅游景区、国家地质公园、国家森林公园，是国内著名的休闲旅游胜地、避暑基地、影视基地、写生基地和拓展培训基地。 先后有《清凉寺钟声》、《走出地平线》、《倒霉大叔的婚事》、《举起手来》等40多部影视剧在此拍摄，郭亮村被誉为“中华第一影视村”，著名影星濮存昕，郭达，倪萍，潘长江等艺术家都曾莅临景区。景区由中华影视村——郭亮、清幽山乡——南坪、人间仙境——罗姐寨三个分景区组成，位于河南省新乡辉县市西北部太行山腹地，距郑州市150公里，距新乡市70公里，主要有红岩绝壁大峡谷、影视村、绝壁长</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥188</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/73.html" target="_blank"><img src="/upload/201811/t_5be2a68434b7a.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/73.html" target="_blank"><b class="blue">八里沟一日游</b></a>
-                    <p>
-                        八里沟景区位于河南省新乡市西北50公里处，总面积28平公里，属典型的南太行风光，是国家级4A级景区、国家地质公园、自然猕猴保护区、河南省著名风景区、河南省十佳景区。
-                        八里沟景区荟萃了太行山水精华，集奇、险、俊、秀、幽于一谷，号称“太行之魂、中华风骨”，被园林专家誉为“亚洲一绝”。是太行山水精粹所聚之地，兼有泰山之雄，华山之险，九寨、青城之幽，黄山、峨眉之秀，号称“太行之魂、中华风骨
-                    </p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥118</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/334.html" target="_blank"><img src="/upload/201406/t_539675010f657.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/334.html" target="_blank"><b class="blue">秘洞军事漂流一日游</b></a>
-                    <p>      军事秘洞仙境漂流位于河南省平顶山市鲁山县四棵树乡岱坪村，紧邻207国道，距郑尧高速下汤站18公里，距二广高速南召站20公里，交通十分便捷。军事秘洞仙境漂流以绿色森林为依托，自然风光为背景，厚重历史文化为底蕴，融娱乐健身、探幽为一体。这里距国家AAA级旅游区秘洞景区3公里，距千年古刹文殊寺4公里，有充满神秘色彩的军事文化和宗教文化，乘坐皮艇在清碧的水中顺流而漂，忽缓忽急，既可饱览两岸原始自然风光，又能感受刺激体会拼搏，独具特色，其乐无穷。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥178</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/467.html" target="_blank"><img src="/upload/201811/t_5be2a6bb40ea8.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/467.html" target="_blank"><b class="blue">少林寺明堂天堂一日游</b></a>
-                    <p>少林寺是我国久负盛名的佛教寺院，声誉显赫的禅宗祖庭，少林功夫的发祥地，位于登封市西12公里处的嵩山五乳峰下，是嵩山风景区的主要核心景区之一。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥388</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/236.html" target="_blank"><img src="/upload/201403/t_53144600ed993.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/236.html" target="_blank"><b class="blue"> 洛阳牡丹一日游</b></a>
-                    <p>洛阳牡丹，“唯有牡丹真国色，花开时节动京城”，为多年生落叶小灌木。洛阳是十三朝古都，有“千年帝都，牡丹花城”的美誉。“洛阳地脉花最宜，牡丹尤为天下奇。”其栽培始于隋，鼎盛于唐，宋时甲于天下。它雍容华贵、国色天香、富丽堂皇，寓意吉祥富贵、繁荣昌盛，是华夏民族兴旺发达、美好幸福的象征。洛阳牡丹花朵硕大，品种繁多，花色奇绝，有红、白、粉、黄、紫、蓝、绿、黑及复色9大色系、10种花型、1000多个品种。花开时节，洛阳城花海人潮，竞睹牡丹倩姿芳容。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥118</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/183.html" target="_blank"><img src="/upload/201811/t_5be2968813afe.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/183.html" target="_blank"><b class="blue">龙门石窟白马寺一日游</b></a>
-                    <p>河南，古称中原，简称“豫”，地处中国中东部，黄河中下游，省会郑州，因其大部分位于历史上的黄河以南，故名河南，与山东、河北、山西、陕西、湖北、安徽接壤，承东启西、联南望北。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥298</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/411.html" target="_blank"><img src="/upload/201503/t_5514efb165414.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/411.html" target="_blank"><b class="blue">白马+牡丹一日游 </b></a>
-                    <p>洛阳牡丹，“唯有牡丹真国色，花开时节动京城”，为多年生落叶小灌木。洛阳是十三朝古都，有“千年帝都，牡丹花城”的美誉。“洛阳地脉花最宜，牡丹尤为天下奇。”其栽培始于隋，鼎盛于唐，宋时甲于天下。它雍容华贵、国色天香、富丽堂皇，寓意吉祥富贵、繁荣昌盛，是华夏民族兴旺发达、美好幸福的象征。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥198</b>人/次</li>
-                <li class="clear"></li>
-            </ul><ul>
-                <li class="pro_list1_li1">
-                    <a href="/xc/370.html" target="_blank"><img src="/upload/201408/t_53fd98e4eabad.jpg" width="120" height="80"></a>
-                </li>
-                <li class="pro_list1_li2">
-                    <a href="/xc/370.html" target="_blank"><b class="blue">方特欢乐世界园一日游</b></a>
-                    <p>郑州方特欢乐世界位于郑州市郑州新区，是中原地区规模大的第四代高科技主题公园。郑州方特欢乐世界由飞越极限、海螺湾、逃出恐龙岛、唐古拉雪山、暴风眼、星球达人秀等20多个大型主题项目区组成，涵盖主题项目、游乐项目、休闲及景观项目200多项，其中包括许多世界领先的超大型游乐项目。</p>
-                </li>
-                <li class="pro_list1_li3"><b class="orange">￥238</b>人/次</li>
-                <li class="clear"></li>
-            </ul>        <div class="page"> 38 条记录 1/3 页  <a href="/xclist/4.html?&amp;p=2">下一页</a>     &nbsp;<span class="current">1</span>&nbsp;<a href="/xclist/4.html?&amp;p=2">&nbsp;2&nbsp;</a>&nbsp;<a href="/xclist/4.html?&amp;p=3">&nbsp;3&nbsp;</a>   </div>
+            @foreach (var trip in trips)
+            {
+                <ul>
+                    <li class="pro_list1_li1">
+                        <a href="/trip/index/@trip.Id" target="_blank"><img src="@trip.PictureUrl" width="120" height="80"></a>
+                    </li>
+                    <li class="pro_list1_li2">
+                        <a href="/trip/index/@trip.Id" target="_blank"><b class="blue">@trip.Name</b></a>
+                        <p>@trip.Describe</p>
+                    </li>
+                    <li class="pro_list1_li3"><b class="orange">￥@trip.Price</b>人/次</li>
+                    <li class="clear"></li>
+                </ul>
+            }
+            <div id="test1" style="float:right;"></div>
         </div>
     </div>
     <div class="clear"></div>
