@@ -23,9 +23,9 @@ export default class EditModal extends Component {
 
         if (isEdit) {
             this.setState({ loading: true });
-            this.props.ajax.get(`/xxx/${id}`)
+            this.props.ajax.get(`/services/app/User/Get?id=${id}`)
                 .then(res => {
-                    this.setState({ data: res || {} });
+                    this.setState({ data: res.result || {} });
                 })
                 .finally(() => this.setState({ loading: false }));
         }
@@ -43,14 +43,14 @@ export default class EditModal extends Component {
 
             if (isEdit) {
                 this.setState({ loading: true });
-                this.props.ajax.put('/xxx', values, { successTip: '修改成功！' })
+                this.props.ajax.put('services/app/User/Update', values, { successTip: '修改成功！' })
                     .then(() => {
                         const { onOk } = this.props;
                         onOk && onOk();
                     })
                     .finally(() => this.setState({ loading: false }));
             } else {
-                this.props.ajax.post('/xxx', values, { successTip: '添加成功！' })
+                this.props.ajax.post('/services/app/User/Create', values, { successTip: '添加成功！' })
                     .then(() => {
                         const { onOk } = this.props;
                         onOk && onOk();
@@ -82,7 +82,7 @@ export default class EditModal extends Component {
         const { id } = this.props;
         const isEdit = id !== null;
         const { loading, data } = this.state;
-
+        const span = 8;
         const FormElement = this.FormElement;
         return (
             <Spin spinning={loading}>
@@ -90,17 +90,52 @@ export default class EditModal extends Component {
                     <Form onSubmit={this.handleSubmit}>
                         {isEdit ? <FormElement type="hidden" field="id" initialValue={data.id} /> : null}
                         <Row>
-                            <Col span={24}>
+                            <Col span={span}>
                                 <FormElement
-                                    label="名称"
+                                    label="用户名"
+                                    field="userName"
+                                    initialValue={data.userName}
+                                    required
+                                // rules={[
+                                //     validator.noSpace(),
+                                //     validator.userNameExist(),
+                                //     { validator: this.userNameExist }
+                                // ]}
+                                />
+                            </Col>
+                            <Col span={span}>
+                                <FormElement
+                                    label="昵称"
                                     field="name"
                                     initialValue={data.name}
                                     required
-                                    rules={[
-                                        validator.noSpace(),
-                                        validator.userNameExist(),
-                                        { validator: this.userNameExist }
-                                    ]}
+                                />
+                            </Col>
+                            <Col span={span}>
+                                <FormElement
+                                    label="真实姓名"
+                                    field="surname"
+                                    initialValue={data.surname}
+                                    required
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span={span}>
+                                <FormElement
+                                    label="邮箱"
+                                    field="emailAddress"
+                                    initialValue={data.emailAddress}
+                                    required
+                                />
+                            </Col>
+                            <Col span={span}>
+                                <FormElement
+                                    label="是否激活"
+                                    type='checkbox'
+                                    field="isActive"
+                                    initialValue={data.isActive}
+                                    defaultChecked={data.isActive}
                                 />
                             </Col>
                         </Row>

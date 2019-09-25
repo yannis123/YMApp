@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table, Form } from 'antd';
+import { Button, Table, Form, Tag } from 'antd';
 import PageContent from '@/layouts/page-content';
 import {
     QueryBar,
@@ -30,10 +30,35 @@ export default class UserCenter extends Component {
     };
 
     columns = [
-        { title: '用户名', dataIndex: 'name', key: 'name' },
-        { title: '年龄', dataIndex: 'age', key: 'age' },
-        { title: '工作', dataIndex: 'job', key: 'job' },
-        { title: '职位', dataIndex: 'position', key: 'position' },
+        { title: '用户名', dataIndex: 'userName', key: 'userName' },
+        { title: '昵称', dataIndex: 'name', key: 'name' },
+        { title: '邮箱', dataIndex: 'emailAddress', key: 'emailAddress' },
+        {
+            title: '是否激活', dataIndex: 'isActive', key: 'isActive',
+            render: (value, record) => {
+                let color = record.isActive ? 'green' : 'geekblue';
+                let text = record.isActive ? '是' : '否';
+                if (record.isActive)
+                    return (
+                        <Tag color={color} key={text}>
+                            {text}
+                        </Tag>
+                    )
+            }
+        },
+        {
+            title: '角色', dataIndex: 'roleNames', key: 'roleNames', render: roleNames => (
+                <span>
+                    {
+                        roleNames.map(tag => {
+                            return (
+                                <Tag color='volcano' key={tag}>{tag}</Tag>
+                            )
+                        })
+                    }
+                </span>
+            )
+        },
         {
             title: '操作', dataIndex: 'operator', key: 'operator',
             render: (value, record) => {
@@ -65,18 +90,19 @@ export default class UserCenter extends Component {
     handleSearch = () => {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (err) return;
-            const { pageNum, pageSize } = this.state;
-
+            //const { pageNum, pageSize } = this.state;
+            const skipCount = (this.state.pageNum - 1) * this.state.pageSize;
+            const maxResultCount = this.state.pageSize;
             const params = {
                 ...values,
-                pageNum,
-                pageSize,
+                skipCount: skipCount,
+                maxResultCount: maxResultCount,
             };
 
-            this.props.ajax.get('/xxx', params)
+            this.props.ajax.get('/services/app/User/GetAll', params)
                 .then(res => {
-                    const dataSource = res ?.list || [];
-                    const total = res ?.total || 0;
+                    const dataSource = res.result.items || [];
+                    const total = res.result.totalCount || 0;
 
                     this.setState({ dataSource, total });
                 });
@@ -107,20 +133,24 @@ export default class UserCenter extends Component {
                 >
                     <FormRow>
                         <FormElement
-                            label="名称"
-                            field="name"
+                            label="用户名"
+                            field="userName"
                         />
                         <FormElement
                             type="select"
-                            label="职位"
-                            field="job"
+                            label="是否激活"
+                            field="isActive"
                             options={[
-                                { value: 1, label: 1 },
-                                { value: 2, label: 2 },
+                                { value: 'true', label: '是' },
+                                { value: 'false', label: '否' },
                             ]}
                         />
+                        <FormElement layout width="auto">
+                            <Button type="primary" onClick={this.handleSearch}>提交</Button>
+                            <Button onClick={() => this.props.form.resetFields()}>重置</Button>
+                        </FormElement>
                     </FormRow>
-                    <FormRow>
+                    {/* <FormRow>
                         <FormElement
                             type="date"
                             label="入职时间"
@@ -130,11 +160,8 @@ export default class UserCenter extends Component {
                             label="年龄"
                             field="age"
                         />
-                        <FormElement layout width="auto">
-                            <Button type="primary" onClick={this.handleSearch}>提交</Button>
-                            <Button onClick={() => this.props.form.resetFields()}>重置</Button>
-                        </FormElement>
-                    </FormRow>
+                       
+                    </FormRow> */}
                 </QueryBar>
 
                 <ToolBar
